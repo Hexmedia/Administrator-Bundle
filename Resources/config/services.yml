@@ -1,0 +1,22 @@
+parameters:
+#    hexmedia_administrator.example.class: Hexmedia\AdministratorBundle\Example
+
+services:
+    hexmedia_administrator.menu_builder:
+        class: Hexmedia\AdministratorBundle\Menu\Builder
+        arguments: ["@event_dispatcher", "@knp_menu.factory", "@security.context", "@translator"]
+
+    hexmedia_administrator.menu.main:
+        class: Knp\Menu\MenuItem
+        factory_service: hexmedia_administrator.menu_builder
+        factory_method: createMainMenu
+        arguments: []
+        tags:
+            - { name: knp_menu.menu, alias: main }
+
+    assetic.filter.assetsurl:
+        class: Hexmedia\AdministratorBundle\Filter\AssetsUrl
+        arguments:
+            - "@service_container"
+        tags:
+            -	{ name: assetic.filter, alias: assetsurl }

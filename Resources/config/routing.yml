@@ -1,0 +1,31 @@
+hexmediaUserFOS:
+    resource: "@HexmediaUserBundle/Resources/config/routing_admin.yml"
+    prefix: /
+
+HexMediaDashboard:
+    pattern: /
+    defaults: { _controller: HexmediaAdministratorBundle:Dashboard:dashboard }
+
+HexMediaConfigurationDisplay:
+    pattern: /configuration/display/{page}/{pageSize}
+    defaults: { _controller: HexmediaAdministratorBundle:Configuration:display, page: 1, pageSize: 10 }
+
+HexMediaConfigurationList:
+    pattern: /configuration/list/{page}/{pageSize}
+    defaults: { _controller: HexmediaAdministratorBundle:Configuration:list, page: 1, pageSize: 10 }
+
+HexMediaConfigurationAdd:
+    pattern: /configuration/add
+    defaults: { _controller: HexmediaAdministratorBundle:Configuration:add }
+
+HexMediaConfigurationRemove:
+    pattern: /configuration/remove
+    defaults: { _controller: HexmediaAdministratorBundle:Configuration:remove }
+
+HexMediaConfigurationEdit:
+    pattern: /configuration/edit/{id}
+    defaults: { _controller: HexmediaAdministratorBundle:Configuration:edit }
+
+HexMediaConfigurationChange:
+    pattern: /configuration/change/{id}
+    defaults: { _controller: HexmediaAdministratorBundle:Configuration:change }

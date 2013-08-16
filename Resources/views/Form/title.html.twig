@@ -1,0 +1,14 @@
+{% block form_row %}
+	{% spaceless %}
+		{{ form_widget(form) }}
+		{{ form_errors(form) }}
+	{% endspaceless %}
+{% endblock form_row %}
+
+{% block form_widget_simple %}
+	{% spaceless %}
+		{% set type = type|default('text') %}
+		{% set attr = attr|merge({'class': attr.class|default('') ~ ' title-input' ~ (required ? ' required' : ' optional') }) %}
+<input type="{{ type }}" {% if value is not empty %}value="{{ value|escape }}"{% endif %} {{ block('widget_attributes') }} />
+	{% endspaceless %}
+{% endblock form_widget_simple %}

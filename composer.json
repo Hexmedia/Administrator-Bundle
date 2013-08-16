@@ -1,0 +1,30 @@
+{
+	"name": "hexmedia/administrator-bundle",
+	"type": "symfony-bundle",
+	"description": "HexmediaAdministrator panel main bundle",
+	"keywords": ["administrator"],
+	"homepage": "http://www.hexmedia.pl/symfony/administrator",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Krystian Kuczek",
+			"email": "krystian@hexmedia.pl",
+			"homepage": "http://www.hexmedia.pl"
+		}
+	],
+	"minimum-stability": "dev",
+	"require": {
+		"php": ">=5.3.2",
+		"symfony/framework-bundle": ">=2.3",
+		"twig/twig": ">=1.13"
+	},
+	"required-dev": {
+		"twig/twig": "@stable"
+	},
+	"autoload": {
+		"psr-0": {
+			"Hexmedia\\AdministratorBundle": ""
+		}
+	},
+	"target-dir": "Hexmedia/AdministratorBundle"
+}
