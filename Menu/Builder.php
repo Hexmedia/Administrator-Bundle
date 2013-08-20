@@ -6,7 +6,7 @@ use Knp\Menu\FactoryInterface;
 use Knp\Menu\Item as MenuItem;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Bundle\FrameworkBundle\Translation\TranslatorInterfence as Translator;
+use Symfony\Component\Translation\TranslatorInterface as Translator;
 
 class Builder
 {
