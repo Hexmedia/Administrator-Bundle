@@ -2,7 +2,7 @@
 	"name": "hexmedia/administrator-bundle",
 	"type": "symfony-bundle",
 	"description": "HexmediaAdministrator panel main bundle",
-	"keywords": ["administrator"],
+	"keywords": ["administrator", "cms", "panel", "admin panel"],
 	"homepage": "http://www.hexmedia.pl/symfony/administrator",
 	"license": "MIT",
 	"authors": [
