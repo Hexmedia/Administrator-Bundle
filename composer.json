@@ -20,7 +20,7 @@
 		"knplabs/knp-menu-bundle": "2.0.*@dev",
 		"hexmedia/bootstrap-bundle": "dev-master",
 		"hexmedia/knockout-bundle": "dev-master",
-		"hexmedia/knockout-bootstra-bundle": "dev-master",
+		"hexmedia/knockout-bootstrap-bundle": "dev-master",
 		"liip/imagine-bundle": "dev-master"
 	},
 	"required-dev": {
