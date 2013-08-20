@@ -16,7 +16,11 @@
 	"require": {
 		"php": ">=5.3.2",
 		"symfony/framework-bundle": ">=2.3",
-		"twig/twig": ">=1.13"
+		"twig/twig": ">=1.13",
+		"knplabs/knp-menu-bundle": "2.0.*@dev",
+		"hexmedia/bootstrap-bundle": "dev-master",
+		"hexmedia/knockout-bundle": "dev-master",
+		"hexmedia/knockout-bootstra-bundle": "dev-master"
 	},
 	"required-dev": {
 		"twig/twig": "@stable"
@@ -26,5 +30,19 @@
 			"Hexmedia\\AdministratorBundle": ""
 		}
 	},
-	"target-dir": "Hexmedia/AdministratorBundle"
+	"target-dir": "Hexmedia/AdministratorBundle",
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "git@gitlab.hexmedia.pl:symfony-2/bootstrap-bundle.git"
+		},
+		{
+			"type": "vcs",
+			"url": "git@gitlab.hexmedia.pl:symfony-2/knockout-bundle.git"
+		},
+		{
+			"type": "vcs",
+			"url": "git@gitlab.hexmedia.pl:symfony-2/knockout-bootstrap-bundle.git"
+		}
+	]
 }
