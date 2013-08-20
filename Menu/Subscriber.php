@@ -2,9 +2,10 @@
 
 namespace Hexmedia\AdministratorBundle\Menu;
 
-use Symfony\Bundle\FrameworkBundle\Translation\Translator;
+use Symfony\Bundle\FrameworkBundle\Translation\TranslatorInterface as Translator;
 
-abstract class Subscriber {
+abstract class Subscriber
+{
 
 	/**
 	 *
@@ -18,7 +19,8 @@ abstract class Subscriber {
 	 */
 	public abstract function addPositions(Event $event);
 
-	public function __construct(Translator $translator) {
+	public function __construct(Translator $translator)
+	{
 		$this->translator = $translator;
 	}
 
