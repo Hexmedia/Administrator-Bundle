@@ -2,7 +2,7 @@
 
 namespace Hexmedia\AdministratorBundle\Menu;
 
-use Symfony\Bundle\FrameworkBundle\Translation\TranslatorInterface as Translator;
+use Symfony\Component\Translation\TranslatorInterface as Translator;
 
 abstract class Subscriber
 {
