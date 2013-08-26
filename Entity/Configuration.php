@@ -3,25 +3,15 @@
 namespace Hexmedia\AdministratorBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Configuration
  *
  * @ORM\Entity(repositoryClass="Hexmedia\AdministratorBundle\Repository\ConfigurationRepository")
  * @ORM\Table(name="app_config")
- * @Gedmo\Loggable
  */
-class Configuration {
-
-	/**
-	 * Default locale
-	 *
-	 * @var string
-	 *
-	 * @Gedmo\Locale
-	 */
-	private $locale = "pl";
+class Configuration
+{
 
 	/**
 	 * @var integer
@@ -50,7 +40,6 @@ class Configuration {
 	 * @var string
 	 *
 	 * @ORM\Column(length=5000)
-	 * @Gedmo\Translatable
 	 */
 	private $description;
 
@@ -58,7 +47,6 @@ class Configuration {
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(type="datetime")
-	 * @Gedmo\Timestampable(on="create")
 	 */
 	private $created;
 
@@ -66,8 +54,7 @@ class Configuration {
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(type="datetime", nullable=true)
-	 * @Gedmo\Timestampable(on="update")
-	 */
+	  s */
 	private $modified;
 
 	/**
@@ -82,7 +69,8 @@ class Configuration {
 	 *
 	 * @return integer
 	 */
-	public function getId() {
+	public function getId()
+	{
 		return $this->id;
 	}
 
@@ -92,7 +80,8 @@ class Configuration {
 	 * @param string $name
 	 * @return Configuration
 	 */
-	public function setName($name) {
+	public function setName($name)
+	{
 		$this->name = $name;
 
 		return $this;
@@ -103,7 +92,8 @@ class Configuration {
 	 *
 	 * @return string
 	 */
-	public function getName() {
+	public function getName()
+	{
 		return $this->name;
 	}
 
@@ -113,7 +103,8 @@ class Configuration {
 	 * @param string $value
 	 * @return Configuration
 	 */
-	public function setValue($value) {
+	public function setValue($value)
+	{
 		$this->value = $value;
 
 		return $this;
@@ -124,7 +115,8 @@ class Configuration {
 	 *
 	 * @return string
 	 */
-	public function getValue() {
+	public function getValue()
+	{
 		return $this->value;
 	}
 
@@ -134,7 +126,8 @@ class Configuration {
 	 * @param string $description
 	 * @return Configuration
 	 */
-	public function setDescription($description) {
+	public function setDescription($description)
+	{
 		$this->description = $description;
 
 		return $this;
@@ -145,7 +138,8 @@ class Configuration {
 	 *
 	 * @return string
 	 */
-	public function getDescription() {
+	public function getDescription()
+	{
 		return $this->description;
 	}
 
@@ -155,7 +149,8 @@ class Configuration {
 	 * @param \DateTime $created
 	 * @return OrderComment
 	 */
-	public function setCreated($created) {
+	public function setCreated($created)
+	{
 		$this->created = $created;
 
 		return $this;
@@ -166,7 +161,8 @@ class Configuration {
 	 *
 	 * @return \DateTime
 	 */
-	public function getCreated() {
+	public function getCreated()
+	{
 		return $this->created;
 	}
 
@@ -176,7 +172,8 @@ class Configuration {
 	 * @param \DateTime $modified
 	 * @return OrderComment
 	 */
-	public function setModified($modified) {
+	public function setModified($modified)
+	{
 		$this->modified = $modified;
 
 		return $this;
@@ -187,7 +184,8 @@ class Configuration {
 	 *
 	 * @return \DateTime
 	 */
-	public function getModified() {
+	public function getModified()
+	{
 		return $this->modified;
 	}
 
@@ -197,7 +195,8 @@ class Configuration {
 	 * @param User $admin
 	 * @return Configuration
 	 */
-	public function setAdmin(User $admin) {
+	public function setAdmin(User $admin)
+	{
 		$this->admin = $admin;
 		return $this;
 	}
@@ -207,7 +206,8 @@ class Configuration {
 	 *
 	 * @return User
 	 */
-	public function getAdmin() {
+	public function getAdmin()
+	{
 		return $this->admin;
 	}
 
@@ -217,7 +217,8 @@ class Configuration {
 	 * @param string $locale
 	 * @return \Hexmedia\SimpleShopBundle\Entity\OrderProducts
 	 */
-	public function setTranslatableLocale($locale) {
+	public function setTranslatableLocale($locale)
+	{
 		$this->locale = $locale;
 		return $this;
 	}
