@@ -8,62 +8,79 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\DependencyInjection\Container;
 use Assetic\Filter\HashableInterface;
 
-class AssetsUrl implements FilterInterface, HashableInterface {
+class AssetsUrl implements FilterInterface, HashableInterface
+{
 
-	/**
-	 *
-	 * @var Container
-	 */
-	private $container;
+    /**
+     *
+     * @var Container
+     */
+    private $container;
 
-	public function __construct(Container $container) {
-		$this->container = $container;
-	}
+    public function __construct(Container $container)
+    {
+        $this->container = $container;
+    }
 
-	public function filterDump(AssetInterface $asset) {
-		$this->doFilter($asset);
-	}
+    public function filterDump(AssetInterface $asset)
+    {
+        $this->doFilter($asset);
+    }
 
-	public function filterLoad(AssetInterface $asset) {
-		$this->doFilter($asset);
-	}
+    public function filterLoad(AssetInterface $asset)
+    {
+        $this->doFilter($asset);
+    }
 
-	private function doFilter(AssetInterface $asset) {
-		$content = $asset->getContent();
+    private function doFilter(AssetInterface $asset)
+    {
+        $content = $asset->getContent();
 
-		$callback = function($matches) {
-				$fs = new Filesystem();
-				$resource = $matches['resource'];
+        $callback = function ($matches) {
+            $fs = new Filesystem();
+            $resource = $matches['resource'];
 
-				preg_match("/\@([A-Z][A-Za-z\_]*)/", $resource, $matches);
+            preg_match("/(\@{1,2})([A-Z][A-Za-z\_]*)/", $resource, $matches);
 
-				try {
-					$bundle = $this->container->get('kernel')->getBundle($matches[1]);
-					$path = $this->container->get('kernel')->locateResource($resource);
+            if ($resource{1} == "@") {
+                $resource = substr($resource, 1);
+            }
 
-					if ($fs->exists($path)) {
-						if (preg_match("/Resources\/public\/(.*)/", $path, $matches2)) {
-							$path = 'bundles/' . preg_replace('/bundle$/', '', strtolower($bundle->getName())) . '/' . $matches2[1];
+            try {
+                $bundle = $this->container->get('kernel')->getBundle($matches[2]);
+                $path = $this->container->get('kernel')->locateResource($resource);
 
-							return $this->container->get('templating.helper.assets')->getUrl($path);
-						}
-					}
-				} catch (Exception$e) {
+                if ($fs->exists($path)) {
+                    if (preg_match("/Resources\/public\/(.*)/", $path, $matches2)) {
+                        $path = 'bundles/' . preg_replace(
+                                '/bundle$/',
+                                '',
+                                strtolower($bundle->getName())
+                            ) . '/' . $matches2[1];
 
-				}
+                        if ($matches[1] == "@@") {
+                            return $this->container->get('kernel')->getRootDir() . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . DIRECTORY_SEPARATOR . $path;
+                        }
 
+                        return $this->container->get('templating.helper.assets')->getUrl($path);
+                    }
+                }
+            } catch (Exception$e) {
 
-				return $resource;
-			};
+            }
 
-		$pattern = "/(?P<resource>\@[A-Za-z\_]+Bundle[A-Za-z\_\.\/\-]*)/";
+            return $resource;
+        };
 
-		$asset->setContent(preg_replace_callback($pattern, $callback, $content));
-	}
+        $pattern = "/(?P<resource>\@{1,2}[A-Za-z\_]+Bundle[A-Za-z\_\.\/\-]*)/";
 
-	public function hash() {
-		return microtime(true) . md5(microtime(true)); //always different
-	}
+        $asset->setContent(preg_replace_callback($pattern, $callback, $content));
+    }
+
+    public function hash()
+    {
+        return microtime(true) . md5(microtime(true)); //always different
+    }
 
 }
 
