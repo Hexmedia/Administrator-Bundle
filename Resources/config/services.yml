@@ -20,3 +20,11 @@ services:
             - "@service_container"
         tags:
             -	{ name: assetic.filter, alias: assetsurl }
+
+    hexmedia.content.admin_toolbar:
+        class: Hexmedia\AdministratorBundle\EventListener\ToolbarListener
+        arguments:
+            - "@security.context"
+            - "@twig"
+        tags:
+            - { name: kernel.event_subscriber }

@@ -1,0 +1,16 @@
+<style type="text/css">
+    {{ include('HexmediaAdministratorBundle:Toolbar:toolbar.css.twig') }}
+</style>
+
+<div class="user-toolbar {{ edit_mode_class }}">
+    <a href="{{ path('HexMediaAdminEditModeEnable') }}" class="btn btn-success edit-mode">{{ 'Edit Mode'|trans }}</a>
+    <a href="{{ path('HexMediaAdminEditModeExit') }}" class="btn btn-danger exit">{{ 'Exit'|trans }}</a>
+    <a href="{{ path('HexMediaAdminEditModeSaveAndExit') }}" class="btn btn-success save-and-exit">{{ 'Save & Exit'|trans }}</a>
+    <a href="{{ path('HexMediaAdminEditModeSave') }}" class="btn btn-success save">{{ 'Save'|trans }}</a>
+    <a href="{{ path('HexMediaDashboard') }}" class="btn btn-info admin-panel">{{ 'Admin Panel'|trans }}</a>
+
+    {# Here i need to put some message area. #}
+    
+    <a href="#"><img src="{{ gravatar(app.user.email, 30) }}" alt="{{ app.user.email }}"/> {{ 'Your Account' }} </a>
+    <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+</div>

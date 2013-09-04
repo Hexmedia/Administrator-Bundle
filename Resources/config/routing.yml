@@ -29,3 +29,19 @@ HexMediaConfigurationEdit:
 HexMediaConfigurationChange:
     pattern: /configuration/change/{id}
     defaults: { _controller: HexmediaAdministratorBundle:Configuration:change }
+
+HexMediaAdminEditModeEnable:
+    pattern: /edit-mode/enable
+    defaults: { _controller: HexmediaAdministratorBundle:EditMode:enable }
+
+HexMediaAdminEditModeExit:
+    pattern: /edit-mode/exit
+    defaults: { _controller: HexmediaAdministratorBundle:EditMode:disable }
+
+HexMediaAdminEditModeSaveAndExit:
+    pattern: /edit-mode/save-exit
+    defaults: { _controller: HexmediaAdministratorBundle:EditMode:saveAndExit }
+
+HexMediaAdminEditModeSave:
+    pattern: /edit-mode/save
+    defaults: { _controller: HexmediaAdministratorBundle:EditMode:save }
