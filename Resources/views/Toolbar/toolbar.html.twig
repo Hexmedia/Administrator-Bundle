@@ -2,6 +2,15 @@
     {{ include('HexmediaAdministratorBundle:Toolbar:toolbar.css.twig') }}
 </style>
 
+{#{{ render(controller("HexmediaAdministratorBundle:EditMode:script")) }}#}
+
+{% javascripts output='js/admin-toolbar.js'
+'@HexmediaAdministratorBundle/Resources/public/js/lib/raptor.js'
+'@HexmediaAdministratorBundle/Resources/public/js/raptor-toolbar.js'
+%}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
 <div class="user-toolbar {{ edit_mode_class }}">
     <a href="{{ path('HexMediaAdminEditModeEnable') }}" class="btn btn-success edit-mode">{{ 'Edit Mode'|trans }}</a>
     <a href="{{ path('HexMediaAdminEditModeExit') }}" class="btn btn-danger exit">{{ 'Exit'|trans }}</a>

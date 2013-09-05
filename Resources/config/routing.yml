@@ -45,3 +45,11 @@ HexMediaAdminEditModeSaveAndExit:
 HexMediaAdminEditModeSave:
     pattern: /edit-mode/save
     defaults: { _controller: HexmediaAdministratorBundle:EditMode:save }
+
+HexMediaAdminEditModeSaveJson:
+    pattern: /edit-mode/save/json/{type}
+    defaults: { _controller: HexmediaAdministratorBundle:EditMode:jsonSave, type: "" }
+    methods: [ POST ]
+    options:
+        expose: true
+
