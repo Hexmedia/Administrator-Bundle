@@ -59,9 +59,9 @@ class EditModeController extends Controller
      */
     public function jsonSaveAction($type, Request $request) {
 
-        //@FIXME: This code need to be moved to ContentController somehow.
         $em = $this->getDoctrine()->getManager();
 
+        //@FIXME: This code need to be moved to ContentController somehow.
         switch ($type) {
             case "area":
                 $repository = $em->getRepository("HexmediaContentBundle:Area");
@@ -71,10 +71,20 @@ class EditModeController extends Controller
                 foreach ($dc as $path => $content) {
                     $entity = $repository->getByPath($path);
                     $entity->setContent($content);
+                }
+                break;
+            case "page":
+                $repository = $em->getRepository("HexmediaContentBundle:Page");
 
-                    $em->flush();
+                $dc = json_decode($request->get('text'), true);
+
+                foreach ($dc as $id => $content) {
+                    $entity = $repository->findById($id);
+                    $entity->setContent($content);
                 }
         }
+
+        $em->flush();
 
         return ['status' => 'ok'];
     }

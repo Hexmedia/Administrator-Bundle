@@ -5,7 +5,7 @@
             'border-top-right-radius': '0'
         });
 
-        $('textarea').raptor({
+        $('textarea:not(.no-raptor)').raptor({
             autoEnable: true,
             enableUi: false,
             unloadWarning: false,
