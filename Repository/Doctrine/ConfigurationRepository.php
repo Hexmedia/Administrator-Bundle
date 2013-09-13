@@ -4,6 +4,7 @@ namespace Hexmedia\AdministratorBundle\Repository\Doctrine;
 
 use Doctrine\ORM\EntityRepository;
 use Hexmedia\AdministratorBundle\Repository\ConfigurationRepositoryInterface;
+use Hexmedia\AdministratorBundle\Repository\Doctrine\ListTrait;
 
 /**
  * ConfigurationRepository
@@ -12,13 +13,6 @@ use Hexmedia\AdministratorBundle\Repository\ConfigurationRepositoryInterface;
  * repository methods below.
  */
 class ConfigurationRepository extends EntityRepository implements ConfigurationRepositoryInterface {
-
-	public function getPage($page = 1, $sort = 'id', $pageSize = 10, $sortDirection = 'ASC', $fields = array()) {
-
-	}
-
-	public function getCount() {
-
-	}
+    use ListTrait;
 
 }
