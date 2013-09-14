@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% spaceless %}<html>
+{{ include ("HexmediaAdministratorBundle:Partial:head.html.twig") }}
+<body>
+{{ include ("HexmediaAdministratorBundle:Partial:alerts.html.twig") }}
+
+<div class="container main">
+    <div class="row header">
+        <div class="col-md-2"><h1>{{ 'CMS'|trans }}</h1></div>
+        <div class="col-md-8">
+            {{ wo_render_breadcrumbs() }}
+        </div>
+        <div class="col-md-2 navbar">
+            <ul class="nav nav-tabs">
+                <li class="dropdown dropdown-submenu">
+                    <img src="{{ gravatar(app.user.email, 30) }}" alt="{{ app.user.email }}"/>{{ 'Your account'|trans }}
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('fos_user_profile_show') }}">{{ 'Profile'|trans }}</a></li>
+                        <li><a href="{{ path('fos_user_security_logout') }}">{{ 'Logout'|trans }}</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row content">
+        <div class="col-md-2 menu dropdown">
+            {{ knp_menu_render('main', {'currentClass': 'active', 'ancestorClass': 'active', 'template': 'HexmediaAdministratorBundle:Menu:main_menu.html.twig'}) }}
+        </div>
+        <div class="col-md-10 main-content">
+            <div class="alerts">
+                <div data-bind="foreach: alerts">
+                    <div data-bind="attr: { 'class': aclass }">
+                        <span data-bind="text: message"></span>
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                    </div>
+                </div>
+            </div>
+
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+</div>
+{% block bottom_script %}{% endblock %}
+</body>
+</html>
+{% endspaceless %}

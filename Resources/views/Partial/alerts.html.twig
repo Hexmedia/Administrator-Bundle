@@ -1,0 +1,11 @@
+<script type="text/javascript">
+    jQuery('document').ready(function () {
+        {% for flashMessage in app.session.flashbag.get('error') %}
+        alerts.displayError('{{ flashMessage }}')
+        {% endfor %}
+
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+        alerts.displayInfo('{{ flashMessage }}');
+        {% endfor %}
+    });
+</script>

@@ -27,7 +27,7 @@ var ListModel;
             page: pagination.page(),
             sort: sort.sort(),
             pageSize: pagination.pageSize(),
-            sortDirection: sort.direction().toLowerCase()
+            sortDirection: (typeof sort.direction() === "string" ? sort.direction().toLowerCase() : sort.direction())
         });
 
         console.log(self.urlData());

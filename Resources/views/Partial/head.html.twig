@@ -1,0 +1,39 @@
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% stylesheets filter='assetsurl,less,?yui_css' output='css/cms.css'
+    '@MopaBootstrapBundle/Resources/public/less/mopabootstrapbundle.less'
+    '@HexmediaAdministratorBundle/Resources/public/less/all.less'
+    '@HexmediaAdministratorBundle/Resources/public/font-awesome/less/font-awesome.less' %}
+    <link rel="stylesheet" type="text/css" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+    {% block head_style %}{% endblock %}
+    {#% stylesheets filter='compass,cssrewrite,yui_css' output='css/flat-ui.css'
+        '@HexmediaFlatUIBundle/Resources/public/sass/flat-ui.sass' %}
+    <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
+    {% endstylesheets %#}
+    {% javascripts output='js/admin.js'
+    '@HexmediaAdministratorBundle/Resources/public/js/lib/jquery.js'
+    '@MopaBootstrapBundle/Resources/bootstrap/dist/js/bootstrap.min.js'
+    '@FOSJsRoutingBundle/Resources/public/js/router.js'
+    '@BazingaExposeTranslationBundle/Resources/public/js/translator.min.js'
+    '@HexmediaKnockoutBundle/Resources/public/js/knockout.min.js'
+    '@HexmediaKnockoutBundle/Resources/public/js/router.js'
+    '@HexmediaKnockoutBootstrapBundle/Resources/knockout-bootstrap/dist/knockout-bootstrap.js'
+    '@HexmediaAdministratorBundle/Resources/public/js/model/alert.js'
+    '@HexmediaAdministratorBundle/Resources/public/js/own/extensions.js'
+    '@HexmediaAdministratorBundle/Resources/public/js/model/list.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script type="text/javascript" src="{{ path('bazinga_exposetranslation_js') }}"></script>
+    <script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+    {% javascripts filter="yui_js" output='js/cms.js'
+    '@HexmediaAdministratorBundle/Resources/public/js/cms.js' %}
+
+    {% block head_script %}{% endblock %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>

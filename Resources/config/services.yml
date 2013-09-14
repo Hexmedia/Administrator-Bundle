@@ -21,10 +21,26 @@ services:
         tags:
             -	{ name: assetic.filter, alias: assetsurl }
 
-    hexmedia.content.admin_toolbar:
+    hexmedia.admin.admin_toolbar:
         class: Hexmedia\AdministratorBundle\EventListener\ToolbarListener
         arguments:
             - "@security.context"
             - "@twig"
         tags:
             - { name: kernel.event_subscriber }
+
+
+    hexmedia.admin.fields.yesno:
+        class: Hexmedia\AdministratorBundle\Form\Fields\YesNoType
+        tags:
+            - { name: form.type, alias: yesno }
+
+    hexmedia.admin.fields.publication:
+        class: Hexmedia\AdministratorBundle\Form\Fields\PublicationType
+        tags:
+            - { name: form.type, alias: publication }
+
+    hexmedia.admin.fields.datepicker:
+        class: Hexmedia\AdministratorBundle\Form\Fields\DatepickerType
+        tags:
+            - { name: form.type, alias: datepicker }
