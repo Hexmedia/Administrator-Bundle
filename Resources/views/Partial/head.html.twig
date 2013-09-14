@@ -1,13 +1,11 @@
-<head>
+
     <meta charset="UTF-8"/>
-    <title>{% block title %}Welcome!{% endblock %}</title>
     {% stylesheets filter='assetsurl,less,?yui_css' output='css/cms.css'
     '@MopaBootstrapBundle/Resources/public/less/mopabootstrapbundle.less'
     '@HexmediaAdministratorBundle/Resources/public/less/all.less'
     '@HexmediaAdministratorBundle/Resources/public/font-awesome/less/font-awesome.less' %}
     <link rel="stylesheet" type="text/css" href="{{ asset_url }}"/>
     {% endstylesheets %}
-    {% block head_style %}{% endblock %}
     {#% stylesheets filter='compass,cssrewrite,yui_css' output='css/flat-ui.css'
         '@HexmediaFlatUIBundle/Resources/public/sass/flat-ui.sass' %}
     <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
@@ -32,8 +30,7 @@
     {% javascripts filter="yui_js" output='js/cms.js'
     '@HexmediaAdministratorBundle/Resources/public/js/cms.js' %}
 
-    {% block head_script %}{% endblock %}
+
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
-</head>

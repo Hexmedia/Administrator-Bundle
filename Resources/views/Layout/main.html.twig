@@ -1,7 +1,15 @@
 <!DOCTYPE html>
-{% spaceless %}<html>
-{{ include ("HexmediaAdministratorBundle:Partial:head.html.twig") }}
+<html>
+<head>
+    {% spaceless %}
+    <title>{% block title %}{{ 'CMS'|trans }}{% endblock title %}</title>
+    {{ include ("HexmediaAdministratorBundle:Partial:head.html.twig") }}
+    {% endspaceless %}
+    {% block head_script %}{% endblock %}
+    {% block head_style %}{% endblock %}
+</head>
 <body>
+
 {{ include ("HexmediaAdministratorBundle:Partial:alerts.html.twig") }}
 
 <div class="container main">
@@ -43,4 +51,3 @@
 {% block bottom_script %}{% endblock %}
 </body>
 </html>
-{% endspaceless %}
