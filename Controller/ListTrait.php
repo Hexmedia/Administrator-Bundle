@@ -27,7 +27,13 @@ trait ListTrait
                 } else {
                     if (is_array($arr)) {
                         $fun = $arr['get'];
-                        $val = $entity->$fun();
+
+                        if ($fun === "self") {
+                            $val = $entity;
+                        } else {
+                            $val = $entity->$fun();
+                        }
+
                         if (isset($arr['format'])) {
                             switch ($arr['format']) {
                                 case "timeformat":
@@ -76,7 +82,7 @@ trait ListTrait
                 } else if (is_object($val)) {
                     try {
                         $val = $val->__toString();
-                    } catch(Exception $e) {
+                    } catch (Exception $e) {
                         $val = "[object]";
                     }
                 }
@@ -90,7 +96,7 @@ trait ListTrait
         return $ret;
     }
 
-    public abstract function getFieldsToDisplayOnList();
+    protected abstract function getFieldsToDisplayOnList();
 
     /**
      * @return object
