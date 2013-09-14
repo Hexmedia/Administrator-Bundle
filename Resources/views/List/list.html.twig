@@ -1,0 +1,15 @@
+<div class="content data-area-list">
+    <table class="table table-hover"
+           data-bind="table: list, headerTemplate: 'list_table_header', itemTemplate: 'list_table_items'">
+    </table>
+
+    <div data-bind="pagination: pagination"></div>
+</div>
+
+{% if addParams is not defined %}
+{% set addParams={} %}
+{% endif %}
+
+{% include "HexmediaKnockoutBootstrapBundle:Table:list_table_header.html.twig" with {'addRouteName' : addRouteName, 'addParams': addParams} %}
+{% include "HexmediaKnockoutBootstrapBundle:Table:list_table_items.html.twig" with {'editRouteName' : editRouteName, 'removeRouteName' : removeRouteName} %}
+
