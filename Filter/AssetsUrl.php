@@ -40,7 +40,7 @@ class AssetsUrl implements FilterInterface, HashableInterface
             $fs = new Filesystem();
             $resource = $matches['resource'];
 
-            preg_match("/(\@{1,2})([A-Z][A-Za-z\_]*)/", $resource, $matches);
+            preg_match("/(\@{1,2})([A-Z][A-Za-z0-9\_\-]*)/", $resource, $matches);
 
             if ($resource{1} == "@") {
                 $resource = substr($resource, 1);
@@ -72,7 +72,7 @@ class AssetsUrl implements FilterInterface, HashableInterface
             return $resource;
         };
 
-        $pattern = "/(?P<resource>\@{1,2}[A-Za-z\_]+Bundle[A-Za-z\_\.\/\-]*)/";
+        $pattern = "/(?P<resource>\@{1,2}[A-Za-z\_]+Bundle[A-Za-z0-9\_\.\/\-]*)/";
 
         $asset->setContent(preg_replace_callback($pattern, $callback, $content));
     }
