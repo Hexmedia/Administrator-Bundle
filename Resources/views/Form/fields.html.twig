@@ -1,0 +1,16 @@
+{% block date_widget %}
+    {% spaceless %}
+        {{ block('form_widget_simple') }}
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $({{ id }}).datepicker();
+                $({{ id }}).datepicker().on(
+                        "changeDate",
+                        function (event) {
+                            $({{ id }}).datepicker('hide');
+                        }
+                )
+            });
+        </script>
+    {% endspaceless %}
+{% endblock date_widget %}
