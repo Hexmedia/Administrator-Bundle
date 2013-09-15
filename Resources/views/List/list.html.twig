@@ -10,6 +10,6 @@
 {% set addParams={} %}
 {% endif %}
 
-{% include "HexmediaKnockoutBootstrapBundle:Table:list_table_header.html.twig" with {'addRouteName' : addRouteName, 'addParams': addParams} %}
+{% include "HexmediaKnockoutBootstrapBundle:Table:list_table_header.html.twig" with {'addRouteName' : addRouteName, 'params': addParams} %}
 {% include "HexmediaKnockoutBootstrapBundle:Table:list_table_items.html.twig" with {'editRouteName' : editRouteName, 'removeRouteName' : removeRouteName} %}
 

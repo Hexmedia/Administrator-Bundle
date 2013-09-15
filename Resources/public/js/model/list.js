@@ -9,7 +9,7 @@ var ListModel;
     };
 
     ListModel = function () {
-        var self = this, table = new ko.bootstrap.TableModel(), pagination, deleteConfirm, sort, data, urlData;
+        var self = this, table = new ko.bootstrap.TableModel(), pagination, deleteConfirm, sort, data;
 
         pagination = new ko.bootstrap.PaginationModel({
             goToPage: function (p) {
@@ -29,8 +29,6 @@ var ListModel;
             pageSize: pagination.pageSize(),
             sortDirection: (typeof sort.direction() === "string" ? sort.direction().toLowerCase() : sort.direction())
         });
-
-        console.log(self.urlData());
 
         self.getData = function (local) {
             var prepareEntities;
