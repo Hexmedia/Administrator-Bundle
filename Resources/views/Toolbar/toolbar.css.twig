@@ -1,18 +1,74 @@
 
+{% set height = 40 %}
+
 html {
-    margin-top: 50px !important;
+    margin-top: {{ height + 10 }}px !important;
 }
 
-.user-toolbar {
+.raptor-layout-toolbar-outer {
+    margin-top: {{ height + 10 }}px !important;
+}
+
+.hx-adm-panel-user-toolbar {
     width: 100%;
-    height: 40px;
+    height: {{ height }}px;
     padding: 5px;
-    background-color: red;
+    background: #666;
+    border-bottom: 2px solid #fff;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1299;
+    color: #333;
 }
+
+.hx-adm-panel-user-toolbar .hx-adm-panel-logo {
+    display: none;
+}
+
+.hx-adm-panel-user-toolbar .hx-adm-panel-left {
+    float: left;
+}
+
+.hx-adm-panel-user-toolbar .hx-adm-panel-right {
+    float: right;
+    margin-right: 20px;
+}
+
+.hx-adm-panel-user-toolbar .hx-adm-panel-btn {
+    height: 20px;
+    margin: 5px 5px;
+    padding: 5px 10px;
+
+    color: #fff;
+    background: #333;
+
+    display: inline-block;
+
+    border-radius: 5px;
+
+    text-decoration: none;
+}
+
+.hx-adm-panel-user-toolbar .hx-adm-panel-btn:hover {
+    color: red;
+}
+
+.hx-adm-panel-user-toolbar.hx-adm-panel-in-edit-mode .hx-adm-panel-edit-mode {
+    display: none;
+}
+
+.hx-adm-panel-user-toolbar .hx-adm-panel-exit {
+    display: none;
+}
+
+.hx-adm-panel-user-toolbar.hx-adm-panel-in-edit-mode .hx-adm-panel-exit {
+    display: inline-block;
+}
+
+.hx-adm-panel-user-toolbar {
+}
+
 
 .in-edit-mode .edit-mode {
     display: none;

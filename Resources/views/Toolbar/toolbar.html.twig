@@ -6,20 +6,23 @@
 
 {% javascripts output='js/admin-toolbar.js'
 '@HexmediaAdministratorBundle/Resources/public/js/lib/raptor.js'
-'@HexmediaAdministratorBundle/Resources/public/js/raptor-toolbar.js'
-%}
+'@HexmediaAdministratorBundle/Resources/public/js/raptor-toolbar.js' %}
 <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
 
-<div class="user-toolbar {{ edit_mode_class }}">
-    <a href="{{ path('HexMediaAdminEditModeEnable') }}" class="btn btn-success edit-mode">{{ 'Edit Mode'|trans }}</a>
-    <a href="{{ path('HexMediaAdminEditModeExit') }}" class="btn btn-danger exit">{{ 'Exit'|trans }}</a>
-    <a href="{{ path('HexMediaAdminEditModeSaveAndExit') }}" class="btn btn-success save-and-exit">{{ 'Save & Exit'|trans }}</a>
-    <a href="{{ path('HexMediaAdminEditModeSave') }}" class="btn btn-success save">{{ 'Save'|trans }}</a>
-    <a href="{{ path('HexMediaDashboard') }}" class="btn btn-info admin-panel">{{ 'Admin Panel'|trans }}</a>
-
+<div class="hx-adm-panel-user-toolbar hx-adm-panel-{{ edit_mode_class }}">
+    <div class="hx-adm-panel-left">
+        <a href="{{ path('HexMediaAdminEditModeEnable') }}"
+           class="hx-adm-panel-btn hx-adm-panel-edit-mode">{{ 'Edit Mode'|trans }}</a>
+        <a href="{{ path('HexMediaAdminEditModeExit') }}"
+           class="hx-adm-panel-btn hx-adm-panel-exit">{{ 'Exit'|trans }}</a>
+        <a href="{{ path('HexMediaDashboard') }}"
+           class="hx-adm-panel-btn hx-adm-panel-btn-info admin-panel">{{ 'Admin Panel'|trans }}</a>
+    </div>
     {# Here i need to put some message area. #}
-    
-    <a href="#"><img src="{{ gravatar(app.user.email, 30) }}" alt="{{ app.user.email }}"/> {{ 'Your Account' }} </a>
-    <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+
+    <div class="hx-adm-panel-right">
+        {#<a href="#"><img src="{{ gravatar(app.user.email, 30) }}" alt="{{ app.user.email }}"/> {{ 'Your Account' }} </a>#}
+        <a href="{{ path('fos_user_security_logout') }}" class='hx-adm-panel-btn'>Logout</a>
+    </div>
 </div>

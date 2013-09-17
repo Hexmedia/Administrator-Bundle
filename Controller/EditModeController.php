@@ -2,9 +2,10 @@
 
 namespace Hexmedia\AdministratorBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use FOS\RestBundle\Controller\FOSRestController as Controller;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class EditModeController extends Controller
 {
@@ -36,32 +37,14 @@ class EditModeController extends Controller
     {
         $this->disable();
         $this->save();
+
         return $this->redirect($this->getRequest()->headers->get('referer'));
     }
 
-    public function saveAction()
+    private function save($type, Request $request)
     {
-        $this->save();
-        return $this->redirect($this->getRequest()->headers->get('referer'));
-    }
-
-    /**
-     * @Rest\View(template="HexmediaAdministratorBundle:EditMode:script.html.twig")
-     */
-    public function scriptAction() {
-        return array();
-    }
-
-    /**
-     * @param string $type
-     *
-     * @Rest\View
-     */
-    public function jsonSaveAction($type, Request $request) {
-
         $em = $this->getDoctrine()->getManager();
 
-        //@FIXME: This code need to be moved to ContentController somehow.
         switch ($type) {
             case "area":
                 $repository = $em->getRepository("HexmediaContentBundle:Area");
@@ -83,14 +66,33 @@ class EditModeController extends Controller
                     $entity->setContent($content);
                 }
         }
-
         $em->flush();
-
-        return ['status' => 'ok'];
     }
 
-    private function save()
+    /**
+     * @Rest\View(template="HexmediaAdministratorBundle:EditMode:script.html.twig")
+     */
+    public function scriptAction()
     {
-        //Here should go some listener which will allow other bundles to do some actions on it.
+        return array();
+    }
+
+    /**
+     * Save from Raptor
+     *
+     * @param string $type
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function jsonSaveAction($type, Request $request)
+    {
+        //@FIXME: This code need to be moved to ContentController somehow.
+        $this->save($type, $request);
+
+        $response = new Response(json_encode(['status' => 'ok']));
+        $response->headers->set("Content-Type", 'application/json');
+
+        return $response;
     }
 }
