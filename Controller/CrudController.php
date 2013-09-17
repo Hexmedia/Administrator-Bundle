@@ -86,9 +86,9 @@ abstract class CrudController extends Controller implements ListControllerInterf
             $this->get('session')->getFlashBag()->add('notice', $this->getEntityName() . ' has been created!');
 
             if ($form->get("saveAndExit")->isClicked()) {
-                return $this->redirect($this->generateUrl($this->getMainRoute()));
+                return $this->redirect($this->generateUrl($this->getMainRoute(), $this->getRouterParameters()));
             } else {
-                return $this->redirect($this->generateUrl($this->getMainRoute() . "Edit", ['id' => $entity->getId()]));
+                return $this->redirect($this->generateUrl($this->getMainRoute() . "Edit", $this->getRouteParameters(['id' => $entity->getId()])));
             }
         }
 
@@ -97,6 +97,13 @@ abstract class CrudController extends Controller implements ListControllerInterf
             'form' => $form->createView(),
         );
     }
+
+    /**
+     * Registering BreadCrumbs
+     *
+     * @return \WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs
+     */
+    protected abstract function registerBreadcrubms();
 
     protected abstract function getNewEntity();
 
@@ -113,7 +120,7 @@ abstract class CrudController extends Controller implements ListControllerInterf
             $this->getAddFormType(),
             $entity,
             [
-                'action' => $this->generateUrl($this->getMainRoute() . "Add"),
+                'action' => $this->generateUrl($this->getMainRoute() . "Add", $this->getRouteParameters()),
                 'method' => 'POST',
             ]
         );
@@ -121,9 +128,9 @@ abstract class CrudController extends Controller implements ListControllerInterf
         return $form;
     }
 
-    protected abstract function getMainRoute();
-
     protected abstract function getAddFormType();
+
+    protected abstract function getMainRoute();
 
     protected abstract function getEntityName();
 
@@ -181,13 +188,15 @@ abstract class CrudController extends Controller implements ListControllerInterf
             $this->getEditFormType(),
             $entity,
             [
-                'action' => $this->generateUrl($this->getMainRoute() . "Edit", array('id' => $entity->getId())),
+                'action' => $this->generateUrl($this->getMainRoute() . "Edit", $this->getRouteParameters(['id' => $entity->getId()])),
                 'method' => 'PUT',
             ]
         );
 
         return $form;
     }
+
+    protected abstract function getEditFormType();
 
     /**
      * Edits an existing entity.
@@ -220,15 +229,15 @@ abstract class CrudController extends Controller implements ListControllerInterf
             }
 
             if ($em->getUnitOfWork()->isScheduledForUpdate($entity)) {
-                $this->get('session')->getFlashBag()->add('notice', $this->getEntityName() .' has been updated!');
+                $this->get('session')->getFlashBag()->add('notice', $this->getEntityName() . ' has been updated!');
             }
 
             $em->flush();
 
             if ($form->get("saveAndExit")->isClicked()) {
-                return $this->redirect($this->generateUrl($this->getMainRoute()));
+                return $this->redirect($this->generateUrl($this->getMainRoute(), $this->getRouteParameters()));
             } else {
-                return $this->redirect($this->generateUrl($this->getMainRoute() . 'Edit', array('id' => $id)));
+                return $this->redirect($this->generateUrl($this->getMainRoute() . 'Edit', $this->getRouteParameters(['id' => $id])));
             }
         }
 
@@ -259,14 +268,15 @@ abstract class CrudController extends Controller implements ListControllerInterf
         return ['success' => true];
     }
 
-    protected abstract function getEditFormType();
+    protected function getRouteAdditionalParameters()
+    {
+        return [];
+    }
 
-    /**
-     * Registering BreadCrumbs
-     *
-     * @return \WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs
-     */
-    protected abstract function registerBreadcrubms();
+    private function getRouteParameters($params = [])
+    {
+        return array_merge($params, $this->getRouteAdditionalParameters());
+    }
 
 
 }
