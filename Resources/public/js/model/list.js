@@ -9,7 +9,7 @@ var ListModel;
     };
 
     ListModel = function () {
-        var self = this, table = new ko.bootstrap.TableModel(), pagination, deleteConfirm, sort, data;
+        var self = this, table = new ko.bootstrap.TableModel(), pagination, deleteConfirm, sort;
 
         pagination = new ko.bootstrap.PaginationModel({
             goToPage: function (p) {
@@ -22,13 +22,6 @@ var ListModel;
         self.sort = ko.observable(sort);
 
         self.urlData = ko.observable({});
-
-        data = $.extend({}, self.urlData(), {
-            page: pagination.page(),
-            sort: sort.sort(),
-            pageSize: pagination.pageSize(),
-            sortDirection: (typeof sort.direction() === "string" ? sort.direction().toLowerCase() : sort.direction())
-        });
 
         self.getData = function (local) {
             var prepareEntities;
@@ -55,6 +48,13 @@ var ListModel;
                 prepareEntities(entitiesData.entities);
                 pagination.itemCount(entitiesData.entitiesCount);
             } else {
+                var data = $.extend({}, self.urlData(), {
+                    page: pagination.page(),
+                    sort: sort.sort(),
+                    pageSize: pagination.pageSize(),
+                    sortDirection: (typeof sort.direction() === "string" ? sort.direction().toLowerCase() : sort.direction())
+                });
+
                 $.ajax({
                     dataType: "json",
                     url: self.getUrl(data),
