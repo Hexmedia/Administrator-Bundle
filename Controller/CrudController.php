@@ -11,6 +11,7 @@ namespace Hexmedia\AdministratorBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
 use Hexmedia\AdministratorBundle\Controller\ListTrait;
+use Symfony\Component\Form\Exception\OutOfBoundsException;
 use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController as Controller;
@@ -72,11 +73,12 @@ abstract class CrudController extends Controller implements ListControllerInterf
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
             try {
                 if ($form->get("saveAndPublish")->isClicked()) {
                     $entity->setPublished(1);
                 }
-            } catch (Exception $e) {
+            } catch (OutOfBoundsException $e) {
 
             }
 
@@ -86,7 +88,7 @@ abstract class CrudController extends Controller implements ListControllerInterf
             $this->get('session')->getFlashBag()->add('notice', $this->getEntityName() . ' has been created!');
 
             if ($form->get("saveAndExit")->isClicked()) {
-                return $this->redirect($this->generateUrl($this->getMainRoute(), $this->getRouterParameters()));
+                return $this->redirect($this->generateUrl($this->getMainRoute(), $this->getRouteParameters()));
             } else {
                 return $this->redirect($this->generateUrl($this->getMainRoute() . "Edit", $this->getRouteParameters(['id' => $entity->getId()])));
             }
@@ -224,7 +226,7 @@ abstract class CrudController extends Controller implements ListControllerInterf
                 if ($form->get("saveAndPublish")->isClicked()) {
                     $entity->setPublished(1);
                 }
-            } catch (Exception $e) {
+            } catch (OutOfBoundsException $e) {
 
             }
 

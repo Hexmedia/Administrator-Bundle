@@ -44,3 +44,8 @@ services:
         class: Hexmedia\AdministratorBundle\Form\Fields\DatepickerType
         tags:
             - { name: form.type, alias: datepicker }
+
+    hexmedia.admin.fields.raptor:
+        class: Hexmedia\AdministratorBundle\Form\Fields\RaptorType
+        tags:
+            - { name: form.type, alias: raptor }
