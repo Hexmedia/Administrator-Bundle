@@ -49,3 +49,6 @@ services:
         class: Hexmedia\AdministratorBundle\Form\Fields\RaptorType
         tags:
             - { name: form.type, alias: raptor }
+
+    hexmedia.content:
+        class: Hexmedia\AdministratorBundle\EditMode\ListenerChain

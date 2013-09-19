@@ -33,14 +33,6 @@ class EditModeController extends Controller
         $this->getRequest()->getSession()->set("hexmedia_content_edit_mode", false);
     }
 
-    public function saveAndExitAction()
-    {
-        $this->disable();
-        $this->save();
-
-        return $this->redirect($this->getRequest()->headers->get('referer'));
-    }
-
     private function save($type, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -49,32 +41,33 @@ class EditModeController extends Controller
             case "area":
                 $repository = $em->getRepository("HexmediaContentBundle:Area");
 
-                $dc = json_decode($request->get('text'), true);
+                $dc = json_decode($request->get('content'), true);
 
                 foreach ($dc as $path => $content) {
-                    $entity = $repository->getByPath($path);
+                    $md5 = substr($path, 0, strpos($path, ":"));
+
+                    $entity = $repository->getByMd5($md5);
                     $entity->setContent($content);
                 }
                 break;
             case "page":
                 $repository = $em->getRepository("HexmediaContentBundle:Page");
 
-                $dc = json_decode($request->get('text'), true);
+                $dc = json_decode($request->get('content'), true);
 
-                foreach ($dc as $id => $content) {
-                    $entity = $repository->findById($id);
-                    $entity->setContent($content);
+                foreach ($dc as $path => $content) {
+                    $pos = strpos($path, ":");
+                    $id = substr($path, 0, $pos);
+                    $field = substr($path, $pos + 1);
+
+                    $entity = $repository->findOneById($id);
+
+                    $setter = 'set' . ucfirst($field);
+
+                    $entity->$setter($content);
                 }
         }
         $em->flush();
-    }
-
-    /**
-     * @Rest\View(template="HexmediaAdministratorBundle:EditMode:script.html.twig")
-     */
-    public function scriptAction()
-    {
-        return array();
     }
 
     /**
@@ -94,5 +87,13 @@ class EditModeController extends Controller
         $response->headers->set("Content-Type", 'application/json');
 
         return $response;
+    }
+
+    /**
+     * @Rest\View(template="HexmediaAdministratorBundle:EditMode:script.html.twig")
+     */
+    public function scriptAction()
+    {
+        return array();
     }
 }
