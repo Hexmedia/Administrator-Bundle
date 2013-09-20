@@ -52,3 +52,9 @@ services:
 
     hexmedia.content:
         class: Hexmedia\AdministratorBundle\EditMode\ListenerChain
+
+    hexmedia.admin.twig.list_script:
+        class: Hexmedia\AdministratorBundle\Twig\Extension\ListScriptExtension
+        arguments: [ "@router" ]
+        tags:
+            - { name: twig.extension }

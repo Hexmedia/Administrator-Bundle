@@ -1,0 +1,48 @@
+var AdminListModel;
+(function ($) {
+    var alm;
+    AdminListModel = function () {
+        var self = this, columns;
+        columns = [];
+
+        {% for column in fields %}
+            columns[{{ loop.index0 }}] = {
+                "name": "{{ column.name }}",
+                "display": Translator.get("{{ column.label|raw }}"),
+                "type": "{{ column.type }}",
+                "sortable": {{ column.sortable }}
+            };
+        {% endfor %}
+
+        self.list().columns(columns);
+    };
+    ListModel.prototype.getUrl = function (data) {
+        return Routing.generate("{{ route }}List", data);
+    };
+
+    AdminListModel.prototype = new ListModel();
+    AdminListModel.prototype.constructor = AdminListModel;
+    $(document).ready(function () {
+        if ($(".data-area-list").get(0)) {
+            alm = new AdminListModel();
+            alm.deleteConfirm().action = function (data) {
+                $.ajax($(data.caller).attr("href"), {
+                    dataType: "json",
+                    type: "DELETE",
+                    success: function (response) {
+                        alerts.displaySuccess(Translator.get("{{ name|capitalize }} was successfully removed."), 3);
+                        alm.getData();
+                    },
+                    error: function (a, b, errorMessage, d) {
+                        var json, message;
+                        json = $.parseJSON(a.responseText);
+                        message = json[0].message;
+                        alerts.displayError(message, 3);
+                    }
+                });
+                return false;
+            };
+            ko.applyBindings(alm, $(".data-area-list").get(0));
+        }
+    });
+})(jQuery);

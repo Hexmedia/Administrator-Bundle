@@ -9,13 +9,13 @@ use Hexmedia\AdministratorBundle\ControllerInterface\ListController as ListContr
 class ConfigurationController extends Controller implements ListControllerInterface {
 
 	/**
-	 * @var WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs
+	 * @var \WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs
 	 */
 	private $breadcrumbs;
 
 	/**
 	 *
-	 * @return WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs
+	 * @return \WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs
 	 */
 	private function registerBreadcrumbs() {
 		$this->breadcrumbs = $this->get("white_october_breadcrumbs");

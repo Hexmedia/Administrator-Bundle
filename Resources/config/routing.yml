@@ -53,3 +53,10 @@ HexMediaAdminEditModeSaveJson:
     options:
         expose: true
 
+HexMediaAdminListJs:
+    pattern: /list/{namespace}/{bundle}/{controller}.js
+    defaults: { _controller: HexmediaAdministratorBundle:List:fields }
+    methods: [ GET ]
+    options:
+        expose: true
+

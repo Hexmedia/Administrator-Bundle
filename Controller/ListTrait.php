@@ -22,7 +22,7 @@ trait ListTrait
             $obj = new \stdClass();
 
             foreach ($fields as $field => $arr) {
-                if ($arr === "number") { //Number is the special one :)
+                if ($arr['get'] === "number") { //Number is the special one :)
                     $val = ++$i;
                 } else {
                     if (is_array($arr)) {
@@ -96,10 +96,5 @@ trait ListTrait
         return $ret;
     }
 
-    protected abstract function getFieldsToDisplayOnList();
-
-    /**
-     * @return object
-     */
-    public abstract function get($id);
+    public abstract function getFieldsToDisplayOnList();
 }

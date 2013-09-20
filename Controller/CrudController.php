@@ -132,9 +132,9 @@ abstract class CrudController extends Controller implements ListControllerInterf
 
     protected abstract function getAddFormType();
 
-    protected abstract function getMainRoute();
+    public abstract function getMainRoute();
 
-    protected abstract function getEntityName();
+    public abstract function getEntityName();
 
     /**
      * Displays a form to create a new entity.
