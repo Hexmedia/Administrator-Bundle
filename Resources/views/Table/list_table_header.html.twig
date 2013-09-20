@@ -1,0 +1,26 @@
+<script type="text/knockout" id="list_table_header">
+	<thead>
+	<tr>
+	<th>
+	<input type="checkbox" name="select_all" data-bind="checked: parent.allChecked"/>
+	</th>
+	<!-- ko foreach: columns -->
+	<th data-bind="attr: {'class': name}">
+	<!-- ko if: sortable -->
+	<a href="#" data-bind="html:display, sort: name"></a>
+	<!-- /ko -->
+	<!-- ko ifnot: sortable -->
+	<span data-bind="html:display"></span>
+	<!-- /ko -->
+	</th>
+	<!-- /ko -->
+	<th>
+        {% if addRouteName != false %}
+            <a href="#" class="icon-plus" data-bind="route: {name: '{{ addRouteName }}', params:  {% if addParams is defined  %}{{ addParams|json_encode }}{% else %}{}{% endif %} }"></a></th>
+        {% else %}
+            &nbsp;
+        {% endif %}
+	</tr>
+	</thead>
+	</script>
+

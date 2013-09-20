@@ -45,7 +45,7 @@ abstract class CrudType extends AbstractType
     {
         $builder
             ->add(
-                'publish',
+                'saveAndPublish',
                 'submit',
                 [
                     'label' => 'Save & Publish',

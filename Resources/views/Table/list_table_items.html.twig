@@ -1,0 +1,17 @@
+<script type="text/knockout" id="list_table_items">
+	<tbody data-bind="foreach: items">
+	<tr data-bind="attr: {'id' : 'element_' + id}">
+	<td><input type="checkbox" data-bind="checked: checked" /></td>
+	<!-- ko foreach: $parent.columns -->
+	<td data-bind="html: $parent[name]"></td>
+	<!-- /ko -->
+	<td>
+	{% if additionalActions is defined %}
+	{{ additionalActions }}
+	{% endif %}
+	<a href="#" class="icon-edit" data-bind="route: {name: '{{ editRouteName }}', params: {id: id}}"></a>
+	<a href="#" class="icon-remove" onclick="return false;" data-bind="confirm: $root.parent.deleteConfirm, route: {name: '{{ removeRouteName }}', params: {id: id}}"></a>
+	</td>
+	</tr>
+	</tbody>
+</script>

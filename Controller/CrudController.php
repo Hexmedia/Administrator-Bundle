@@ -227,7 +227,6 @@ abstract class CrudController extends Controller implements ListControllerInterf
                     $entity->setPublished(1);
                 }
             } catch (OutOfBoundsException $e) {
-
             }
 
             if ($em->getUnitOfWork()->isScheduledForUpdate($entity)) {
