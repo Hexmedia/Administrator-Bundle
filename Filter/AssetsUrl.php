@@ -4,6 +4,7 @@ namespace Hexmedia\AdministratorBundle\Filter;
 
 use Assetic\Asset\AssetInterface;
 use Assetic\Filter\FilterInterface;
+use Symfony\Component\DependencyInjection\Exception\InactiveScopeException;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\DependencyInjection\Container;
 use Assetic\Filter\HashableInterface;
@@ -23,11 +24,6 @@ class AssetsUrl implements FilterInterface, HashableInterface
     }
 
     public function filterDump(AssetInterface $asset)
-    {
-        $this->doFilter($asset);
-    }
-
-    public function filterLoad(AssetInterface $asset)
     {
         $this->doFilter($asset);
     }
@@ -59,10 +55,15 @@ class AssetsUrl implements FilterInterface, HashableInterface
                             ) . '/' . $matches2[1];
 
                         if ($matches[1] == "@@") {
-                            return $this->container->get('kernel')->getRootDir() . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . DIRECTORY_SEPARATOR . $path;
+                            return $this->container->get('kernel')->getRootDir(
+                            ) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . DIRECTORY_SEPARATOR . $path;
                         }
 
-                        return $this->container->get('templating.helper.assets')->getUrl($path);
+                        try {
+                            return $this->container->get('templating.helper.assets')->getUrl($path);
+                        } catch (InactiveScopeException $e) {
+                            return "../" . $path;
+                        }
                     }
                 }
             } catch (Exception$e) {
@@ -75,6 +76,11 @@ class AssetsUrl implements FilterInterface, HashableInterface
         $pattern = "/(?P<resource>\@{1,2}[A-Za-z\_]+Bundle[A-Za-z0-9\_\.\/\-]*)/";
 
         $asset->setContent(preg_replace_callback($pattern, $callback, $content));
+    }
+
+    public function filterLoad(AssetInterface $asset)
+    {
+        $this->doFilter($asset);
     }
 
     public function hash()
