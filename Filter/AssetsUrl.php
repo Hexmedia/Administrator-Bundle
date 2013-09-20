@@ -4,6 +4,7 @@ namespace Hexmedia\AdministratorBundle\Filter;
 
 use Assetic\Asset\AssetInterface;
 use Assetic\Filter\FilterInterface;
+use Symfony\Component\DependencyInjection\Exception\InactiveScopeException;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\DependencyInjection\Container;
 use Assetic\Filter\HashableInterface;
@@ -62,7 +63,11 @@ class AssetsUrl implements FilterInterface, HashableInterface
                             return $this->container->get('kernel')->getRootDir() . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . DIRECTORY_SEPARATOR . $path;
                         }
 
-                        return $this->container->get('templating.helper.assets')->getUrl($path);
+                        try {
+                            return $this->container->get('templating.helper.assets')->getUrl($path);
+                        } catch (InactiveScopeException $e) {
+                            return "../" . $path;
+                        }
                     }
                 }
             } catch (Exception$e) {
