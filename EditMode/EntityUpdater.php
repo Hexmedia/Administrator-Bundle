@@ -6,9 +6,9 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 
 abstract class EntityUpdater {
-    public abstract function findByPath($path);
+    public abstract function find($path);
 
-    public abstract function getField($path);
+    public abstract function getField($field);
 
     /**
      * @var \Doctrine\ORM\EntityManager
@@ -19,17 +19,15 @@ abstract class EntityUpdater {
         $this->entityManager = $entityManager;
     }
 
-    public function update($content) {
-        $dc = json_decode($content, true);
+    public function update($id, $field, $content, $path) {
 
-        foreach ($dc as $path => $content) {
-            $entitiy = $this->findByPath($path);
-            $field = $this->getField($path);
+        $entitiy = $this->find($id);
 
-            $setter = "set" . ucfirst($field);
+        $field = $this->getField($field);
 
-            $entitiy->$setter($content);
-        }
+        $setter = "set" . ucfirst($field);
+
+        $entitiy->$setter($content);
 
         $this->entityManager->flush();
     }

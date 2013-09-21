@@ -35,21 +35,27 @@ class EditModeController extends Controller
         $this->getRequest()->getSession()->set("hexmedia_content_edit_mode", false);
     }
 
-    private function save($type, Request $request)
+    private function save(Request $request)
     {
+        $content = $request->get("content");
+
         $em = $this->getDoctrine()->getManager();
 
         $updaterChain = $this->get("hexmedia_administrator.content");
 
         if ($updaterChain instanceof UpdaterChain);
 
-        $updater = $updaterChain->getType($type);
+        $parsed = $updaterChain->parseContent($content);
 
-        if (!($updater instanceof EntityUpdater)) {
-            throw new Exception("Updater must be an instance of \\Hexmedia\\AdministratorBundle\\EditMode\\EntityUpdater!");
+        foreach ($parsed as $toSave) {
+            $updater = $updaterChain->getType($toSave['type']);
+
+            if (!($updater instanceof EntityUpdater)) {
+                throw new Exception("Updater must be an instance of \\Hexmedia\\AdministratorBundle\\EditMode\\EntityUpdater!");
+            }
+
+            $updater->update($toSave['id'], $toSave['field'], $toSave['content'], $toSave['path']);
         }
-
-        $updater->update($request->get("content"));
     }
 
     /**
@@ -60,10 +66,10 @@ class EditModeController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function jsonSaveAction($type, Request $request)
+    public function jsonSaveAction(Request $request)
     {
         //@FIXME: This code need to be moved to ContentController somehow.
-        $this->save($type, $request);
+        $this->save($request);
 
         $response = new Response(json_encode(['status' => 'ok']));
         $response->headers->set("Content-Type", 'application/json');

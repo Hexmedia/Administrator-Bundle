@@ -47,7 +47,7 @@ HexMediaAdminEditModeSave:
     defaults: { _controller: HexmediaAdministratorBundle:EditMode:save }
 
 HexMediaAdminEditModeSaveJson:
-    pattern: /edit-mode/save/json/{type}
+    pattern: /edit-mode/save/json.json
     defaults: { _controller: HexmediaAdministratorBundle:EditMode:jsonSave, type: "" }
     methods: [ POST ]
     options:

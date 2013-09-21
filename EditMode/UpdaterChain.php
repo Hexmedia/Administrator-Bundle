@@ -36,4 +36,29 @@ class UpdaterChain {
         return $this->types[$type];
     }
 
+    /**
+     * @param $content
+     *
+     * @TODO This method should be moved somewhere
+     */
+    public function parseContent($content) {
+        $dc = json_decode($content, true);
+
+        $ret = [];
+
+        foreach ($dc as $key => $content) {
+            preg_match("/^(?P<type>[a-z0-9A-Z]*):(?P<path>(?P<id>[a-z0-9A-Z]*):(?P<field>[a-z0-9A-Z]*))$/", $key, $matches);
+
+            $ret[] = [
+                'type' => $matches['type'],
+                'path' => $matches['path'],
+                'id' => $matches['id'],
+                'field' => $matches['field'],
+                'content' => $content
+            ];
+        }
+
+        return $ret;
+    }
+
 }

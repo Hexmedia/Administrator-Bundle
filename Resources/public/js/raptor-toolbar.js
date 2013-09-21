@@ -1,9 +1,3 @@
-var generateRoute = function(url, fun) {
-    var type = fun();
-
-    return Routing.generate(url, { "type" : type });
-};
-
 (function ($) {
     $(document).ready(function () {
         $(".hexmedia-content-save").each(function() {
@@ -21,10 +15,9 @@ var generateRoute = function(url, fun) {
 
                         },
                         saveJson: {
-                            url: generateRoute("HexMediaAdminEditModeSaveJson",
-                                function() { return $(self).attr('data-type'); }),
+                            url: Routing.generate("HexMediaAdminEditModeSaveJson"),
                             postName: 'content',
-                            id: function() { return $(self).attr('data-id'); }
+                            id: function() { return $(this.raptor.getElement()).attr('data-type') + ":" + $(this.raptor.getElement()).attr('data-id'); }
                         }
                     }
                 }
