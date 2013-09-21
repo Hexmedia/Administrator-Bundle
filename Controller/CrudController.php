@@ -274,7 +274,7 @@ abstract class CrudController extends Controller implements ListControllerInterf
         return [];
     }
 
-    private function getRouteParameters($params = [])
+    protected function getRouteParameters($params = [])
     {
         return array_merge($params, $this->getRouteAdditionalParameters());
     }
