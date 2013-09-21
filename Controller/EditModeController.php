@@ -4,6 +4,8 @@ namespace Hexmedia\AdministratorBundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController as Controller;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Hexmedia\AdministratorBundle\EditMode\EntityUpdater;
+use Hexmedia\AdministratorBundle\EditMode\UpdaterChain;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -37,37 +39,17 @@ class EditModeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        switch ($type) {
-            case "area":
-                $repository = $em->getRepository("HexmediaContentBundle:Area");
+        $updaterChain = $this->get("hexmedia_administrator.content");
 
-                $dc = json_decode($request->get('content'), true);
+        if ($updaterChain instanceof UpdaterChain);
 
-                foreach ($dc as $path => $content) {
-                    $md5 = substr($path, 0, strpos($path, ":"));
+        $updater = $updaterChain->getType($type);
 
-                    $entity = $repository->getByMd5($md5);
-                    $entity->setContent($content);
-                }
-                break;
-            case "page":
-                $repository = $em->getRepository("HexmediaContentBundle:Page");
-
-                $dc = json_decode($request->get('content'), true);
-
-                foreach ($dc as $path => $content) {
-                    $pos = strpos($path, ":");
-                    $id = substr($path, 0, $pos);
-                    $field = substr($path, $pos + 1);
-
-                    $entity = $repository->findOneById($id);
-
-                    $setter = 'set' . ucfirst($field);
-
-                    $entity->$setter($content);
-                }
+        if (!($updater instanceof EntityUpdater)) {
+            throw new Exception("Updater must be an instance of \\Hexmedia\\AdministratorBundle\\EditMode\\EntityUpdater!");
         }
-        $em->flush();
+
+        $updater->update($request->get("content"));
     }
 
     /**

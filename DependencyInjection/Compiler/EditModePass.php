@@ -12,8 +12,10 @@ namespace Hexmedia\AdministratorBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
 
-class EditModePass implements  CompilerPassInterface {
+class EditModePass implements CompilerPassInterface
+{
 
     /**
      * You can modify the container here before it is dumped to PHP code.
@@ -24,8 +26,19 @@ class EditModePass implements  CompilerPassInterface {
      */
     public function process(ContainerBuilder $container)
     {
+        if (!$container->hasDefinition('hexmedia_administrator.content')) {
+            return;
+        }
 
-        var_dump("DU{A");
-        die();
+        $definition = $container->getDefinition("hexmedia_administrator.content");
+
+        $taggedServices = $container->findTaggedServiceIds("hexmedia.content");
+
+        foreach ($taggedServices as $id => $attributes) {
+            $definition->addMethodCall(
+                'addType',
+                array($attributes[0]['alias'], new Reference($id))
+            );
+        }
     }
 }

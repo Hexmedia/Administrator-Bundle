@@ -14,6 +14,12 @@ services:
         tags:
             - { name: knp_menu.menu, alias: main }
 
+    hexmedia_administrator.content_extension:
+        class: Hexmedia\AdministratorBundle\Twig\Extension\ContentExtension
+        arguments: [ "@doctrine.orm.entity_manager", "@service_container" ]
+        tags:
+            - { name: twig.extension }
+
     assetic.filter.assetsurl:
         class: Hexmedia\AdministratorBundle\Filter\AssetsUrl
         arguments:
@@ -21,7 +27,7 @@ services:
         tags:
             -	{ name: assetic.filter, alias: assetsurl }
 
-    hexmedia.admin.admin_toolbar:
+    hexmedia_administrator.admin_toolbar:
         class: Hexmedia\AdministratorBundle\EventListener\ToolbarListener
         arguments:
             - "@security.context"
@@ -30,28 +36,28 @@ services:
             - { name: kernel.event_subscriber }
 
 
-    hexmedia.admin.fields.yesno:
+    hexmedia_administrator.fields.yesno:
         class: Hexmedia\AdministratorBundle\Form\Fields\YesNoType
         tags:
             - { name: form.type, alias: yesno }
 
-    hexmedia.admin.fields.publication:
+    hexmedia_administrator.fields.publication:
         class: Hexmedia\AdministratorBundle\Form\Fields\PublicationType
         tags:
             - { name: form.type, alias: publication }
 
-    hexmedia.admin.fields.datepicker:
+    hexmedia_administrator.fields.datepicker:
         class: Hexmedia\AdministratorBundle\Form\Fields\DatepickerType
         tags:
             - { name: form.type, alias: datepicker }
 
-    hexmedia.admin.fields.raptor:
+    hexmedia_administrator.fields.raptor:
         class: Hexmedia\AdministratorBundle\Form\Fields\RaptorType
         tags:
             - { name: form.type, alias: raptor }
 
-    hexmedia.content:
-        class: Hexmedia\AdministratorBundle\EditMode\ListenerChain
+    hexmedia_administrator.content:
+        class: Hexmedia\AdministratorBundle\EditMode\UpdaterChain
 
     hexmedia.admin.twig.list_script:
         class: Hexmedia\AdministratorBundle\Twig\Extension\ListScriptExtension
