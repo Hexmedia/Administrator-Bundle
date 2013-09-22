@@ -90,6 +90,13 @@ abstract class CrudController extends Controller implements ListControllerInterf
             if ($form->get("saveAndExit")->isClicked()) {
                 return $this->redirect($this->generateUrl($this->getMainRoute(), $this->getRouteParameters()));
             } else {
+                try {
+                    if ($form->get("addNext")->isClicked()) {
+                        return $this->redirect($this->generateUrl($this->getMainRoute() . "Add", $this->getRouteParameters()));
+                    }
+                } catch (OutOfBoundsException $e) {
+
+                }
                 return $this->redirect($this->generateUrl($this->getMainRoute() . "Edit", $this->getRouteParameters(['id' => $entity->getId()])));
             }
         }

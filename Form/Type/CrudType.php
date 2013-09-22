@@ -8,9 +8,17 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 abstract class CrudType extends AbstractType
 {
-    abstract protected function doBuildForm(FormBuilderInterface $builder, array $options);
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     * @return mixed
+     *
+     * @deprecated override buildForm instead
+     */
+    protected function doBuildForm(FormBuilderInterface $builder, array $options) {}
 
-    public function buildForm(FormBuilderInterface $builder, array $options) {
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
         $this->doBuildForm($builder, $options);
     }
 
@@ -119,6 +127,23 @@ abstract class CrudType extends AbstractType
                     'label' => 'Delete',
                     'attr' => [
                         'class' => "btn-danger"
+                    ]
+                ]
+            );
+    }
+
+    protected function addAddNextButton(FormBuilderInterface $builder)
+    {
+
+        $builder
+            ->add(
+                'addNext',
+                'submit',
+                [
+                    'label' => 'Save & Add Next',
+                    'attr' => [
+                        'class' => 'btn-primary',
+                        'data-loading-text' => 'Saving ...'
                     ]
                 ]
             );
