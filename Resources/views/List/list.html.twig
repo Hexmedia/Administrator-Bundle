@@ -1,16 +1,43 @@
-<div class="content data-area-list">
-    <table class="table table-hover"
-           data-bind="table: list, headerTemplate: 'list_table_header', itemTemplate: 'list_table_items'">
-    </table>
+{% spaceless %}
+    <div class="content data-area-list">
+        <table class="table table-hover"
+               data-bind="table: list, headerTemplate: 'list_table_header', itemTemplate: 'list_table_items'">
+        </table>
 
-    <div data-bind="pagination: pagination"></div>
-</div>
+        <div data-bind="pagination: pagination"></div>
+    </div>
 
-{% if addParams is not defined %}
-{% set addParams={} %}
-{% endif %}
+    {% if deleteRouteName is not defined %}
+        {% if removeRouteName is defined %}
+            {% set deleteRouteName = removeRouteName %}
+        {% endif %}
+    {% endif %}
 
+    {% if route is defined %}
 
+        {% if addRouteName is not defined %}
+            {% set addRouteName=route ~ "Add" %}
+        {% endif %}
+
+        {% if deleteRouteName is not defined %}
+            {% set deleteRouteName=route ~ "Delete" %}
+        {% endif %}
+
+        {% if editRouteName is not defined %}
+            {% set editRouteName=route ~ "Delete" %}
+        {% endif %}
+
+    {% endif %}
+
+    {% if addParams is not defined %}
+        {% set addParams={} %}
+    {% endif %}
+
+    {% if additionalActions is not defined %}
+        {% set additionalActions={} %}
+    {% endif %}
+
+{% endspaceless %}
 {% include "HexmediaAdministratorBundle:Table:list_table_header.html.twig" with {'addRouteName' : addRouteName, 'params': addParams} %}
-{% include "HexmediaAdministratorBundle:Table:list_table_items.html.twig" with {'editRouteName' : editRouteName, 'removeRouteName' : removeRouteName} %}
+{% include "HexmediaAdministratorBundle:Table:list_table_items.html.twig" with {'editRouteName' : editRouteName, 'deleteRouteName' : deleteRouteName, 'additionalActions': additionalActions} %}
 
