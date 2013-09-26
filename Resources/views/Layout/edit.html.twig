@@ -1,0 +1,21 @@
+{% extends "HexmediaAdministratorBundle:Layout:main.html.twig" %}
+
+{% block super_head_script %}
+    {% javascripts
+    '@HexmediaAdministratorBundle/Resources/public/js/bootstrap-datepicker.js'
+    '@HexmediaAdministratorBundle/Resources/public/js/lib/raptor.js'
+    '@HexmediaAdministratorBundle/Resources/public/js/raptor-textarea.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% block head_script %}{% endblock head_script %}
+{% endblock super_head_script %}
+
+{% block super_head_style %}
+    {% stylesheets
+    '@HexmediaAdministratorBundle/Resources/public/css/raptor.css' %}
+    <link rel="stylesheet" type="text/css" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+    {% block head_style %}{% endblock head_style %}
+{% endblock super_head_style %}

@@ -5,8 +5,8 @@
     <title>{% block title %}{{ 'CMS'|trans }}{% endblock title %}</title>
     {{ include ("HexmediaAdministratorBundle:Partial:head.html.twig") }}
     {% endspaceless %}
-    {% block head_script %}{% endblock head_script %}
-    {% block head_style %}{% endblock head_style %}
+    {% block super_head_script %}{% block head_script %}{% endblock head_script %}{% endblock %}
+    {% block super_head_style %}{% block head_style %}{% endblock head_style %}{% endblock %}
 </head>
 <body>
 

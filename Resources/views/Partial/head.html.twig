@@ -1,5 +1,5 @@
 <meta charset="UTF-8"/>
-{% stylesheets filter='assetsurl,less,?yui_css' output='css/cms.css'
+{% stylesheets filter='assetsurl,less' output='css/cms.css'
 '@MopaBootstrapBundle/Resources/public/less/mopabootstrapbundle.less'
 '@HexmediaAdministratorBundle/Resources/public/less/all.less'
 '@HexmediaAdministratorBundle/Resources/public/font-awesome/less/font-awesome.less' %}
@@ -19,17 +19,17 @@
 '@HexmediaKnockoutBootstrapBundle/Resources/knockout-bootstrap/dist/knockout-bootstrap.js'
 '@HexmediaAdministratorBundle/Resources/public/js/model/alert.js'
 '@HexmediaAdministratorBundle/Resources/public/js/own/extensions.js'
-'@HexmediaAdministratorBundle/Resources/public/js/model/list.js' %}
+'@HexmediaAdministratorBundle/Resources/public/js/model/list.js'
+'i18n/messages/pl.js'%}
 <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
 
-<script type="text/javascript" src="{{ path('bazinga_exposetranslation_js') }}"></script>
+{#<script type="text/javascript" src="{{ path('bazinga_exposetranslation_js') }}"></script>#}
 <script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
 
-{% javascripts filter="yui_js" output='js/cms.js'
+{% javascripts output='js/cms.js'
 '@HexmediaAdministratorBundle/Resources/public/js/cms.js' %}
-
-
 <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
+
 <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
