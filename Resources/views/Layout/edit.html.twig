@@ -1,17 +1,20 @@
 {% extends "HexmediaAdministratorBundle:Layout:main.html.twig" %}
 
 {% block super_bottom_script %}
-    <script> console.log($().modal);</script>
     {% javascripts
     '@HexmediaAdministratorBundle/Resources/public/js/bootstrap-datepicker.js'
+    '@HexmediaAdministratorBundle/Resources/public/js/lib/resizetable.js'
+    '@HexmediaAdministratorBundle/Resources/public/js/lib/jquery-ui.js'
+    '@HexmediaAdministratorBundle/Resources/public/js/lib/jquery.raptorize.js'
+    '@HexmediaAdministratorBundle/Resources/public/js/lib/jquery-hotkeys.js'
+    '@HexmediaAdministratorBundle/Resources/public/js/lib/diff.js'
+    '@HexmediaAdministratorBundle/Resources/public/js/lib/goog-table.js'
     '@HexmediaAdministratorBundle/Resources/public/js/lib/raptor.js'
     '@HexmediaAdministratorBundle/Resources/public/js/raptor-textarea.js' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 
     {% block bottom_script %}{% endblock bottom_script %}
-
-    <script> console.log($().modal);</script>
 {% endblock super_bottom_script %}
 
 {% block super_head_style %}
