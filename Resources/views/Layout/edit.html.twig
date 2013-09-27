@@ -1,6 +1,7 @@
 {% extends "HexmediaAdministratorBundle:Layout:main.html.twig" %}
 
 {% block super_bottom_script %}
+    <script> console.log($().modal);</script>
     {% javascripts
     '@HexmediaAdministratorBundle/Resources/public/js/bootstrap-datepicker.js'
     '@HexmediaAdministratorBundle/Resources/public/js/lib/raptor.js'
@@ -9,6 +10,8 @@
     {% endjavascripts %}
 
     {% block bottom_script %}{% endblock bottom_script %}
+
+    <script> console.log($().modal);</script>
 {% endblock super_bottom_script %}
 
 {% block super_head_style %}
