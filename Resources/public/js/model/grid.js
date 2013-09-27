@@ -76,6 +76,10 @@ var GridModel;
                         }, item);
                         item.select = function (itemEl) {
                             itemEl.checked(!itemEl.checked());
+
+                            //#TOOD its wrong and i know that:)
+                            if (typeof callMediaFunction === "function")
+                                callMediaFunction(itemEl.id);
                         };
 
                         grid.items.push(item);
