@@ -7,6 +7,8 @@
         <div data-bind="pagination: pagination"></div>
     </div>
 
+    {# TODO: Too much logic here, it should be moved to controller layer somehow #}
+
     {% if deleteRouteName is not defined %}
         {% if removeRouteName is defined %}
             {% set deleteRouteName = removeRouteName %}
@@ -14,7 +16,6 @@
     {% endif %}
 
     {% if route is defined %}
-
         {% if addRouteName is not defined %}
             {% set addRouteName=route ~ "Add" %}
         {% endif %}
@@ -24,9 +25,8 @@
         {% endif %}
 
         {% if editRouteName is not defined %}
-            {% set editRouteName=route ~ "Delete" %}
+            {% set editRouteName=route ~ "Edit" %}
         {% endif %}
-
     {% endif %}
 
     {% if addParams is not defined %}
@@ -37,7 +37,11 @@
         {% set additionalActions={} %}
     {% endif %}
 
+    {% if additionalHeaderActions is not defined %}
+        {% set additionalHeaderActions={} %}
+    {% endif %}
+
 {% endspaceless %}
-{% include "HexmediaAdministratorBundle:Table:list_table_header.html.twig" with {'addRouteName' : addRouteName, 'params': addParams} %}
+{% include "HexmediaAdministratorBundle:Table:list_table_header.html.twig" with {'addRouteName' : addRouteName, 'params': addParams, 'additionalActions': additionalHeaderActions} %}
 {% include "HexmediaAdministratorBundle:Table:list_table_items.html.twig" with {'editRouteName' : editRouteName, 'deleteRouteName' : deleteRouteName, 'additionalActions': additionalActions} %}
 

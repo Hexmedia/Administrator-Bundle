@@ -48,6 +48,7 @@
         </div>
     </div>
 </div>
-{% block bottom_script %}{% endblock %}
+{% block super_bottom_script %}
+    {% block bottom_script %}{% endblock %}{% endblock %}
 </body>
 </html>
