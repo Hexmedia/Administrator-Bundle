@@ -28,11 +28,6 @@ class AssetsUrl implements FilterInterface, HashableInterface
         $this->doFilter($asset);
     }
 
-    public function filterLoad(AssetInterface $asset)
-    {
-        $this->doFilter($asset);
-    }
-
     private function doFilter(AssetInterface $asset)
     {
         $content = $asset->getContent();
@@ -60,7 +55,8 @@ class AssetsUrl implements FilterInterface, HashableInterface
                             ) . '/' . $matches2[1];
 
                         if ($matches[1] == "@@") {
-                            return $this->container->get('kernel')->getRootDir() . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . DIRECTORY_SEPARATOR . $path;
+                            return $this->container->get('kernel')->getRootDir(
+                            ) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . DIRECTORY_SEPARATOR . $path;
                         }
 
                         try {
@@ -80,6 +76,11 @@ class AssetsUrl implements FilterInterface, HashableInterface
         $pattern = "/(?P<resource>\@{1,2}[A-Za-z\_]+Bundle[A-Za-z0-9\_\.\/\-]*)/";
 
         $asset->setContent(preg_replace_callback($pattern, $callback, $content));
+    }
+
+    public function filterLoad(AssetInterface $asset)
+    {
+        $this->doFilter($asset);
     }
 
     public function hash()
