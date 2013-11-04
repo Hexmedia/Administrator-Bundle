@@ -8,8 +8,7 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Translation\TranslatorInterface as Translator;
 
-class Builder
-{
+class Builder {
 
 	const MENU_BUILD_EVENT = 'menu.menu_build_event';
 
@@ -41,16 +40,14 @@ class Builder
 	 */
 	private $securityContext;
 
-	public function __construct(EventDispatcherInterface $eventDispatcher, FactoryInterface $factory, SecurityContextInterface $securityContext, Translator $translator)
-	{
+	public function __construct(EventDispatcherInterface $eventDispatcher, FactoryInterface $factory, SecurityContextInterface $securityContext, Translator $translator) {
 		$this->factory = $factory;
 		$this->securityContext = $securityContext;
 		$this->translator = $translator;
 		$this->eventDispatcher = $eventDispatcher;
 	}
 
-	public function createMainMenu()
-	{
+	public function createMainMenu() {
 		$this->menu = $this->factory->createItem('root');
 
 		$this->addDashboard();
@@ -62,15 +59,13 @@ class Builder
 		return $this->menu;
 	}
 
-	private function addDashboard()
-	{
-		$this->menu->addChild($this->translator->trans('Dashboard'), array('route' => 'HexMediaDashboard'));
+	private function addDashboard() {
+		$this->menu->addChild($this->translator->trans('Dashboard'), array('route' => 'HexMediaDashboard'))->setAttribute('icon', 'icon-desktop');
 	}
 
-	private function addConfiguration()
-	{
+	private function addConfiguration() {
 		if ($this->securityContext->isGranted("ROLE_SUPER_ADMIN")) {
-			$configuration = $this->menu->addChild($this->translator->trans('Configuration'), array('route' => 'HexMediaConfigurationDisplay'));
+			$configuration = $this->menu->addChild($this->translator->trans('Configuration'), array('route' => 'HexMediaConfigurationDisplay'))->setAttribute('icon', 'icon-cogs');
 //			$configuration->addChild($this->translator->trans("List"), array('route' => 'HexMediaConfigurationDisplay'));
 			$configuration->addChild($this->translator->trans("Add"), array('route' => 'HexMediaConfigurationAdd'));
 		}

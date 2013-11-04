@@ -1,54 +1,56 @@
 <!DOCTYPE html>
 <html>
-<head>
+	<head>
     {% spaceless %}
-    <title>{% block title %}{{ 'CMS'|trans }}{% endblock title %}</title>
+		<title>{% block title %}{{ 'CMS'|trans }}{% endblock title %}</title>
     {{ include ("HexmediaAdministratorBundle:Partial:head.html.twig") }}
     {% endspaceless %}
     {% block super_head_script %}{% block head_script %}{% endblock head_script %}{% endblock %}
     {% block super_head_style %}{% block head_style %}{% endblock head_style %}{% endblock %}
-</head>
-<body>
+	</head>
+	<body>
 
 {{ include ("HexmediaAdministratorBundle:Partial:alerts.html.twig") }}
+		<div class="container main">
+			<div class="hexmedia_hex"></div>
+			<div class="header">
+				<div class="cms-name">
+					<a href="{{ path("homepage") }}"><img src="{{ asset(site_logo) }}" alt="{{ site_name }}" class="client_logo" /></a>
+					<h1 class="cms">Administrator</h1>
+				</div>
+				<div class="user-bar">
+					{% if cms_show_powered_by is defined %}
+					<div class="powered-by">
+						Powered By <img src="{{ asset("bundles/hexmediaadministrator/images/hexmedia_logo_small.jpg") }}" alt="Hexmedia" class="powered-by-logo" />
+					</div>
+					{% endif %}
+					<img src="{{ gravatar(app.user.email, 30) }}" alt="{{ app.user.email }}"/>
 
-<div class="container main">
-    <div class="row header">
-        <div class="col-md-2"><h1>{{ 'CMS'|trans }}</h1></div>
-        <div class="col-md-8">
-            {{ wo_render_breadcrumbs() }}
-        </div>
-        <div class="col-md-2 navbar">
-            <ul class="nav nav-tabs">
-                <li class="dropdown dropdown-submenu">
-                    <img src="{{ gravatar(app.user.email, 30) }}" alt="{{ app.user.email }}"/>{{ 'Your account'|trans }}
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ path('fos_user_profile_show') }}">{{ 'Profile'|trans }}</a></li>
-                        <li><a href="{{ path('fos_user_security_logout') }}">{{ 'Logout'|trans }}</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="row content">
-        <div class="col-md-2 menu dropdown">
-            {{ knp_menu_render('main', {'currentClass': 'active', 'ancestorClass': 'active', 'template': 'HexmediaAdministratorBundle:Menu:main_menu.html.twig'}) }}
-        </div>
-        <div class="col-md-10 main-content">
-            <div class="alerts">
-                <div data-bind="foreach: alerts">
-                    <div data-bind="attr: { 'class': aclass }">
-                        <span data-bind="text: message"></span>
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                    </div>
-                </div>
-            </div>
-
-            {% block body %}{% endblock %}
-        </div>
-    </div>
-</div>
+					{{ app.user.name }}
+					<a href="{{ path('fos_user_security_logout') }}" class="btn btn-blue">Logout</a>
+				</div>
+			</div>
+			<div class="row content">
+				<div class="col-md-1 menu dropdown">
+					{{ knp_menu_render('main', {'currentClass': 'active', 'ancestorClass': 'active', 'template': 'HexmediaAdministratorBundle:Menu:main_menu.html.twig'}) }}
+				</div>
+				<div class="col-md-11 main-content">
+					<div class="breadcrumbs">
+						{{ wo_render_breadcrumbs({'viewTemplate': 'HexmediaAdministratorBundle:Partial:breadcrumbs.html.twig'}) }}
+					</div>
+					<div class="alerts">
+						<div data-bind="foreach: alerts">
+							<div data-bind="attr: { 'class': aclass }">
+								<span data-bind="text: message"></span>
+								<button type="button" class="close" data-dismiss="alert">×</button>
+							</div>
+						</div>
+					</div>
+					{% block body %}{% endblock %}
+				</div>
+			</div>
+		</div>
 {% block super_bottom_script %}
     {% block bottom_script %}{% endblock %}{% endblock %}
-</body>
+	</body>
 </html>

@@ -7,6 +7,7 @@ use Doctrine\DBAL\Query\QueryBuilder;
 trait ListTrait {
     /**
      * {@inheritdoc}
+     * @return \Doctrine\ORM\QueryBuilder
      */
     public abstract function createQueryBuilder($alias);
 

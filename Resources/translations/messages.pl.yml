@@ -25,3 +25,18 @@ Description: Opis
 Categories: Kategorie
 SEO: SEO
 Publication: Publikacja
+
+'not set': 'brak'
+
+first: pierwsza
+prev: poprzednia
+
+next: 'następna'
+last: 'ostatnia'
+
+'Published': 'Opublikowany'
+
+'Edit Mode': 'Tryb Edycji'
+'Exit': 'Wyjdź'
+'Logout': 'Wyloguj'
+'Admin Panel': 'Panel Administracyjny'

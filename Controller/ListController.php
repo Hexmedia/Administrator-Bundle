@@ -40,7 +40,7 @@ class ListController extends Controller
         }
 
         $response = $this->render("HexmediaAdministratorBundle:List:fields.js.twig", $params);
-//        $response->headers->set("Content-Type", "text/javascript");
+        $response->headers->set("Content-Type", "text/javascript");
 
         return $response;
     }

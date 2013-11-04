@@ -16,8 +16,8 @@
         <!-- /ko -->
         <th>
             {% if addRouteName != false %}
-                <a href="#" class="icon-plus"
-                   data-bind="route: {name: '{{ addRouteName }}', params:  {% if addParams is defined %}{{ addParams|json_encode }}{% else %}{}{% endif %} }"></a>
+                <a href="#"
+                   data-bind="route: {name: '{{ addRouteName }}', params:  {% if addParams is defined %}{{ addParams|json_encode }}{% else %}{}{% endif %} }" class="btn btn-primary"><i class="icon-plus-sign"></i> {{ 'Add'|trans }}</a>
                 {% for aa in additionalActions %}
                     <a href="#" class="{{ aa.class }}"
                             {% if aa.route is defined %}

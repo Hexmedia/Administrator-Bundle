@@ -1,4 +1,10 @@
-<a class="btn btn-warning" href="{{ path(exit) }}" title="{{ 'Exit without edit'|trans }}">{{ 'Exit'|trans }}</a>
+{% spaceless %}
+
+{% if exitParams is not defined %}
+	{% set exitParams={} %}
+{% endif %}
+
+<a class="btn btn-warning" href="{{ path(exit, exitParams) }}" title="{{ 'Exit without edit'|trans }}">{{ 'Exit'|trans }}</a>
 
 {% if form.saveAndExit is defined %}
     {{ form_widget(form.saveAndExit) }}
@@ -19,3 +25,5 @@
 {% if form.delete is defined %}
     {{ form_widget(form.delete) }}
 {% endif %}
+
+{% endspaceless %}

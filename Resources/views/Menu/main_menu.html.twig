@@ -4,16 +4,16 @@
 	{% if item.hasChildren and options.depth is not sameas(0) and item.displayChildren %}
 <ul class="nav nav-list wnav-pills wnav-stacked" role="menu">
 			{{ block('children') }}
-	</ul>
+</ul>
 	{% endif %}
 {% endblock %}
 
 {% block sub_list %}
 	{% if item.hasChildren and options.depth is not sameas(0) and item.displayChildren %}
     {% import 'knp_menu.html.twig' as knp_menu %}
-    <ul{{ knp_menu.attributes(listAttributes) }}>
+<ul{{ knp_menu.attributes(listAttributes) }}>
 			{{ block('children') }}
-		</ul>
+</ul>
 	{% endif %}
 {% endblock %}
 
@@ -43,7 +43,7 @@
     {%- endif %}
 {# displaying the item #}
     {% import 'knp_menu.html.twig' as knp_menu %}
-		<li{{ knp_menu.attributes(attributes) }}>
+<li{{ knp_menu.attributes(attributes) }}>
         {%- if item.uri is not empty and (not matcher.isCurrent(item) or options.currentAsLink) %}
         {{ block('linkElement') }}
         {%- else %}
@@ -56,6 +56,15 @@
 		{%- set listAttributes = item.childrenAttributes|merge({'class': childrenClasses|join(' ') }) %}
 
         {{ block('sub_list') }}
-			</li>
+</li>
 {% endif %}
+{% endblock %}
+
+{% block linkElement %}
+<a href="{{ item.uri }}"{{ knp_menu.attributes(item.linkAttributes) }}>
+		{% if item.attribute('icon') is not empty  %}
+	<i class="{{ item.attribute('icon') }}"></i><br />
+    	{% endif %}
+		{{ block('label') }}
+</a>
 {% endblock %}

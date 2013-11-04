@@ -17,18 +17,23 @@
 {% endjavascripts %}
 
 <div class="hx-adm-panel-user-toolbar hx-adm-panel-{{ edit_mode_class }}">
-    <div class="hx-adm-panel-left">
-        <a href="{{ path('HexMediaAdminEditModeEnable') }}"
-           class="hx-adm-panel-btn hx-adm-panel-edit-mode">{{ 'Edit Mode'|trans }}</a>
-        <a href="{{ path('HexMediaAdminEditModeExit') }}"
-           class="hx-adm-panel-btn hx-adm-panel-exit">{{ 'Exit'|trans }}</a>
-        <a href="{{ path('HexMediaDashboard') }}"
-           class="hx-adm-panel-btn hx-adm-panel-btn-info admin-panel">{{ 'Admin Panel'|trans }}</a>
-    </div>
-    {# Here i need to put some message area. #}
+	<div class="hx-adm-panel-user-toolbar-content">
+		<div class="hx-adm-panel-left">
+			<a href="{{ path('HexMediaAdminEditModeEnable') }}"
+			   class="hx-adm-panel-btn hx-adm-panel-edit-mode">{{ 'Edit Mode'|trans }}</a>
+			<a href="{{ path('HexMediaAdminEditModeExit') }}"
+			   class="hx-adm-panel-btn hx-adm-panel-exit">{{ 'Exit'|trans }}</a>
+			<a href="{{ path('HexMediaDashboard') }}"
+			   class="hx-adm-panel-btn hx-adm-panel-btn-info admin-panel">{{ 'Admin Panel'|trans }}</a>
+		</div>
+		{# Here i need to put some message area. #}
 
-    <div class="hx-adm-panel-right">
-        {#<a href="#"><img src="{{ gravatar(app.user.email, 30) }}" alt="{{ app.user.email }}"/> {{ 'Your Account' }} </a>#}
-        <a href="{{ path('fos_user_security_logout') }}" class='hx-adm-panel-btn'>Logout</a>
-    </div>
+		<div class="hx-adm-panel-right">
+			{#<a href="#"><img src="{{ gravatar(app.user.email, 30) }}" alt="{{ app.user.email }}"/> {{ 'Your Account' }} </a>#}
+			<a href="{{ path('fos_user_security_logout') }}" class='hx-adm-panel-btn hx-adm-panel-btn-logout'>Logout</a>
+		</div>
+
+		<div class="hx-adm-panel-clear"></div>
+	</div>
+	<div class="hx-adm-panel-user-toolbar-border"></div>
 </div>

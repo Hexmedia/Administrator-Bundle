@@ -1,11 +1,11 @@
 {% spaceless %}
-    <div class="content data-area-list">
-        <table class="table table-hover"
-               data-bind="table: list, headerTemplate: 'list_table_header', itemTemplate: 'list_table_items'">
-        </table>
+<div class="content data-area-list">
+	<table class="table table-hover"
+		   data-bind="table: list, headerTemplate: 'list_table_header', itemTemplate: 'list_table_items'">
+	</table>
 
-        <div data-bind="pagination: pagination"></div>
-    </div>
+	<div class="pagination"><div data-bind="pagination: pagination"></div></div>
+</div>
 
     {# TODO: Too much logic here, it should be moved to controller layer somehow #}
 
