@@ -86,7 +86,7 @@ body {
 	color: @iconColor;
 }
 
-input[type='text'],select,textarea {
+input[type='text'],select,textarea, .chosen-choices {
 	border-radius: 3px;
 	border: 1px solid @inputColor;
 	color: @inputColor;
@@ -96,6 +96,16 @@ input[type='text'],select,textarea {
 		color: @iconColor;
 		-webkit-box-shadow: inset 0 1px 1px @iconColor, 0 0 8px @iconColor;
 		box-shadow: inset 0 1px 1px @iconColor, 0 0 8px @iconColor;
+	}
+}
+
+.chosen-choices {
+	padding: 5px;
+
+	.search-field {
+		input[type="text"] {
+			height: 25px !important;
+		}
 	}
 }
 

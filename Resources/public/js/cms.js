@@ -29,6 +29,8 @@ var orgAlert = alert;
 				format: 'dd/mm/yyyy'
 			}).attr('type', 'text').attr('readonly', true);
 		}
+
+		$('select[multiple]').chosen();
 	});
 
 }(jQuery));
