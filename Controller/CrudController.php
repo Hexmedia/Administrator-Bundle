@@ -46,12 +46,13 @@ abstract class CrudController extends Controller implements ListControllerInterf
 	 *
 	 * @Rest\View
 	 */
-	public function listAction($page = 1, $pageSize = 15, $sort = 'id', $sortDirection = "ASC") {
+	public function listAction($page = 1, $pageSize = 15, $sort = 'id', $sortDirection = "ASC", $filter = []) {
 		$entities = $this->getRepository()->getPage($page, $sort, $pageSize, $sortDirection);
 
 		$entitesRet = $this->prepareEntities($entities);
 
 		return array(
+			'pageSize' => $pageSize,
 			'entities' => $entitesRet,
 			"entitiesCount" => $this->getRepository()->getCount()
 		);
@@ -99,10 +100,10 @@ abstract class CrudController extends Controller implements ListControllerInterf
 			}
 		}
 
-		return array(
+		return [
 			'entity' => $entity,
 			'form' => $form->createView(),
-		);
+		];
 	}
 
 	/**
@@ -203,6 +204,9 @@ abstract class CrudController extends Controller implements ListControllerInterf
 	public function updateAction(Request $request, $id) {
 		$this->registerBreadcrubms()->addItem($this->get("translator")->trans("Edit"));
 
+
+		var_dump($_POST);
+
 		$entity = $this->getRepository()->find($id);
 
 		if (!$entity) {
@@ -239,10 +243,10 @@ abstract class CrudController extends Controller implements ListControllerInterf
 			}
 		}
 
-		return array(
+		return [
 			'entity' => $entity,
 			'form' => $form->createView(),
-		);
+		];
 	}
 
 	/**
