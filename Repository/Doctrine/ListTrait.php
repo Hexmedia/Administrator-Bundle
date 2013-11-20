@@ -48,4 +48,10 @@ trait ListTrait {
         return $queryBuilder->getQuery()->getSingleScalarResult();
 
     }
+
+    public function getToPaginator() {
+        $queryBuildier = $this->createListQueryBuilder('obj');
+
+        return $queryBuildier;
+    }
 }

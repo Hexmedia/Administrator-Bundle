@@ -71,14 +71,14 @@ abstract class CrudType extends AbstractType
                 'publishedFrom',
                 'datepicker',
                 [
-                    'label' => 'From:',
+                    'label' => 'From',
                 ]
             )
             ->add(
                 'publishedTo',
                 'datepicker',
                 [
-                    'label' => 'To:',
+                    'label' => 'To',
                 ]
             );
     }

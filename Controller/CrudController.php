@@ -18,263 +18,299 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController as Controller;
 use Hexmedia\AdministratorBundle\ControllerInterface\ListController as ListControllerInterface;
 
-abstract class CrudController extends Controller implements ListControllerInterface {
+abstract class CrudController extends Controller implements ListControllerInterface
+{
 
-	use ListTrait;
+    use ListTrait;
 
-	/**
-	 * @var \WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs
-	 */
-	protected $breadcrumbs;
+    /**
+     * @var \WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs
+     */
+    protected $breadcrumbs;
 
-	/**
-	 * Index
-	 *
-	 * @param int $page
-	 * @param int $pageSize
-	 * @param string $sort
-	 * @param string $sortDirection
-	 *
-	 * @Rest\View
-	 */
-	public function indexAction($page = 1, $pageSize = 15, $sort = 'id', $sortDirection = "ASC") {
+    /**
+     * Index
+     *
+     * @param int $page
+     * @param int $pageSize
+     * @param string $sort
+     * @param string $sortDirection
+     *
+     * @Rest\View
+     */
+    public function indexAction($page = 1)
+    {
 
-	}
+    }
 
-	/**
-	 * Lists all entities.
-	 *
-	 * @Rest\View
-	 */
-	public function listAction($page = 1, $pageSize = 15, $sort = 'id', $sortDirection = "ASC", $filter = []) {
-		$entities = $this->getRepository()->getPage($page, $sort, $pageSize, $sortDirection);
+    /**
+     * Lists all entities.
+     *
+     * @Rest\View("HexmediaAdministratorBundle:Table:content.html.twig")
+     */
+    public function listAction($page = 1)
+    {
+        $paginator = $this->get("knp_paginator");
 
-		$entitesRet = $this->prepareEntities($entities);
+        if ($paginator instanceof \Knp\Component\Pager\Paginator) ;
 
-		return array(
-			'pageSize' => $pageSize,
-			'entities' => $entitesRet,
-			"entitiesCount" => $this->getRepository()->getCount()
-		);
-	}
+        $query = $this->getPaginatorQuery();
 
-	protected abstract function getRepository();
+        $pagination = $paginator->paginate(
+            $query,
+            $page
+        );
 
-	/**
-	 * Creates a new  entity.
-	 */
-	public function createAction(Request $request) {
-		$this->registerBreadcrubms()->addItem($this->get("translator")->trans("Add"));
+        $pagination->setTemplate('KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig');
 
-		$entity = $this->getNewEntity();
-		$form = $this->createCreateForm($entity);
-		$form->handleRequest($request);
+        return array(
+            'page' => $page,
+            'pagination' => $pagination,
+            'route' => $this->getRouteName(),
+            'routeParams' => $this->getRouteParams(),
+            'template' => $this->getListTemplate()
+        );
+    }
 
-		if ($form->isValid()) {
-			$em = $this->getDoctrine()->getManager();
+    /**
+     * Creates a new  entity.
+     */
+    public function createAction(Request $request)
+    {
+        $this->registerBreadcrubms()->addItem($this->get("translator")->trans("Add"));
 
-			try {
-				if ($form->get("saveAndPublish")->isClicked()) {
-					$entity->setPublished(1);
-				}
-			} catch (OutOfBoundsException $e) {
+        $entity = $this->getNewEntity();
+        $form = $this->createCreateForm($entity);
+        $form->handleRequest($request);
 
-			}
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
 
-			$em->persist($entity);
-			$em->flush();
+            try {
+                if ($form->get("saveAndPublish")->isClicked()) {
+                    $entity->setPublished(1);
+                }
+            } catch (OutOfBoundsException $e) {
 
-			$this->get('session')->getFlashBag()->add('notice', $this->getEntityName() . ' has been created!');
+            }
 
-			if ($form->get("saveAndExit")->isClicked()) {
-				return $this->redirect($this->generateUrl($this->getMainRoute(), $this->getRouteParameters()));
-			} else {
-				try {
-					if ($form->get("addNext")->isClicked()) {
-						return $this->redirect($this->generateUrl($this->getMainRoute() . "Add", $this->getRouteParameters()));
-					}
-				} catch (OutOfBoundsException $e) {
+            $em->persist($entity);
+            $em->flush();
 
-				}
-				return $this->redirect($this->generateUrl($this->getMainRoute() . "Edit", $this->getRouteParameters(['id' => $entity->getId()])));
-			}
-		}
+            $this->get('session')->getFlashBag()->add('notice', $this->getEntityName() . ' has been created!');
 
-		return [
-			'entity' => $entity,
-			'form' => $form->createView(),
-		];
-	}
+            if ($form->get("saveAndExit")->isClicked()) {
+                return $this->redirect($this->generateUrl($this->getRouteName(), $this->getRouteParams()));
+            } else {
+                try {
+                    if ($form->get("addNext")->isClicked()) {
+                        return $this->redirect($this->generateUrl($this->getRouteName() . "Add", $this->getRouteParams()));
+                    }
+                } catch (OutOfBoundsException $e) {
 
-	/**
-	 * Registering BreadCrumbs
-	 *
-	 * @return \WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs
-	 */
-	protected abstract function registerBreadcrubms();
+                }
+                return $this->redirect($this->generateUrl($this->getRouteName() . "Edit", $this->getRouteParams(['id' => $entity->getId()])));
+            }
+        }
 
-	protected abstract function getNewEntity();
+        return [
+            'entity' => $entity,
+            'form' => $form->createView(),
+        ];
+    }
 
-	/**
-	 * Creates a form to create an entity.
-	 *
-	 * @param mixed $entity The entity
-	 *
-	 * @return \Symfony\Component\Form\Form The form
-	 */
-	protected function createCreateForm($entity) {
-		$form = $this->createForm(
-			$this->getAddFormType(), $entity, [
-			'action' => $this->generateUrl($this->getMainRoute() . "Add", $this->getRouteParameters()),
-			'method' => 'POST',
-			]
-		);
+    /**
+     * Creates a form to create an entity.
+     *
+     * @param mixed $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    protected function createCreateForm($entity)
+    {
+        $form = $this->createForm(
+            $this->getAddFormType(), $entity, [
+                'action' => $this->generateUrl($this->getRouteName() . "Add", $this->getRouteParams()),
+                'method' => 'POST',
+            ]
+        );
 
-		return $form;
-	}
-
-	protected abstract function getAddFormType();
-
-	public abstract function getMainRoute();
-
-	public abstract function getEntityName();
-
-	/**
-	 * Displays a form to create a new entity.
-	 *
-	 * @Rest\View
-	 */
-	public function addAction() {
-		$this->registerBreadcrubms()->addItem($this->get("translator")->trans("Add"));
-
-		$entity = $this->getNewEntity();
-		$form = $this->createCreateForm($entity);
-
-		return [
-			'entity' => $entity,
-			'form' => $form->createView(),
-		];
-	}
-
-	/**
-	 * Displays a form to edit an existing entity.
-	 *
-	 * @Rest\View
-	 */
-	public function editAction($id) {
-		$this->registerBreadcrubms()->addItem($this->get("translator")->trans("Edit"));
-
-		$entity = $this->getRepository()->find($id);
-
-		if (!$entity) {
-			throw $this->createNotFoundException('Unable to find ' . $this->getEntityName() . '.');
-		}
-
-		$editForm = $this->createEditForm($entity);
-
-		return [
-			'entity' => $entity,
-			'form' => $editForm->createView(),
-		];
-	}
-
-	/**
-	 * Creates a form to edit an entity.
-	 *
-	 * @param mixed $entity The entity
-	 *
-	 * @return \Symfony\Component\Form\Form The form
-	 */
-	protected function createEditForm($entity) {
-		$form = $this->createForm(
-			$this->getEditFormType(), $entity, [
-			'action' => $this->generateUrl($this->getMainRoute() . "Edit", $this->getRouteParameters(['id' => $entity->getId()])),
-			'method' => 'PUT',
-			]
-		);
-
-		return $form;
-	}
-
-	protected abstract function getEditFormType();
-
-	/**
-	 * Edits an existing entity.
-	 */
-	public function updateAction(Request $request, $id) {
-		$this->registerBreadcrubms()->addItem($this->get("translator")->trans("Edit"));
+        return $form;
+    }
 
 
-		var_dump($_POST);
+    /**
+     * Displays a form to create a new entity.
+     *
+     * @Rest\View
+     */
+    public function addAction()
+    {
+        $this->registerBreadcrubms()->addItem($this->get("translator")->trans("Add"));
 
-		$entity = $this->getRepository()->find($id);
+        $entity = $this->getNewEntity();
+        $form = $this->createCreateForm($entity);
 
-		if (!$entity) {
-			throw $this->createNotFoundException('Unable to find ' . $this->getEntityName() . '.');
-		}
+        return [
+            'entity' => $entity,
+            'form' => $form->createView(),
+        ];
+    }
 
-		$form = $this->createEditForm($entity);
-		$form->handleRequest($request);
+    /**
+     * Displays a form to edit an existing entity.
+     *
+     * @Rest\View
+     */
+    public function editAction($id)
+    {
+        $this->registerBreadcrubms()->addItem($this->get("translator")->trans("Edit"));
 
-		if ($form->isValid()) {
-			/**
-			 * @var $em \Doctrine\ORM\EntityManager
-			 */
-			$em = $this->getDoctrine()->getManager();
+        $entity = $this->getRepository()->find($id);
 
-			try {
-				if ($form->get("saveAndPublish")->isClicked()) {
-					$entity->setPublished(1);
-				}
-			} catch (OutOfBoundsException $e) {
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find ' . $this->getEntityName() . '.');
+        }
 
-			}
+        $editForm = $this->createEditForm($entity);
 
-			if ($em->getUnitOfWork()->isScheduledForUpdate($entity)) {
-				$this->get('session')->getFlashBag()->add('notice', $this->getEntityName() . ' has been updated!');
-			}
+        return [
+            'entity' => $entity,
+            'form' => $editForm->createView(),
+        ];
+    }
 
-			$em->flush();
+    /**
+     * Creates a form to edit an entity.
+     *
+     * @param mixed $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    protected function createEditForm($entity)
+    {
+        $form = $this->createForm(
+            $this->getEditFormType(), $entity, [
+                'action' => $this->generateUrl($this->getRouteName() . "Edit", $this->getRouteParams(['id' => $entity->getId()])),
+                'method' => 'PUT',
+            ]
+        );
 
-			if ($form->get("saveAndExit")->isClicked()) {
-				return $this->redirect($this->generateUrl($this->getMainRoute(), $this->getRouteParameters()));
-			} else {
-				return $this->redirect($this->generateUrl($this->getMainRoute() . 'Edit', $this->getRouteParameters(['id' => $id])));
-			}
-		}
+        return $form;
+    }
 
-		return [
-			'entity' => $entity,
-			'form' => $form->createView(),
-		];
-	}
+    /**
+     * Edits an existing entity.
+     */
+    public function updateAction(Request $request, $id)
+    {
+        $this->registerBreadcrubms()->addItem($this->get("translator")->trans("Edit"));
 
-	/**
-	 * Deletes an entity.
-	 *
-	 * @Rest\View()
-	 */
-	public function deleteAction(Request $request, $id) {
-		$entity = $this->getRepository()->find($id);
+        $entity = $this->getRepository()->find($id);
 
-		if (!$entity) {
-			throw $this->createNotFoundException('Unable to find ' . $this->getEntityName() . '.');
-		}
-		$em = $this->getDoctrine()->getManager();
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find ' . $this->getEntityName() . '.');
+        }
 
-		$em->remove($entity);
+        $form = $this->createEditForm($entity);
+        $form->handleRequest($request);
 
-		$em->flush();
+        if ($form->isValid()) {
+            /**
+             * @var $em \Doctrine\ORM\EntityManager
+             */
+            $em = $this->getDoctrine()->getManager();
 
-		return ['success' => true];
-	}
+            try {
+                if ($form->get("saveAndPublish")->isClicked()) {
+                    $entity->setPublished(1);
+                }
+            } catch (OutOfBoundsException $e) {
 
-	protected function getRouteAdditionalParameters() {
-		return [];
-	}
+            }
 
-	protected function getRouteParameters($params = []) {
-		return array_merge($params, $this->getRouteAdditionalParameters());
-	}
+            if ($em->getUnitOfWork()->isScheduledForUpdate($entity)) {
+                $this->get('session')->getFlashBag()->add('notice', $this->getEntityName() . ' has been updated!');
+            }
+
+            $em->flush();
+
+            if ($form->get("saveAndExit")->isClicked()) {
+                return $this->redirect($this->generateUrl($this->getRouteName(), $this->getRouteParams()));
+            } else {
+                return $this->redirect($this->generateUrl($this->getRouteName() . 'Edit', $this->getRouteParams(['id' => $id])));
+            }
+        }
+
+        return [
+            'entity' => $entity,
+            'form' => $form->createView(),
+        ];
+    }
+
+    /**
+     * Deletes an entity.
+     *
+     * @Rest\View()
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $entity = $this->getRepository()->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find ' . $this->getEntityName() . '.');
+        }
+        $em = $this->getDoctrine()->getManager();
+
+        $em->remove($entity);
+
+        $em->flush();
+
+        return ['success' => true];
+    }
+
+    /**
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    protected function getPaginatorQuery() {
+        return $this->getRepository()->getToPaginator();
+    }
+
+    protected function getRouteAdditionalParams()
+    {
+        return [];
+    }
+
+    protected function getRouteParams($params = [])
+    {
+        return array_merge($params, $this->getRouteAdditionalParams());
+    }
+
+    protected abstract function getAddFormType();
+
+    public /*abstract*/
+    function getRouteName()
+    {
+    }
+
+    public abstract function getEntityName();
+
+    protected /*abstract*/
+    function getListTemplate()
+    {
+    }
+
+    /**
+     * Registering BreadCrumbs
+     *
+     * @return \WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs
+     */
+    protected abstract function registerBreadcrubms();
+
+    protected abstract function getNewEntity();
+
+    protected abstract function getRepository();
+
+    protected abstract function getEditFormType();
 
 }
