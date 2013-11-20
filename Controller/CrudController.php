@@ -288,17 +288,11 @@ abstract class CrudController extends Controller implements ListControllerInterf
 
     protected abstract function getAddFormType();
 
-    public /*abstract*/
-    function getRouteName()
-    {
-    }
+    public abstract function getRouteName();
 
     public abstract function getEntityName();
 
-    protected /*abstract*/
-    function getListTemplate()
-    {
-    }
+    protected abstract function getListTemplate();
 
     /**
      * Registering BreadCrumbs
@@ -312,5 +306,4 @@ abstract class CrudController extends Controller implements ListControllerInterf
     protected abstract function getRepository();
 
     protected abstract function getEditFormType();
-
 }

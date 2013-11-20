@@ -1,7 +1,3 @@
-hexmediaUserFOS:
-    resource: "@HexmediaUserBundle/Resources/config/routing_admin.yml"
-    prefix: /
-
 HexMediaDashboard:
     pattern: /
     defaults: { _controller: HexmediaAdministratorBundle:Dashboard:dashboard }

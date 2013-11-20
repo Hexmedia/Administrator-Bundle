@@ -1,36 +1,93 @@
-var alerts;
-var orgAlert = alert;
+(function ($) {
+    $(document).ready(function () {
+        $('[data-toggle="modal2"]').click(function () {
+            var modal, modalDialog, modalContent, href;
 
-(function($) {
-	$(document).ready(function() {
-		alerts = new AlertModel();
 
-		if ($('.alerts').get(0)) {
-			ko.applyBindings(alerts, $('.alerts').get(0));
-		}
 
-//		if ($('.data-area-list').get(0)) {
-//			ko.applyBindings(new ListModel(), $('.data-area-list').get(0));
-//		}
-//
-//		if ($('.data-area-grid').get(0)) {
-//			ko.applyBindings(new GridModel(), $('.data-area-grid').get(0));
-//		}
-//
-//		if ($('.edit-content').get(0)) {
-//			ko.applyBindings(new EditModel(), $('.edit-content').get(0));
-//		}
+            modal = $('<div />').addClass("modal").addClass("fade");
+            modalDialog = $('<div />').addClass("modal-dialog");
+            modalContent = $('<div />').addClass('modal-content');
 
-		//Rewriting alert from native to app.
-		window.alert = alerts.displayWarning;
+            if ($(this).data('modal-class')) {
+                $(modal).addClass($(this).data('modal-class'));
+            }
 
-		if ($("input[type='date']").get(0)) {
-			$("input[type='date']").parent().find('input').datepicker({
-				format: 'dd/mm/yyyy'
-			}).attr('type', 'text').attr('readonly', true);
-		}
+            modalDialog.append(modalContent);
+            modal.append(modalDialog);
 
-		$('select[multiple]').chosen();
-	});
+            $(modal).modal('show');
+
+            modalContent.html("loading...");//FIXME: Need better loader.
+
+            href = $(this).attr('href');
+
+            $.ajax(href, {
+                success: function (response) {
+                    modalContent.html(response);
+                },
+                error: function () {
+                    $(modal).modal("hide");
+                }
+            });
+
+            return false;
+        });
+
+        $('[data-toggle="confirm"]').click(function () {
+            var self, modal, modalDialog, modalContent, modalHeader, modalFooter, modalBody, buttonOk, buttonCancel;
+
+            self = this;
+
+            console.log('1');
+
+            modal = $('<div />').addClass("modal").addClass("fade");
+            modalDialog = $('<div />').addClass("modal-dialog");
+            modalContent = $('<div />').addClass('modal-content');
+            modalHeader = $('<div />').addClass('modal-header');
+            modalFooter = $('<div />').addClass('modal-footer');
+            modalBody = $('<div />').addClass('modal-body');
+
+            modalContent.append(modalHeader);
+            modalContent.append(modalBody);
+            modalContent.append(modalFooter);
+            modalDialog.append(modalContent);
+            modal.append(modalDialog);
+
+            modalHeader.text($(this).data("confirm-title"));
+            modalBody.html("<p>" + $(this).data("confirm-body") + "</p>");
+
+            buttonOk = $("<button />").addClass("btn").addClass("btn-primary").text(Translator.get("Confirm"));
+            buttonCancel = $("<button />").addClass("btn").text(Translator.get("Cancel"));
+
+            modalFooter.append(buttonOk);
+            modalFooter.append(buttonCancel);
+
+            $(modal).modal("show");
+
+            buttonCancel.click(function () {
+                $(modal).modal("hide");
+            });
+
+            buttonOk.click(function () {
+                if ($(self).data("confirm-type") == "ajax") {
+                    $.ajax($(self).attr('href'), {
+                        type: $(self).data("confirm-method"),
+                        success: function() {
+                            document.location.reload();
+                        },
+                        error:  function() {
+                            alert("An error has occured!");
+                        }
+                    });
+                } else {
+                    document.location.href = $(self).attr('href');
+                }
+            });
+
+            return false;
+        });
+    });
+
 
 }(jQuery));
