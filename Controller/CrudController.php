@@ -201,6 +201,8 @@ abstract class CrudController extends Controller implements ListControllerInterf
 
     /**
      * Edits an existing entity.
+     *
+     * @Rest\View
      */
     public function updateAction(Request $request, $id)
     {

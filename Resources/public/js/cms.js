@@ -3,8 +3,6 @@
         $('[data-toggle="modal2"]').click(function () {
             var modal, modalDialog, modalContent, href;
 
-
-
             modal = $('<div />').addClass("modal").addClass("fade");
             modalDialog = $('<div />').addClass("modal-dialog");
             modalContent = $('<div />').addClass('modal-content');
@@ -18,7 +16,7 @@
 
             $(modal).modal('show');
 
-            modalContent.html("loading...");//FIXME: Need better loader.
+            modalContent.html($("<div />").addClass("modal-loading").text("loading..."));
 
             href = $(this).attr('href');
 
@@ -33,6 +31,8 @@
 
             return false;
         });
+
+        $("select[multiple]").chosen();
 
         $('[data-toggle="confirm"]').click(function () {
             var self, modal, modalDialog, modalContent, modalHeader, modalFooter, modalBody, buttonOk, buttonCancel;

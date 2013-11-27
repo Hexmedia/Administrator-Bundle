@@ -39,12 +39,6 @@
 						{{ wo_render_breadcrumbs({'viewTemplate': 'HexmediaAdministratorBundle:Partial:breadcrumbs.html.twig'}) }}
 					</div>
 					<div class="alerts">
-						<div data-bind="foreach: alerts">
-							<div data-bind="attr: { 'class': aclass }">
-								<span data-bind="text: message"></span>
-								<button type="button" class="close" data-dismiss="alert">×</button>
-							</div>
-						</div>
 					</div>
 					{% block body %}{% endblock %}
 				</div>
