@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'roboto';
+  src: url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Bold-webfont.eot');
+  src: url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'), url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Bold-webfont.woff') format('woff'), url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Bold-webfont.ttf') format('truetype'), url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Bold-webfont.svg#robotobold') format('svg');
+  font-weight: bolder;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'roboto';
+  src: url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Medium-webfont.eot');
+  src: url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Medium-webfont.eot?#iefix') format('embedded-opentype'), url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Medium-webfont.woff') format('woff'), url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Medium-webfont.ttf') format('truetype'), url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Medium-webfont.svg#robotobold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'roboto';
+  src: url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Regular-webfont.eot');
+  src: url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'), url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Regular-webfont.woff') format('woff'), url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Regular-webfont.ttf') format('truetype'), url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Regular-webfont.svg#robotobold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'roboto';
+  src: url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Italic-webfont.eot');
+  src: url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Italic-webfont.eot?#iefix') format('embedded-opentype'), url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Italic-webfont.woff') format('woff'), url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Italic-webfont.ttf') format('truetype'), url('@HexmediaAdministratorBundle/Resources/public/fonts/roboto/Roboto-Italic-webfont.svg#robotobold') format('svg');
+  font-weight: normal;
+  font-style: italic;
+}

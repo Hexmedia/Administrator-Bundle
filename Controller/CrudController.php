@@ -200,9 +200,9 @@ abstract class CrudController extends Controller implements ListControllerInterf
     }
 
     /**
-     * Edits an existing entity.
+     * {@inheritdoc}
      *
-     * @Rest\View
+     * @Rest\View(template="HexmediaCatalogBundle:AdminProduct:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -232,7 +232,7 @@ abstract class CrudController extends Controller implements ListControllerInterf
             }
 
             if ($em->getUnitOfWork()->isScheduledForUpdate($entity)) {
-                $this->get('session')->getFlashBag()->add('notice', $this->getEntityName() . ' has been updated!');
+                $this->get('session')->getFlashBag()->add('success', $this->getEntityName() . ' has been updated!');
             }
 
             $em->flush();

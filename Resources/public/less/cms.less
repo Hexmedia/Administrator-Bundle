@@ -347,3 +347,35 @@ legend {
     width: 98%;
   }
 }
+
+.attached-media {
+  clear: both;
+
+  .attached-img {
+    float: left;
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    margin: 3px;
+    position: relative;
+
+    i.icon-remove-sign {
+      position: absolute;
+      right: 1px;
+      top: 1px;
+    }
+  }
+
+  &.preview-big_admin_square {
+    .attached-img {
+      width: 300px;
+      height: 300px;
+      line-height: 300px;
+      vertical-align: middle;
+    }
+  }
+}
+
+.clear {
+  clear: both;
+}
