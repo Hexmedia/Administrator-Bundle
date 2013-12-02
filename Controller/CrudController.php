@@ -235,6 +235,8 @@ abstract class CrudController extends Controller implements ListControllerInterf
                 $this->get('session')->getFlashBag()->add('success', $this->getEntityName() . ' has been updated!');
             }
 
+            $em->persist($entity);
+
             $em->flush();
 
             if ($form->get("saveAndExit")->isClicked()) {
