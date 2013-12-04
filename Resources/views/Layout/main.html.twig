@@ -1,50 +1,56 @@
 <!DOCTYPE html>
 <html>
-	<head>
+<head>
     {% spaceless %}
-		<title>{% block title %}{{ 'CMS'|trans }}{% endblock title %}</title>
-    {{ include ("HexmediaAdministratorBundle:Partial:head.html.twig") }}
+        <title>{% block title %}{{ 'CMS'|trans }}{% endblock title %}</title>
+        {{ include ("HexmediaAdministratorBundle:Partial:head.html.twig") }}
     {% endspaceless %}
     {% block super_head_script %}{% block head_script %}{% endblock head_script %}{% endblock %}
     {% block super_head_style %}{% block head_style %}{% endblock head_style %}{% endblock %}
-	</head>
-	<body>
+</head>
+{% spaceless %}
+    <body>
 
-{{ include ("HexmediaAdministratorBundle:Partial:alerts.html.twig") }}
-		<div class="container main">
-			<div class="hexmedia_hex"></div>
-			<div class="header">
-				<div class="cms-name">
-					<a href="{{ path("homepage") }}"><img src="{{ asset(site_logo) }}" alt="{{ site_name }}" class="client_logo" /></a>
-					<h1 class="cms">Administrator</h1>
-				</div>
-				<div class="user-bar">
-					{% if cms_show_powered_by is defined %}
-					<div class="powered-by">
-						Powered By <img src="{{ asset("bundles/hexmediaadministrator/images/hexmedia_logo_small.jpg") }}" alt="Hexmedia" class="powered-by-logo" />
-					</div>
-					{% endif %}
-					<img src="{{ gravatar(app.user.email, 30) }}" alt="{{ app.user.email }}"/>
+    {{ include ("HexmediaAdministratorBundle:Partial:alerts.html.twig") }}
+    <div class="container main">
+        <div class="hexmedia_hex"></div>
+        <div class="header">
+            <div class="cms-name">
+                <a href="{{ path("homepage") }}"><img src="{{ asset(site_logo) }}" alt="{{ site_name }}"
+                                                      class="client_logo"/></a>
 
-					{{ app.user.name }}
-					<a href="{{ path('fos_user_security_logout') }}" class="btn btn-blue">Logout</a>
-				</div>
-			</div>
-			<div class="row content">
-				<div class="col-md-1 menu dropdown">
-					{{ knp_menu_render('main', {'currentClass': 'active', 'ancestorClass': 'active', 'template': 'HexmediaAdministratorBundle:Menu:main_menu.html.twig'}) }}
-				</div>
-				<div class="col-md-11 main-content">
-					<div class="breadcrumbs">
-						{{ wo_render_breadcrumbs({'viewTemplate': 'HexmediaAdministratorBundle:Partial:breadcrumbs.html.twig'}) }}
-					</div>
-					<div class="alerts">
-					</div>
-					{% block body %}{% endblock %}
-				</div>
-			</div>
-		</div>
-{% block super_bottom_script %}
-    {% block bottom_script %}{% endblock %}{% endblock %}
-	</body>
+                <h1 class="cms">Administrator</h1>
+            </div>
+            <div class="user-bar">
+                {% if cms_show_powered_by is defined %}
+                    <div class="powered-by">
+                        Powered By <img
+                                src="{{ asset("bundles/hexmediaadministrator/images/hexmedia_logo_small.jpg") }}"
+                                alt="Hexmedia" class="powered-by-logo"/>
+                    </div>
+                {% endif %}
+                <img src="{{ gravatar(app.user.email, 30) }}" alt="{{ app.user.email }}"/>
+
+                {{ app.user.name }}
+                <a href="{{ path('fos_user_security_logout') }}" class="btn btn-blue">Logout</a>
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-md-1 menu dropdown">
+                {{ knp_menu_render('main', {'currentClass': 'active', 'ancestorClass': 'active', 'template': 'HexmediaAdministratorBundle:Menu:main_menu.html.twig'}) }}
+            </div>
+            <div class="col-md-11 main-content">
+                <div class="breadcrumbs">
+                    {{ wo_render_breadcrumbs({'viewTemplate': 'HexmediaAdministratorBundle:Partial:breadcrumbs.html.twig'}) }}
+                </div>
+                <div class="alerts">
+                </div>
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    {% block super_bottom_script %}
+        {% block bottom_script %}{% endblock %}{% endblock %}
+    </body>
+{% endspaceless %}
 </html>

@@ -38,9 +38,13 @@ abstract class CrudController extends Controller implements ListControllerInterf
      *
      * @Rest\View
      */
-    public function indexAction($page = 1)
+    public function indexAction($page = 1, $sort = 'obj.id', $direction = 'desc')
     {
-
+        return [
+            'page' => $page,
+            'sort' => $sort,
+            'direction' => $direction
+        ];
     }
 
     /**
@@ -56,6 +60,10 @@ abstract class CrudController extends Controller implements ListControllerInterf
 
         $query = $this->getPaginatorQuery();
 
+        if ($this->getRequest()->get("sort")) {
+            $query->orderBy($this->getRequest()->get("sort"), strtolower($this->getRequest()->get("direction")) == "asc" ? "asc" : "desc");
+        }
+
         $pagination = $paginator->paginate(
             $query,
             $page
@@ -66,6 +74,8 @@ abstract class CrudController extends Controller implements ListControllerInterf
         return array(
             'page' => $page,
             'pagination' => $pagination,
+            'sort' => $this->getRequest()->get('sort'),
+            'direction' => $this->getRequest()->get('direction'),
             'route' => $this->getRouteName(),
             'routeParams' => $this->getRouteParams(),
             'template' => $this->getListTemplate()
@@ -274,9 +284,24 @@ abstract class CrudController extends Controller implements ListControllerInterf
     }
 
     /**
+     * Deletes an entity.
+     *
+     * @Rest\View()
+     */
+    public function sortAction($id, $direction)
+    {
+        $entity = $this->getRepository()->sort($id, $direction);
+
+        $last = $this->getRequest()->headers->get('referer');
+
+        return $this->redirect($last);
+    }
+
+    /**
      * @return \Doctrine\ORM\QueryBuilder
      */
-    protected function getPaginatorQuery() {
+    protected function getPaginatorQuery()
+    {
         return $this->getRepository()->getToPaginator();
     }
 
