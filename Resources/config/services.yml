@@ -56,6 +56,11 @@ services:
         tags:
             - { name: form.type, alias: raptor }
 
+    hexmedia_administrator.fields.raptor:
+        class: Hexmedia\AdministratorBundle\Form\Fields\ColorType
+        tags:
+            - { name: form.type, alias: color }
+
     hexmedia_administrator.content:
         class: Hexmedia\AdministratorBundle\EditMode\UpdaterChain
 

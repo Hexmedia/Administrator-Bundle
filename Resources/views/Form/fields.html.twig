@@ -2,15 +2,26 @@
     {% spaceless %}
         {{ block('form_widget_simple') }}
         <script type="text/javascript">
-            $(document).ready(function () {
-                $({{ id }}).datepicker();
-                $({{ id }}).datepicker().on(
+            jQuery(document).ready(function () {
+                jQuery("#" + {{ id }}).datepicker();
+                jQuery("#" + {{ id }}).datepicker().on(
                         "changeDate",
                         function (event) {
-                            $({{ id }}).datepicker('hide');
+                            jQuery("#" + {{ id }}).datepicker('hide');
                         }
                 )
             });
         </script>
     {% endspaceless %}
 {% endblock date_widget %}
+
+{% block color_widget %}
+    {% spaceless %}
+        {{ block('form_widget_simple') }}
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+                jQuery("#" + {{ id }}).ColorPicker({flat: true});
+            });
+        </script>
+    {% endspaceless %}
+{% endblock color_widget %}
