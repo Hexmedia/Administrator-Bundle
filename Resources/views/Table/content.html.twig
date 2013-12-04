@@ -1,0 +1,23 @@
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>#</th>
+        {% include template ~ ":list-header.html.twig" %}
+        <th><a href="{{ path(route ~ "Add", routeParams) }}" class="btn btn-primary"><i
+                        class="icon-plus-sign"></i> {{ 'Add'|trans }}</a></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for entity in pagination %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        {% include template ~ ":list-content.html.twig" with { entity: entity } %}
+        <td><a href="{{ path(route ~ "Edit", routeParams|merge({'id': entity.id}) ) }}" class="icon-edit"></a><a href="{{ path(route ~ "Delete", routeParams|merge({'id': entity.id}) ) }}" class="icon-remove remove"></a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<div class="pagination">
+    {{ knp_pagination_render(pagination) }}
+</div>
