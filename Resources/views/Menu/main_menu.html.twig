@@ -63,7 +63,7 @@
 {% block linkElement %}
 <a href="{{ item.uri }}"{{ knp_menu.attributes(item.linkAttributes) }}>
 		{% if item.attribute('icon') is not empty  %}
-	<i class="{{ item.attribute('icon') }}"></i><br />
+	<i class="{{ item.attribute('icon') }}"></i>
     	{% endif %}
 		{{ block('label') }}
 </a>

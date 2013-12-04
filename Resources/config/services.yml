@@ -56,7 +56,7 @@ services:
         tags:
             - { name: form.type, alias: raptor }
 
-    hexmedia_administrator.fields.raptor:
+    hexmedia_administrator.fields.color:
         class: Hexmedia\AdministratorBundle\Form\Fields\ColorType
         tags:
             - { name: form.type, alias: color }
