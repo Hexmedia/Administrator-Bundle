@@ -11,4 +11,17 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class ColorType extends AbstractType
 {
 
+    public function getParent() {
+        return "text";
+    }
+
+    /**
+     * Returns the name of this type.
+     *
+     * @return string The name of this type
+     */
+    public function getName()
+    {
+        return "color";
+    }
 }
