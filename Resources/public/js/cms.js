@@ -1,5 +1,27 @@
 (function ($) {
     $(document).ready(function () {
+        var changeHeight = function() {
+            var docHeight, windowHeight, height;
+
+            docHeight = $(document).height();
+            windowHeight = $(window).height();
+
+            height = Math.max(docHeight, windowHeight);
+
+            $('.container>.content').each(function() {
+                var toSet = height - 3 - $(".container>.header").height();
+
+                $(this).find('.menu').height(toSet);
+                $(this).find('.main-content').height(toSet);
+            });
+        }
+
+        $(window).resize(function() {
+            changeHeight();
+        });
+
+        changeHeight();
+
         $('[data-toggle="modal2"]').click(function () {
             var modal, modalDialog, modalContent, href;
 
