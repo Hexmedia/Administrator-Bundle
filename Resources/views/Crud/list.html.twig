@@ -1,0 +1,29 @@
+{% spaceless %}
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>#</th>
+        {% include template ~ ":list-header.html.twig" with { pagination: pagination, route: route, routeParams: routeParams } only %}
+        <th><a href="{{ path(route ~ "Add", routeParams) }}" class="btn btn-primary"><i
+                        class="fa fa-plus-square"></i> {{ 'Add'|trans }}</a></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for entity in pagination %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        {% include template ~ ":list-content.html.twig" with { entity: entity, route: route, routeParams: routeParams } only %}
+        <td>
+            <a href="{{ path(route ~ "Edit", routeParams|merge({'id': entity.id}) ) }}" class="fa fa-edit"></a>
+            <a href="{{ path(route ~ "Delete", routeParams|merge({'id': entity.id}) ) }}" class="fa fa-trash-o remove" data-confirm="{{ 'Do you really want to delete this element?'|trans }}"></a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<div class="pagination">
+    {{ knp_pagination_render(pagination) }}
+</div>
+
+{% endspaceless %}

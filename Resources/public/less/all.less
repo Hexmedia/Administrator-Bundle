@@ -1,24 +1,45 @@
 @headerFontSize: 18px;
 
-// FIXME: I need to find solution how to import this variables from other bundle
-@inputBorder: #ccc;
+//Hexmedia Color box
+@hexBlue: #3445a5;
+@hexRed: #ea0053;
+@hexGreen: #20c143;
+@hexYellow: #ffce00;
+@hexWhite: #fff;
+@hexGray: #efefef;
+@hexDarkGray: #ccc;
+@hexDarkenGray: #444;
 
+@textColor: #333;
+
+// FIXME: I need to find solution how to import this variables from other bundle
+
+//Main
+@inputBorder: #ccc;
 @headerBackground: #fff;
 @contentBackground: #efefef;
 @menuBackgroundHover: #ccc;
+
+//Buttons
+@buttonPrimaryBackground: @hexGreen;
+@buttonInfoBackground: @hexBlue;
+@buttonDangerBackground: @hexRed;
+@buttonWarningBackground: @hexYellow;
+@buttonSuccessBackground: lighten(@hexGreen, 10%);
 
 @headerBorder: #e2e2e2;
 
 @navTextColor: #fff;
 @navTextColorHover: #444;
 
-@menuBackground: #3545a5;
+@menuBackground: @hexBlue;
 
 @inputColor: #8C8C8C;
 
 @hexmediaColor: #b6b6b6;
 
-@iconColor: #21c143;
+@iconColor: @hexGreen;
+@iconHoverColor: @hexYellow;
 
 @hexmediaHex: '@HexmediaAdministratorBundle/Resources/public/images/hex.jpg';
 

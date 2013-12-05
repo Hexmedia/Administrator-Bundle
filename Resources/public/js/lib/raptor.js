@@ -8206,7 +8206,7 @@ function aButtonSetLabel(element, text) {
  * Wrap the jQuery UI button's set icon function.
  *
  * @param {Element|Node|selector} element
- * @param {String} icon The icon name to be added to the button, e.g. 'ui-fa fa-disk'
+ * @param {String} icon The icon name to be added to the button, e.g. 'ui-icon-disk'
  * @returns {Element} The modified button.
  */
 function aButtonSetIcon(element, icon) {
@@ -12081,7 +12081,7 @@ function tableIsEmpty(table) {
  *
  * @type type
  */
-var templateCache = { 'message': "<div class=\"{{baseClass}}-wrapper {{baseClass}}-type {{baseClass}}-{{type}}\">\n    <div class=\"ui-icon ui-fa fa-{{type}}\" \/>\n    <div class=\"{{baseClass}}-message\">{{message}}<\/div>\n    <div class=\"{{baseClass}}-close ui-icon ui-fa fa-circle-close\"><\/div>\n<\/div>\n",
+var templateCache = { 'message': "<div class=\"{{baseClass}}-wrapper {{baseClass}}-type {{baseClass}}-{{type}}\">\n    <div class=\"ui-icon ui-icon-{{type}}\" \/>\n    <div class=\"{{baseClass}}-message\">{{message}}<\/div>\n    <div class=\"{{baseClass}}-close ui-icon ui-icon-circle-close\"><\/div>\n<\/div>\n",
 'messages': "<div class=\"{{baseClass}}\" \/>\n",
 'unsupported': "<div class=\"{{baseClass}}-unsupported-overlay\"><\/div>\n<div class=\"{{baseClass}}-unsupported-content\">\n    It has been detected that you a using a browser that is not supported by Raptor, please\n    use one of the following browsers:\n\n    <ul>\n        <li><a href=\"http:\/\/www.google.com\/chrome\">Google Chrome<\/a><\/li>\n        <li><a href=\"http:\/\/www.firefox.com\">Mozilla Firefox<\/a><\/li>\n        <li><a href=\"http:\/\/www.google.com\/chromeframe\">Internet Explorer with Chrome Frame<\/a><\/li>\n    <\/ul>\n\n    <div class=\"{{baseClass}}-unsupported-input\">\n        <button class=\"{{baseClass}}-unsupported-close\">Close<\/button>\n        <input name=\"{{baseClass}}-unsupported-show\" type=\"checkbox\" \/>\n        <label>Don't show this message again<\/label>\n    <\/div>\n<div>",
 'class-menu.item': "<li><a data-value=\"{{value}}\">{{label}}<\/a><\/li>\n",
@@ -12089,12 +12089,12 @@ var templateCache = { 'message': "<div class=\"{{baseClass}}-wrapper {{baseClass
 'color-menu-basic.menu': "<li><a data-color=\"automatic\"><div class=\"{{baseClass}}-swatch\" style=\"display: none\"><\/div> <span>_('colorMenuBasicAutomatic')<\/span><\/a><\/li>\n<li><a data-color=\"white\"><div class=\"{{baseClass}}-swatch\" style=\"background-color: #ffffff\"><\/div> <span>_('colorMenuBasicWhite')<\/span><\/a><\/li>\n<li><a data-color=\"black\"><div class=\"{{baseClass}}-swatch\" style=\"background-color: #000000\"><\/div> <span>_('colorMenuBasicBlack')<\/span><\/a><\/li>\n<li><a data-color=\"grey\"><div class=\"{{baseClass}}-swatch\" style=\"background-color: #999\"><\/div> <span>_('colorMenuBasicGrey')<\/span><\/a><\/li>\n<li><a data-color=\"blue\"><div class=\"{{baseClass}}-swatch\" style=\"background-color: #4f81bd\"><\/div> <span>_('colorMenuBasicBlue')<\/span><\/a><\/li>\n<li><a data-color=\"red\"><div class=\"{{baseClass}}-swatch\" style=\"background-color: #c0504d\"><\/div> <span>_('colorMenuBasicRed')<\/span><\/a><\/li>\n<li><a data-color=\"green\"><div class=\"{{baseClass}}-swatch\" style=\"background-color: #9bbb59\"><\/div> <span>_('colorMenuBasicGreen')<\/span><\/a><\/li>\n<li><a data-color=\"purple\"><div class=\"{{baseClass}}-swatch\" style=\"background-color: #8064a2\"><\/div> <span>_('colorMenuBasicPurple')<\/span><\/a><\/li>\n<li><a data-color=\"orange\"><div class=\"{{baseClass}}-swatch\" style=\"background-color: #f79646\"><\/div> <span>_('colorMenuBasicOrange')<\/span><\/a><\/li>\n",
 'embed.dialog': "<div class=\"{{baseClass}}-panel-tabs ui-tabs ui-widget ui-widget-content ui-corner-all\">\n    <ul class=\"ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all\">\n        <li class=\"ui-state-default ui-corner-top ui-tabs-selected ui-state-active\"><a>_('embedDialogTabCode')<\/a><\/li>\n        <li class=\"ui-state-default ui-corner-top\"><a>_('embedDialogTabPreview')<\/a><\/li>\n    <\/ul>\n    <div class=\"{{baseClass}}-code-tab\">\n        <p>_('embedDialogTabCodeContent')<\/p>\n        <textarea><\/textarea>\n    <\/div>\n    <div class=\"{{baseClass}}-preview-tab\" style=\"display: none\">\n        <p>_('embedDialogTabPreviewContent')<\/p>\n        <div class=\"{{baseClass}}-preview\"><\/div>\n    <\/div>\n<\/div>\n",
 'image-resize-button.button': "<div class=\"{{baseClass}}-button\">\n    _('imageResizeButtonText')\n<\/div>\n",
-'image-resize-button.dialog': "<div class=\"raptor-resize-image\">\n    <div>\n        <label for=\"{{baseClass}}-width\">_('imageResizeButtonDialogWidth')<\/label>\n        <input class=\"form-text\" id=\"{{baseClass}}-width\" name=\"width\" type=\"text\" placeholder=\"_('imageResizeButtonDialogWidthPlaceHolder')\"\/>\n    <\/div>\n    <div>\n        <label for=\"{{baseClass}}-height\">_('imageResizeButtonDialogHeight')<\/label>\n        <input class=\"form-text\" id=\"{{baseClass}}-height\" name=\"height\" type=\"text\" placeholder=\"_('imageResizeButtonDialogHeightPlaceHolder')\"\/>\n    <\/div>\n    <div class=\"{{baseClass}}-lock-proportions-container\">\n        <span class=\"{{baseClass}}-lock-proportions\">\n            <span class=\"ui-button-text\">Constrain proportions<\/span>\n            <span class=\"ui-icon ui-fa fa-locked\"><\/span>\n        <\/span>\n    <\/div>\n<\/div>\n",
+'image-resize-button.dialog': "<div class=\"raptor-resize-image\">\n    <div>\n        <label for=\"{{baseClass}}-width\">_('imageResizeButtonDialogWidth')<\/label>\n        <input class=\"form-text\" id=\"{{baseClass}}-width\" name=\"width\" type=\"text\" placeholder=\"_('imageResizeButtonDialogWidthPlaceHolder')\"\/>\n    <\/div>\n    <div>\n        <label for=\"{{baseClass}}-height\">_('imageResizeButtonDialogHeight')<\/label>\n        <input class=\"form-text\" id=\"{{baseClass}}-height\" name=\"height\" type=\"text\" placeholder=\"_('imageResizeButtonDialogHeightPlaceHolder')\"\/>\n    <\/div>\n    <div class=\"{{baseClass}}-lock-proportions-container\">\n        <span class=\"{{baseClass}}-lock-proportions\">\n            <span class=\"ui-button-text\">Constrain proportions<\/span>\n            <span class=\"ui-icon ui-icon-locked\"><\/span>\n        <\/span>\n    <\/div>\n<\/div>\n",
 'insert-file.dialog': "<div>\n    <label>_('insertFileURLLabel')<\/label>\n    <input type=\"text\" name=\"location\" placeholder=\"_('insertFileURLPlaceHolder')\"\/>\n    <label>_('insertFileNameLabel')<\/label>\n    <input type=\"text\" name=\"name\" placeholder=\"_('insertFileNamePlaceHolder')\"\/>\n<\/div>\n",
 'link.dialog': "<div style=\"display:none\" class=\"{{baseClass}}-panel\">\n    <div class=\"{{baseClass}}-menu\">\n        <p>_('linkCreateDialogMenuHeader')<\/p>\n        <fieldset data-menu=\"\"><\/fieldset>\n    <\/div>\n    <div class=\"{{baseClass}}-wrap\">\n        <div class=\"{{baseClass}}-content\" data-content=\"\"><\/div>\n    <\/div>\n<\/div>\n",
 'link.document': "<h2>_('linkTypeDocumentHeader')<\/h2>\n<fieldset>\n    <label for=\"{{baseClass}}-document-href\">_('linkTypeDocumentLocationLabel')<\/label>\n    <input id=\"{{baseClass}}-document-href\" value=\"http:\/\/\" name=\"location\" class=\"{{baseClass}}-document-href\" type=\"text\" placeholder=\"_('linkTypeDocumentLocationPlaceHolder')\" \/>\n<\/fieldset>\n<h2>_('linkTypeDocumentNewWindowHeader')<\/h2>\n<fieldset>\n    <label for=\"{{baseClass}}-document-target\">\n        <input id=\"{{baseClass}}-document-target\" name=\"blank\" type=\"checkbox\" \/>\n        <span>_('linkTypeDocumentNewWindowLabel')<\/span>\n    <\/label>\n<\/fieldset>\n_('linkTypeDocumentInfo')\n",
 'link.email': "<h2>_('linkTypeEmailHeader')<\/h2>\n<fieldset class=\"{{baseClass}}-email\">\n    <label for=\"{{baseClass}}-email\">_('linkTypeEmailToLabel')<\/label>\n    <input id=\"{{baseClass}}-email\" name=\"email\" type=\"text\" placeholder=\"_('linkTypeEmailToPlaceHolder')\"\/>\n<\/fieldset>\n<fieldset class=\"{{baseClass}}-email\">\n    <label for=\"{{baseClass}}-email-subject\">_('linkTypeEmailSubjectLabel')<\/label>\n    <input id=\"{{baseClass}}-email-subject\" name=\"subject\" type=\"text\" placeholder=\"_('linkTypeEmailSubjectPlaceHolder')\"\/>\n<\/fieldset>\n",
-'link.error': "<div style=\"display:none\" class=\"ui-widget {{baseClass}}-error-message {{messageClass}}\">\n    <div class=\"ui-state-error ui-corner-all\"> \n        <p>\n            <span class=\"ui-icon ui-fa fa-alert\"><\/span> \n            {{message}}\n        <\/p>\n    <\/div>\n<\/div>",
+'link.error': "<div style=\"display:none\" class=\"ui-widget {{baseClass}}-error-message {{messageClass}}\">\n    <div class=\"ui-state-error ui-corner-all\"> \n        <p>\n            <span class=\"ui-icon ui-icon-alert\"><\/span> \n            {{message}}\n        <\/p>\n    <\/div>\n<\/div>",
 'link.external': "<h2>_('linkTypeExternalHeader')<\/h2>\n<fieldset>\n    <label for=\"{{baseClass}}-external-href\">_('linkTypeExternalLocationLabel')<\/label>\n    <input id=\"{{baseClass}}-external-href\" value=\"http:\/\/\" name=\"location\" class=\"{{baseClass}}-external-href\" type=\"text\" placeholder=\"_('linkTypeExternalLocationPlaceHolder')\" \/>\n<\/fieldset>\n<h2>_('linkTypeExternalNewWindowHeader')<\/h2>\n<fieldset>\n    <label for=\"{{baseClass}}-external-target\">\n        <input id=\"{{baseClass}}-external-target\" name=\"blank\" type=\"checkbox\" \/>\n        <span>_('linkTypeExternalNewWindowLabel')<\/span>\n    <\/label>\n<\/fieldset>\n_('linkTypeExternalInfo')\n",
 'link.file-url': "<h2>_('Link to a document or other file')<\/h2>\n<fieldset>\n    <label for=\"{{baseClass}}-external-href\">_('Location')<\/label>\n    <input id=\"{{baseClass}}-external-href\" value=\"http:\/\/\" name=\"location\" class=\"{{baseClass}}-external-href\" type=\"text\" placeholder=\"_('Enter your URL')\" \/>\n<\/fieldset>\n<h2>_('New window')<\/h2>\n<fieldset>\n    <label for=\"{{baseClass}}-external-target\">\n        <input id=\"{{baseClass}}-external-target\" name=\"blank\" type=\"checkbox\" \/>\n        <span>_('Check this box to have the file open in a new browser window')<\/span>\n    <\/label>\n<\/fieldset>\n<h2>_('Not sure what to put in the box above?')<\/h2>\n<ol>\n    <li>_('Ensure the file has been uploaded to your website')<\/li>\n    <li>_('Open the uploaded file in your browser')<\/li>\n    <li>_(\"Copy the file's URL from your browser's address bar and paste it into the box above\")<\/li>\n<\/ol>\n",
 'link.internal': "<h2>_('linkTypeInternalHeader')<\/h2>\n<fieldset>\n    <label for=\"{{baseClass}}-internal-href\">_('linkTypeInternalLocationLabel') {{domain}}<\/label>\n    <input id=\"{{baseClass}}-internal-href\" value=\"\" name=\"location\" class=\"{{baseClass}}-internal-href\" type=\"text\" placeholder=\"_('linkTypeInternalLocationPlaceHolder')\" \/>\n<\/fieldset>\n<h2>_('linkTypeInternalNewWindowHeader')<\/h2>\n<fieldset>\n    <label for=\"{{baseClass}}-internal-target\">\n        <input id=\"{{baseClass}}-internal-target\" name=\"blank\" type=\"checkbox\" \/>\n        <span>_('linkTypeInternalNewWindowLabel')<\/span>\n    <\/label>\n<\/fieldset>\n_('linkTypeInternalInfo')\n",
@@ -12104,7 +12104,7 @@ var templateCache = { 'message': "<div class=\"{{baseClass}}-wrapper {{baseClass
 'statistics.dialog': "<div>\n    <ul>\n        <li data-name=\"characters\"><\/li>\n        <li data-name=\"words\"><\/li>\n        <li data-name=\"sentences\"><\/li>\n        <li data-name=\"truncation\"><\/li>\n    <\/ul>\n<\/div>\n",
 'table.create-menu': "<table class=\"{{baseClass}}-menu\">\n    <tr>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n    <\/tr>\n    <tr>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n    <\/tr>\n    <tr>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n    <\/tr>\n    <tr>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n    <\/tr>\n    <tr>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n    <\/tr>\n    <tr>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n    <\/tr>\n    <tr>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n    <\/tr>\n    <tr>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n        <td><\/td>\n    <\/tr>\n<\/table>\n",
 'tag-menu.menu': "<li><a data-value=\"na\">_('tagMenuTagNA')<\/a><\/li>\n<li><a data-value=\"p\">_('tagMenuTagP')<\/a><\/li>\n<li><a data-value=\"h1\">_('tagMenuTagH1')<\/a><\/li>\n<li><a data-value=\"h2\">_('tagMenuTagH2')<\/a><\/li>\n<li><a data-value=\"h3\">_('tagMenuTagH3')<\/a><\/li>\n<li><a data-value=\"h4\">_('tagMenuTagH4')<\/a><\/li>\n<li><a data-value=\"div\">_('tagMenuTagDiv')<\/a><\/li>\n<li><a data-value=\"pre\">_('tagMenuTagPre')<\/a><\/li>\n<li><a data-value=\"address\">_('tagMenuTagAddress')<\/a><\/li>\n",
-'unsaved-edit-warning.warning': "<div class=\"{{baseClass}} ui-corner-tl\">\n    <span class=\"ui-icon ui-fa fa-alert\"><\/span>\n    <span>_('unsavedEditWarningText')<\/span>\n<\/div>\n",
+'unsaved-edit-warning.warning': "<div class=\"{{baseClass}} ui-corner-tl\">\n    <span class=\"ui-icon ui-icon-alert\"><\/span>\n    <span>_('unsavedEditWarningText')<\/span>\n<\/div>\n",
 'view-source.dialog': "<div class=\"{{baseClass}}-inner-wrapper\">\n    <textarea><\/textarea>\n<\/div>\n",
 'special-characters.dialog': "<div>\n    _('specialCharactersHelp')\n    <br\/>\n    <ul><\/ul>\n<\/div>\n",
 'special-characters.tab-li': "<li><a href=\"#{{baseClass}}-{{key}}\">{{name}}<\/a><\/li>\n",
@@ -14157,12 +14157,12 @@ Button.prototype.getTitle = function() {
 };
 
 /**
- * @return {String} The button's icon property value, or the ui-fa fa- prefix
+ * @return {String} The button's icon property value, or the ui-icon- prefix
  *   with the button's camel cased name appended.
  */
 Button.prototype.getIcon = function() {
     if (this.icon === null) {
-        return 'ui-fa fa-' + stringCamelCaseConvert(this.name);
+        return 'ui-icon-' + stringCamelCaseConvert(this.name);
     }
     return this.icon;
 };
@@ -14609,7 +14609,7 @@ DialogButton.prototype.getOkButton = function(name) {
         text: _(name + 'DialogOKButton'),
         click: this.okButtonClick.bind(this),
         icons: {
-            primary: 'ui-fa fa-circle-check'
+            primary: 'ui-icon-circle-check'
         }
     };
 };
@@ -14625,7 +14625,7 @@ DialogButton.prototype.getCancelButton = function(name) {
         text: _(name + 'DialogCancelButton'),
         click: this.cancelButtonClick.bind(this),
         icons: {
-            primary: 'ui-fa fa-circle-close'
+            primary: 'ui-icon-circle-close'
         }
     };
 };
@@ -14805,7 +14805,7 @@ Menu.prototype.getButton = function() {
  */
 Menu.prototype.setOptions = function() {
     this.options.title = _(this.name + 'Title');
-    this.options.icon = 'ui-fa fa-' + this.name;
+    this.options.icon = 'ui-icon-' + this.name;
 };
 
 /**
@@ -15466,7 +15466,7 @@ ColorMenuBasic.prototype.updateButton = function() {
     }
     if (color) {
         aButtonSetLabel(button, _('colorMenuBasic' + (color.charAt(0).toUpperCase() + color.slice(1))));
-        aButtonSetIcon(button, 'ui-fa fa-swatch');
+        aButtonSetIcon(button, 'ui-icon-swatch');
         // FIXME: set color in an adapter friendly way
         button.find('.ui-icon').css('background-color', closest.css('color'));
         return;
@@ -16225,7 +16225,7 @@ ImageResizeButtonPlugin.prototype.getButton = function() {
             .click(this.openDialog.bind(this));
         aButton(imageResizeButton, {
             icons: {
-                primary: 'ui-fa fa-resize-image'
+                primary: 'ui-icon-resize-image'
             }
         });
         imageResizeButton.appendTo('body');
@@ -16291,7 +16291,7 @@ ImageResizeButtonPlugin.prototype.getDialog = function() {
                         aDialogClose(imageResizeButtonDialog);
                     }.bind(this),
                     icons: {
-                        primary: 'ui-fa fa-circle-check'
+                        primary: 'ui-icon-circle-check'
                     }
                 },
                 {
@@ -16300,7 +16300,7 @@ ImageResizeButtonPlugin.prototype.getDialog = function() {
                         aDialogClose(imageResizeButtonDialog);
                     }.bind(this),
                     icons: {
-                        primary: 'ui-fa fa-circle-close'
+                        primary: 'ui-icon-circle-close'
                     }
                 }
             ],
@@ -16350,8 +16350,8 @@ ImageResizeButtonPlugin.prototype.openDialog = function() {
         })
         .click(function() {
             plugin.proportional = !plugin.proportional;
-            $(this).find('.ui-icon').toggleClass('ui-fa fa-locked', plugin.proportional)
-                .toggleClass('ui-fa fa-unlocked', !plugin.proportional);
+            $(this).find('.ui-icon').toggleClass('ui-icon-locked', plugin.proportional)
+                .toggleClass('ui-icon-unlocked', !plugin.proportional);
         });
 };
 
@@ -16479,7 +16479,7 @@ Raptor.registerUi(new Button({
                         }]);
                     },
                     icons: {
-                        primary: 'ui-fa fa-circle-check'
+                        primary: 'ui-icon-circle-check'
                     }
                 },
                 {
@@ -16488,7 +16488,7 @@ Raptor.registerUi(new Button({
                         aDialogClose(dialogElement);
                     },
                     icons: {
-                        primary: 'ui-fa fa-circle-close'
+                        primary: 'ui-icon-circle-close'
                     }
                 }
             ]
@@ -17279,7 +17279,7 @@ PastePlugin.prototype.getDialog = function(instance) {
                         pasteInstance.pasteContent(html);
                     }.bind(this),
                     icons: {
-                        primary: 'ui-fa fa-circle-check'
+                        primary: 'ui-icon-circle-check'
                     }
                 },
                 {
@@ -17290,7 +17290,7 @@ PastePlugin.prototype.getDialog = function(instance) {
                         aDialogClose(pasteDialog);
                     },
                     icons: {
-                        primary: 'ui-fa fa-circle-close'
+                        primary: 'ui-icon-circle-close'
                     }
                 }
             ]
@@ -19985,7 +19985,7 @@ Raptor.registerUi(new Button({
     // <usage-statistics>
     init: function() {
         var button = Button.prototype.init.apply(this, arguments);
-        button.find('.ui-button-fa fa-primary').css({
+        button.find('.ui-button-icon-primary').css({
             'background-image': 'url(//www.raptor-editor.com/logo/1.0.3?json=' +
                 encodeURIComponent(JSON.stringify(this.raptor.options)) + ')'
         });
@@ -20013,7 +20013,7 @@ Raptor.registerUi(new Button({
   *vertical-align: auto;\n\
 }\n\
 \n\
-.ui-button-fa fa-only .ui-icon {\n\
+.ui-button-icon-only .ui-icon {\n\
   height: 0;\n\
   overflow: hidden;\n\
   display: block;\n\
@@ -20874,19 +20874,19 @@ Autocomplete Style\n\
   /* the overflow property removes extra width in IE */\n\
 }\n\
 \n\
-.ui-button-fa fa-only {\n\
+.ui-button-icon-only {\n\
   width: 37px;\n\
   height: 37px;\n\
 }\n\
 \n\
 /* to make room for the icon, a width needs to be set here */\n\
 /*button text element */\n\
-.ui-button-text-fa fa-primary .ui-button-text,\n\
+.ui-button-text-icon-primary .ui-button-text,\n\
 .ui-button-text-icons .ui-button-text {\n\
   padding: 10px 16px 10px 33.6px;\n\
 }\n\
 \n\
-.ui-button-text-fa fa-secondary .ui-button-text,\n\
+.ui-button-text-icon-secondary .ui-button-text,\n\
 .ui-button-text-icons .ui-button-text {\n\
   padding: 10px 33.6px 10px 16px;\n\
 }\n\
@@ -20903,28 +20903,28 @@ input.ui-button {\n\
 }\n\
 \n\
 /*button icon element(s) */\n\
-.ui-button-text-fa fa-primary .ui-button-fa fa-primary,\n\
-.ui-button-text-icons .ui-button-fa fa-primary,\n\
-.ui-button-icons-only .ui-button-fa fa-primary {\n\
+.ui-button-text-icon-primary .ui-button-icon-primary,\n\
+.ui-button-text-icons .ui-button-icon-primary,\n\
+.ui-button-icons-only .ui-button-icon-primary {\n\
   left: 8px;\n\
 }\n\
 \n\
-.ui-button-text-fa fa-secondary .ui-button-fa fa-secondary,\n\
-.ui-button-text-icons .ui-button-fa fa-secondary,\n\
-.ui-button-icons-only .ui-button-fa fa-secondary {\n\
+.ui-button-text-icon-secondary .ui-button-icon-secondary,\n\
+.ui-button-text-icons .ui-button-icon-secondary,\n\
+.ui-button-icons-only .ui-button-icon-secondary {\n\
   right: 8px;\n\
 }\n\
 \n\
-.ui-button-text-icons .ui-button-fa fa-secondary,\n\
-.ui-button-icons-only .ui-button-fa fa-secondary {\n\
+.ui-button-text-icons .ui-button-icon-secondary,\n\
+.ui-button-icons-only .ui-button-icon-secondary {\n\
   right: 8px;\n\
 }\n\
 \n\
-.ui-button-fa fa-only {\n\
+.ui-button-icon-only {\n\
   padding: 8px;\n\
   position: relative;\n\
 }\n\
-.ui-button-fa fa-only .ui-icon {\n\
+.ui-button-icon-only .ui-icon {\n\
   width: 16px;\n\
   padding-top: 16px;\n\
 }\n\
@@ -20986,19 +20986,19 @@ Button Layout\n\
   display: block;\n\
 }\n\
 \n\
-.ui-button-fa fa-only .ui-button-text {\n\
+.ui-button-icon-only .ui-button-text {\n\
   display: none;\n\
 }\n\
 \n\
 /*button icon element(s) */\n\
-.ui-button-fa fa-only .ui-icon, .ui-button-text-fa fa-primary .ui-icon,\n\
-.ui-button-text-fa fa-secondary .ui-icon, .ui-button-text-icons .ui-icon, .ui-button-icons-only .ui-icon {\n\
+.ui-button-icon-only .ui-icon, .ui-button-text-icon-primary .ui-icon,\n\
+.ui-button-text-icon-secondary .ui-icon, .ui-button-text-icons .ui-icon, .ui-button-icons-only .ui-icon {\n\
   position: absolute;\n\
   top: 50%;\n\
   margin-top: -8px;\n\
 }\n\
 \n\
-.ui-button-fa fa-only .ui-icon {\n\
+.ui-button-icon-only .ui-icon {\n\
   left: 50%;\n\
   margin-left: -8px;\n\
 }\n\
@@ -21307,7 +21307,7 @@ Dialog Layout\n\
   height: 16px;\n\
   display: none;\n\
 }\n\
-.ui-dialog .ui-fa fa-grip-diagonal-se {\n\
+.ui-dialog .ui-icon-grip-diagonal-se {\n\
   display: none;\n\
 }\n\
 \n\
@@ -21366,7 +21366,7 @@ Dialog Style\n\
 .ui-dialog .ui-dialog-titlebar .ui-dialog-title {\n\
   font-size: 16.0px;\n\
 }\n\
-.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close .ui-fa fa-closethick {\n\
+.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close .ui-icon-closethick {\n\
   height: 0;\n\
   overflow: hidden;\n\
   padding-top: 16px;\n\
@@ -21968,1427 +21968,1427 @@ Form Style\n\
                 /* File: temp/default/src/dependencies/themes/mammoth/theme-icons.css */\n\
                 \n\
 \n\
-.ui-fa fa-add {\n\
+.ui-icon-add {\n\
   background-position: 0 -5376px;\n\
 }\n\
 \n\
-.ui-fa fa-alert {\n\
+.ui-icon-alert {\n\
   background-position: 0 -2320px;\n\
 }\n\
 \n\
-.ui-fa fa-align-c {\n\
+.ui-icon-align-c {\n\
   background-position: 0 -5328px;\n\
 }\n\
 \n\
-.ui-fa fa-align-center {\n\
+.ui-icon-align-center {\n\
   background-position: 0 -5344px;\n\
 }\n\
 \n\
-.ui-fa fa-align-j {\n\
+.ui-icon-align-j {\n\
   background-position: 0 -5568px;\n\
 }\n\
 \n\
-.ui-fa fa-align-justify {\n\
+.ui-icon-align-justify {\n\
   background-position: 0 -5584px;\n\
 }\n\
 \n\
-.ui-fa fa-align-l {\n\
+.ui-icon-align-l {\n\
   background-position: 0 -5264px;\n\
 }\n\
 \n\
-.ui-fa fa-align-left {\n\
+.ui-icon-align-left {\n\
   background-position: 0 -5280px;\n\
 }\n\
 \n\
-.ui-fa fa-align-r {\n\
+.ui-icon-align-r {\n\
   background-position: 0 -5472px;\n\
 }\n\
 \n\
-.ui-fa fa-align-right {\n\
+.ui-icon-align-right {\n\
   background-position: 0 -5488px;\n\
 }\n\
 \n\
-.ui-fa fa-app-window-black {\n\
+.ui-icon-app-window-black {\n\
   background-position: 0 -4944px;\n\
 }\n\
 \n\
-.ui-fa fa-app-window-browser {\n\
+.ui-icon-app-window-browser {\n\
   background-position: 0 -2512px;\n\
 }\n\
 \n\
-.ui-fa fa-app-window-cross {\n\
+.ui-icon-app-window-cross {\n\
   background-position: 0 -2064px;\n\
 }\n\
 \n\
-.ui-fa fa-app-window-shell {\n\
+.ui-icon-app-window-shell {\n\
   background-position: 0 -3696px;\n\
 }\n\
 \n\
-.ui-fa fa-app-window {\n\
+.ui-icon-app-window {\n\
   background-position: 0 -5216px;\n\
 }\n\
 \n\
-.ui-fa fa-arrow-1-e {\n\
+.ui-icon-arrow-1-e {\n\
   background-position: 0 -4688px;\n\
 }\n\
 \n\
-.ui-fa fa-arrow-1-n {\n\
+.ui-icon-arrow-1-n {\n\
   background-position: 0 -4544px;\n\
 }\n\
 \n\
-.ui-fa fa-arrow-1-ne {\n\
+.ui-icon-arrow-1-ne {\n\
   background-position: 0 -3184px;\n\
 }\n\
 \n\
-.ui-fa fa-arrow-1-nw {\n\
+.ui-icon-arrow-1-nw {\n\
   background-position: 0 -3648px;\n\
 }\n\
 \n\
-.ui-fa fa-arrow-1-s {\n\
+.ui-icon-arrow-1-s {\n\
   background-position: 0 -4592px;\n\
 }\n\
 \n\
-.ui-fa fa-arrow-1-se {\n\
+.ui-icon-arrow-1-se {\n\
   background-position: 0 -3280px;\n\
 }\n\
 \n\
-.ui-fa fa-arrow-1-sw {\n\
+.ui-icon-arrow-1-sw {\n\
   background-position: 0 -3232px;\n\
 }\n\
 \n\
-.ui-fa fa-arrow-1-w {\n\
+.ui-icon-arrow-1-w {\n\
   background-position: 0 -4784px;\n\
 }\n\
 \n\
-.ui-fa fa-arrow-2-e-w {\n\
+.ui-icon-arrow-2-e-w {\n\
   background-position: 0 -4976px;\n\
 }\n\
 \n\
-.ui-fa fa-arrow-2-n-s {\n\
+.ui-icon-arrow-2-n-s {\n\
   background-position: 0 -4400px;\n\
 }\n\
 \n\
-.ui-fa fa-arrow-2-ne-sw {\n\
+.ui-icon-arrow-2-ne-sw {\n\
   background-position: 0 -3200px;\n\
 }\n\
 \n\
-.ui-fa fa-arrow-2-se-nw {\n\
+.ui-icon-arrow-2-se-nw {\n\
   background-position: 0 -3216px;\n\
 }\n\
 \n\
-.ui-fa fa-arrow-4-diag {\n\
+.ui-icon-arrow-4-diag {\n\
   background-position: 0 -2048px;\n\
 }\n\
 \n\
-.ui-fa fa-arrow-4 {\n\
+.ui-icon-arrow-4 {\n\
   background-position: 0 -1136px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowrefresh-1-e {\n\
+.ui-icon-arrowrefresh-1-e {\n\
   background-position: 0 -704px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowrefresh-1-n {\n\
+.ui-icon-arrowrefresh-1-n {\n\
   background-position: 0 -720px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowrefresh-1-s {\n\
+.ui-icon-arrowrefresh-1-s {\n\
   background-position: 0 -736px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowrefresh-1-w {\n\
+.ui-icon-arrowrefresh-1-w {\n\
   background-position: 0 -752px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowreturn-1-e {\n\
+.ui-icon-arrowreturn-1-e {\n\
   background-position: 0 -4704px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowreturn-1-n {\n\
+.ui-icon-arrowreturn-1-n {\n\
   background-position: 0 -4560px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowreturn-1-s {\n\
+.ui-icon-arrowreturn-1-s {\n\
   background-position: 0 -4608px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowreturn-1-w {\n\
+.ui-icon-arrowreturn-1-w {\n\
   background-position: 0 -4800px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowreturnthick-1-e {\n\
+.ui-icon-arrowreturnthick-1-e {\n\
   background-position: 0 -3920px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowreturnthick-1-n {\n\
+.ui-icon-arrowreturnthick-1-n {\n\
   background-position: 0 -3728px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowreturnthick-1-s {\n\
+.ui-icon-arrowreturnthick-1-s {\n\
   background-position: 0 -3824px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowreturnthick-1-w {\n\
+.ui-icon-arrowreturnthick-1-w {\n\
   background-position: 0 -3840px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowstop-1-e {\n\
+.ui-icon-arrowstop-1-e {\n\
   background-position: 0 -4848px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowstop-1-n {\n\
+.ui-icon-arrowstop-1-n {\n\
   background-position: 0 -4720px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowstop-1-s {\n\
+.ui-icon-arrowstop-1-s {\n\
   background-position: 0 -4656px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowstop-1-w {\n\
+.ui-icon-arrowstop-1-w {\n\
   background-position: 0 -4752px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowthick-1-e {\n\
+.ui-icon-arrowthick-1-e {\n\
   background-position: 0 -3936px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowthick-1-n {\n\
+.ui-icon-arrowthick-1-n {\n\
   background-position: 0 -3744px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowthick-1-ne {\n\
+.ui-icon-arrowthick-1-ne {\n\
   background-position: 0 -3456px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowthick-1-nw {\n\
+.ui-icon-arrowthick-1-nw {\n\
   background-position: 0 -3504px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowthick-1-s {\n\
+.ui-icon-arrowthick-1-s {\n\
   background-position: 0 -3856px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowthick-1-se {\n\
+.ui-icon-arrowthick-1-se {\n\
   background-position: 0 -3360px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowthick-1-sw {\n\
+.ui-icon-arrowthick-1-sw {\n\
   background-position: 0 -3152px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowthick-1-w {\n\
+.ui-icon-arrowthick-1-w {\n\
   background-position: 0 -3872px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowthick-2-e-w {\n\
+.ui-icon-arrowthick-2-e-w {\n\
   background-position: 0 -3408px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowthick-2-n-s {\n\
+.ui-icon-arrowthick-2-n-s {\n\
   background-position: 0 -2736px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowthick-2-ne-sw {\n\
+.ui-icon-arrowthick-2-ne-sw {\n\
   background-position: 0 -3520px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowthick-2-se-nw {\n\
+.ui-icon-arrowthick-2-se-nw {\n\
   background-position: 0 -3552px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowthickstop-1-e {\n\
+.ui-icon-arrowthickstop-1-e {\n\
   background-position: 0 -3712px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowthickstop-1-n {\n\
+.ui-icon-arrowthickstop-1-n {\n\
   background-position: 0 -3472px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowthickstop-1-s {\n\
+.ui-icon-arrowthickstop-1-s {\n\
   background-position: 0 -3312px;\n\
 }\n\
 \n\
-.ui-fa fa-arrowthickstop-1-w {\n\
+.ui-icon-arrowthickstop-1-w {\n\
   background-position: 0 -3664px;\n\
 }\n\
 \n\
-.ui-fa fa-attach {\n\
+.ui-icon-attach {\n\
   background-position: 0 -2432px;\n\
 }\n\
 \n\
-.ui-fa fa-award {\n\
+.ui-icon-award {\n\
   background-position: 0 -1248px;\n\
 }\n\
 \n\
-.ui-fa fa-battery-0 {\n\
+.ui-icon-battery-0 {\n\
   background-position: 0 -5360px;\n\
 }\n\
 \n\
-.ui-fa fa-battery-1 {\n\
+.ui-icon-battery-1 {\n\
   background-position: 0 -5104px;\n\
 }\n\
 \n\
-.ui-fa fa-battery-2 {\n\
+.ui-icon-battery-2 {\n\
   background-position: 0 -5040px;\n\
 }\n\
 \n\
-.ui-fa fa-battery-3 {\n\
+.ui-icon-battery-3 {\n\
   background-position: 0 -4960px;\n\
 }\n\
 \n\
-.ui-fa fa-battery-4 {\n\
+.ui-icon-battery-4 {\n\
   background-position: 0 -5072px;\n\
 }\n\
 \n\
-.ui-fa fa-bell {\n\
+.ui-icon-bell {\n\
   background-position: 0 -1872px;\n\
 }\n\
 \n\
-.ui-fa fa-bold {\n\
+.ui-icon-bold {\n\
   background-position: 0 -2656px;\n\
 }\n\
 \n\
-.ui-fa fa-book {\n\
+.ui-icon-book {\n\
   background-position: 0 -4912px;\n\
 }\n\
 \n\
-.ui-fa fa-bookmark {\n\
+.ui-icon-bookmark {\n\
   background-position: 0 -3968px;\n\
 }\n\
 \n\
-.ui-fa fa-box {\n\
+.ui-icon-box {\n\
   background-position: 0 -1584px;\n\
 }\n\
 \n\
-.ui-fa fa-bug {\n\
+.ui-icon-bug {\n\
   background-position: 0 -464px;\n\
 }\n\
 \n\
-.ui-fa fa-bullet {\n\
+.ui-icon-bullet {\n\
   background-position: 0 -5088px;\n\
 }\n\
 \n\
-.ui-fa fa-calculator {\n\
+.ui-icon-calculator {\n\
   background-position: 0 -4064px;\n\
 }\n\
 \n\
-.ui-fa fa-calendar {\n\
+.ui-icon-calendar {\n\
   background-position: 0 -3008px;\n\
 }\n\
 \n\
-.ui-fa fa-camera {\n\
+.ui-icon-camera {\n\
   background-position: 0 -3568px;\n\
 }\n\
 \n\
-.ui-fa fa-cancel {\n\
+.ui-icon-cancel {\n\
   background-position: 0 -112px;\n\
 }\n\
 \n\
-.ui-fa fa-carat-1-e {\n\
+.ui-icon-carat-1-e {\n\
   background-position: 0 -2192px;\n\
 }\n\
 \n\
-.ui-fa fa-carat-1-n {\n\
+.ui-icon-carat-1-n {\n\
   background-position: 0 -2608px;\n\
 }\n\
 \n\
-.ui-fa fa-carat-1-ne {\n\
+.ui-icon-carat-1-ne {\n\
   background-position: 0 -5504px;\n\
 }\n\
 \n\
-.ui-fa fa-carat-1-nw {\n\
+.ui-icon-carat-1-nw {\n\
   background-position: 0 -5616px;\n\
 }\n\
 \n\
-.ui-fa fa-carat-1-s {\n\
+.ui-icon-carat-1-s {\n\
   background-position: 0 -2528px;\n\
 }\n\
 \n\
-.ui-fa fa-carat-1-se {\n\
+.ui-icon-carat-1-se {\n\
   background-position: 0 -5552px;\n\
 }\n\
 \n\
-.ui-fa fa-carat-1-sw {\n\
+.ui-icon-carat-1-sw {\n\
   background-position: 0 -5664px;\n\
 }\n\
 \n\
-.ui-fa fa-carat-1-w {\n\
+.ui-icon-carat-1-w {\n\
   background-position: 0 -2144px;\n\
 }\n\
 \n\
-.ui-fa fa-carat-2-e-w {\n\
+.ui-icon-carat-2-e-w {\n\
   background-position: 0 -896px;\n\
 }\n\
 \n\
-.ui-fa fa-carat-2-n-s {\n\
+.ui-icon-carat-2-n-s {\n\
   background-position: 0 -976px;\n\
 }\n\
 \n\
-.ui-fa fa-cart {\n\
+.ui-icon-cart {\n\
   background-position: 0 -2240px;\n\
 }\n\
 \n\
-.ui-fa fa-chart-bar {\n\
+.ui-icon-chart-bar {\n\
   background-position: 0 -4208px;\n\
 }\n\
 \n\
-.ui-fa fa-chart-line-1 {\n\
+.ui-icon-chart-line-1 {\n\
   background-position: 0 -1760px;\n\
 }\n\
 \n\
-.ui-fa fa-chart-line-2 {\n\
+.ui-icon-chart-line-2 {\n\
   background-position: 0 -1168px;\n\
 }\n\
 \n\
-.ui-fa fa-chart-up {\n\
+.ui-icon-chart-up {\n\
   background-position: 0 -1184px;\n\
 }\n\
 \n\
-.ui-fa fa-check-all {\n\
+.ui-icon-check-all {\n\
   background-position: 0 -944px;\n\
 }\n\
 \n\
-.ui-fa fa-check-box {\n\
+.ui-icon-check-box {\n\
   background-position: 0 -4224px;\n\
 }\n\
 \n\
-.ui-fa fa-check-none {\n\
+.ui-icon-check-none {\n\
   background-position: 0 -960px;\n\
 }\n\
 \n\
-.ui-fa fa-check {\n\
+.ui-icon-check {\n\
   background-position: 0 -2368px;\n\
 }\n\
 \n\
-.ui-fa fa-circle-arrow-e {\n\
+.ui-icon-circle-arrow-e {\n\
   background-position: 0 -1536px;\n\
 }\n\
 \n\
-.ui-fa fa-circle-arrow-n {\n\
+.ui-icon-circle-arrow-n {\n\
   background-position: 0 -1696px;\n\
 }\n\
 \n\
-.ui-fa fa-circle-arrow-s {\n\
+.ui-icon-circle-arrow-s {\n\
   background-position: 0 -1792px;\n\
 }\n\
 \n\
-.ui-fa fa-circle-arrow-w {\n\
+.ui-icon-circle-arrow-w {\n\
   background-position: 0 -1616px;\n\
 }\n\
 \n\
-.ui-fa fa-circle-check {\n\
+.ui-icon-circle-check {\n\
   background-position: 0 -1200px;\n\
 }\n\
 \n\
-.ui-fa fa-circle-close {\n\
+.ui-icon-circle-close {\n\
   background-position: 0 -768px;\n\
 }\n\
 \n\
-.ui-fa fa-circle-minus {\n\
+.ui-icon-circle-minus {\n\
   background-position: 0 -2768px;\n\
 }\n\
 \n\
-.ui-fa fa-circle-plus {\n\
+.ui-icon-circle-plus {\n\
   background-position: 0 -1904px;\n\
 }\n\
 \n\
-.ui-fa fa-circle-triangle-e {\n\
+.ui-icon-circle-triangle-e {\n\
   background-position: 0 -1264px;\n\
 }\n\
 \n\
-.ui-fa fa-circle-triangle-n {\n\
+.ui-icon-circle-triangle-n {\n\
   background-position: 0 -1552px;\n\
 }\n\
 \n\
-.ui-fa fa-circle-triangle-s {\n\
+.ui-icon-circle-triangle-s {\n\
   background-position: 0 -1648px;\n\
 }\n\
 \n\
-.ui-fa fa-circle-triangle-w {\n\
+.ui-icon-circle-triangle-w {\n\
   background-position: 0 -1296px;\n\
 }\n\
 \n\
-.ui-fa fa-circle-zoomin {\n\
+.ui-icon-circle-zoomin {\n\
   background-position: 0 -96px;\n\
 }\n\
 \n\
-.ui-fa fa-circle-zoomout {\n\
+.ui-icon-circle-zoomout {\n\
   background-position: 0 -192px;\n\
 }\n\
 \n\
-.ui-fa fa-circlesmall-close {\n\
+.ui-icon-circlesmall-close {\n\
   background-position: 0 -3424px;\n\
 }\n\
 \n\
-.ui-fa fa-circlesmall-minus {\n\
+.ui-icon-circlesmall-minus {\n\
   background-position: 0 -3808px;\n\
 }\n\
 \n\
-.ui-fa fa-circlesmall-plus {\n\
+.ui-icon-circlesmall-plus {\n\
   background-position: 0 -3616px;\n\
 }\n\
 \n\
-.ui-fa fa-clean {\n\
+.ui-icon-clean {\n\
   background-position: 0 -576px;\n\
 }\n\
 \n\
-.ui-fa fa-clipboard {\n\
+.ui-icon-clipboard {\n\
   background-position: 0 -3024px;\n\
 }\n\
 \n\
-.ui-fa fa-clock {\n\
+.ui-icon-clock {\n\
   background-position: 0 -1824px;\n\
 }\n\
 \n\
-.ui-fa fa-close {\n\
+.ui-icon-close {\n\
   background-position: 0 -4160px;\n\
 }\n\
 \n\
-.ui-fa fa-closethick {\n\
+.ui-icon-closethick {\n\
   background-position: 0 -1008px;\n\
 }\n\
 \n\
-.ui-fa fa-cloud-rain {\n\
+.ui-icon-cloud-rain {\n\
   background-position: 0 -1488px;\n\
 }\n\
 \n\
-.ui-fa fa-cloud {\n\
+.ui-icon-cloud {\n\
   background-position: 0 -4272px;\n\
 }\n\
 \n\
-.ui-fa fa-cms {\n\
+.ui-icon-cms {\n\
   background-position: 0 -272px;\n\
 }\n\
 \n\
-.ui-fa fa-coffee {\n\
+.ui-icon-coffee {\n\
   background-position: 0 -3248px;\n\
 }\n\
 \n\
-.ui-fa fa-comment {\n\
+.ui-icon-comment {\n\
   background-position: 0 -3760px;\n\
 }\n\
 \n\
-.ui-fa fa-compass {\n\
+.ui-icon-compass {\n\
   background-position: 0 -1472px;\n\
 }\n\
 \n\
-.ui-fa fa-computer {\n\
+.ui-icon-computer {\n\
   background-position: 0 -5120px;\n\
 }\n\
 \n\
-.ui-fa fa-confirm {\n\
+.ui-icon-confirm {\n\
   background-position: 0 -2384px;\n\
 }\n\
 \n\
-.ui-fa fa-confirmation {\n\
+.ui-icon-confirmation {\n\
   background-position: 0 -1216px;\n\
 }\n\
 \n\
-.ui-fa fa-contact {\n\
+.ui-icon-contact {\n\
   background-position: 0 -3168px;\n\
 }\n\
 \n\
-.ui-fa fa-copy {\n\
+.ui-icon-copy {\n\
   background-position: 0 -3632px;\n\
 }\n\
 \n\
-.ui-fa fa-csv {\n\
+.ui-icon-csv {\n\
   background-position: 0 -1808px;\n\
 }\n\
 \n\
-.ui-fa fa-currency-dollar {\n\
+.ui-icon-currency-dollar {\n\
   background-position: 0 -1440px;\n\
 }\n\
 \n\
-.ui-fa fa-currency-euro {\n\
+.ui-icon-currency-euro {\n\
   background-position: 0 -1936px;\n\
 }\n\
 \n\
-.ui-fa fa-currency-pound {\n\
+.ui-icon-currency-pound {\n\
   background-position: 0 -2864px;\n\
 }\n\
 \n\
-.ui-fa fa-currency-yen {\n\
+.ui-icon-currency-yen {\n\
   background-position: 0 -2256px;\n\
 }\n\
 \n\
-.ui-fa fa-dashboard {\n\
+.ui-icon-dashboard {\n\
   background-position: 0 -512px;\n\
 }\n\
 \n\
-.ui-fa fa-db {\n\
+.ui-icon-db {\n\
   background-position: 0 -1152px;\n\
 }\n\
 \n\
-.ui-fa fa-delete {\n\
+.ui-icon-delete {\n\
   background-position: 0 -4176px;\n\
 }\n\
 \n\
-.ui-fa fa-disk {\n\
+.ui-icon-disk {\n\
   background-position: 0 -4464px;\n\
 }\n\
 \n\
-.ui-fa fa-dislike {\n\
+.ui-icon-dislike {\n\
   background-position: 0 -3136px;\n\
 }\n\
 \n\
-.ui-fa fa-document-add {\n\
+.ui-icon-document-add {\n\
   background-position: 0 -4736px;\n\
 }\n\
 \n\
-.ui-fa fa-document-b {\n\
+.ui-icon-document-b {\n\
   background-position: 0 -4432px;\n\
 }\n\
 \n\
-.ui-fa fa-document-delete {\n\
+.ui-icon-document-delete {\n\
   background-position: 0 -2160px;\n\
 }\n\
 \n\
-.ui-fa fa-document-edit {\n\
+.ui-icon-document-edit {\n\
   background-position: 0 -288px;\n\
 }\n\
 \n\
-.ui-fa fa-document-export {\n\
+.ui-icon-document-export {\n\
   background-position: 0 -2032px;\n\
 }\n\
 \n\
-.ui-fa fa-document-import {\n\
+.ui-icon-document-import {\n\
   background-position: 0 -2016px;\n\
 }\n\
 \n\
-.ui-fa fa-document-minus {\n\
+.ui-icon-document-minus {\n\
   background-position: 0 -5168px;\n\
 }\n\
 \n\
-.ui-fa fa-document-text {\n\
+.ui-icon-document-text {\n\
   background-position: 0 -3584px;\n\
 }\n\
 \n\
-.ui-fa fa-document {\n\
+.ui-icon-document {\n\
   background-position: 0 -4672px;\n\
 }\n\
 \n\
-.ui-fa fa-download {\n\
+.ui-icon-download {\n\
   background-position: 0 -2336px;\n\
 }\n\
 \n\
-.ui-fa fa-eject {\n\
+.ui-icon-eject {\n\
   background-position: 0 -3600px;\n\
 }\n\
 \n\
-.ui-fa fa-email {\n\
+.ui-icon-email {\n\
   background-position: 0 -2208px;\n\
 }\n\
 \n\
-.ui-fa fa-emote-happy {\n\
+.ui-icon-emote-happy {\n\
   background-position: 0 -128px;\n\
 }\n\
 \n\
-.ui-fa fa-emote-sad {\n\
+.ui-icon-emote-sad {\n\
   background-position: 0 -160px;\n\
 }\n\
 \n\
-.ui-fa fa-error {\n\
+.ui-icon-error {\n\
   background-position: 0 -1024px;\n\
 }\n\
 \n\
-.ui-fa fa-expand {\n\
+.ui-icon-expand {\n\
   background-position: 0 -2960px;\n\
 }\n\
 \n\
-.ui-fa fa-export {\n\
+.ui-icon-export {\n\
   background-position: 0 -2080px;\n\
 }\n\
 \n\
-.ui-fa fa-extlink {\n\
+.ui-icon-extlink {\n\
   background-position: 0 -1680px;\n\
 }\n\
 \n\
-.ui-fa fa-eye-closed {\n\
+.ui-icon-eye-closed {\n\
   background-position: 0 -368px;\n\
 }\n\
 \n\
-.ui-fa fa-eye-open {\n\
+.ui-icon-eye-open {\n\
   background-position: 0 -528px;\n\
 }\n\
 \n\
-.ui-fa fa-facebook {\n\
+.ui-icon-facebook {\n\
   background-position: 0 -4384px;\n\
 }\n\
 \n\
-.ui-fa fa-fill {\n\
+.ui-icon-fill {\n\
   background-position: 0 -240px;\n\
 }\n\
 \n\
-.ui-fa fa-filter {\n\
+.ui-icon-filter {\n\
   background-position: 0 -2896px;\n\
 }\n\
 \n\
-.ui-fa fa-fire {\n\
+.ui-icon-fire {\n\
   background-position: 0 -912px;\n\
 }\n\
 \n\
-.ui-fa fa-flag {\n\
+.ui-icon-flag {\n\
   background-position: 0 -1504px;\n\
 }\n\
 \n\
-.ui-fa fa-float-left {\n\
+.ui-icon-float-left {\n\
   background-position: 0 -4864px;\n\
 }\n\
 \n\
-.ui-fa fa-float-none {\n\
+.ui-icon-float-none {\n\
   background-position: 0 -5536px;\n\
 }\n\
 \n\
-.ui-fa fa-float-right {\n\
+.ui-icon-float-right {\n\
   background-position: 0 -4768px;\n\
 }\n\
 \n\
-.ui-fa fa-folder-add {\n\
+.ui-icon-folder-add {\n\
   background-position: 0 -4416px;\n\
 }\n\
 \n\
-.ui-fa fa-folder-arrow {\n\
+.ui-icon-folder-arrow {\n\
   background-position: 0 -3952px;\n\
 }\n\
 \n\
-.ui-fa fa-folder-collapsed {\n\
+.ui-icon-folder-collapsed {\n\
   background-position: 0 -5152px;\n\
 }\n\
 \n\
-.ui-fa fa-folder-contacts {\n\
+.ui-icon-folder-contacts {\n\
   background-position: 0 -3488px;\n\
 }\n\
 \n\
-.ui-fa fa-folder-delete {\n\
+.ui-icon-folder-delete {\n\
   background-position: 0 -2704px;\n\
 }\n\
 \n\
-.ui-fa fa-folder-minus {\n\
+.ui-icon-folder-minus {\n\
   background-position: 0 -4880px;\n\
 }\n\
 \n\
-.ui-fa fa-folder-open {\n\
+.ui-icon-folder-open {\n\
   background-position: 0 -3680px;\n\
 }\n\
 \n\
-.ui-fa fa-font-size-dec {\n\
+.ui-icon-font-size-dec {\n\
   background-position: 0 -1104px;\n\
 }\n\
 \n\
-.ui-fa fa-font-size-inc {\n\
+.ui-icon-font-size-inc {\n\
   background-position: 0 -672px;\n\
 }\n\
 \n\
-.ui-fa fa-font-size {\n\
+.ui-icon-font-size {\n\
   background-position: 0 -416px;\n\
 }\n\
 \n\
-.ui-fa fa-font-strikethrough {\n\
+.ui-icon-font-strikethrough {\n\
   background-position: 0 -1968px;\n\
 }\n\
 \n\
-.ui-fa fa-font-underline {\n\
+.ui-icon-font-underline {\n\
   background-position: 0 -3328px;\n\
 }\n\
 \n\
-.ui-fa fa-freight {\n\
+.ui-icon-freight {\n\
   background-position: 0 -3376px;\n\
 }\n\
 \n\
-.ui-fa fa-fullscreen {\n\
+.ui-icon-fullscreen {\n\
   background-position: 0 -2976px;\n\
 }\n\
 \n\
-.ui-fa fa-game-pad {\n\
+.ui-icon-game-pad {\n\
   background-position: 0 -1952px;\n\
 }\n\
 \n\
-.ui-fa fa-gear {\n\
+.ui-icon-gear {\n\
   background-position: 0 -48px;\n\
 }\n\
 \n\
-.ui-fa fa-glasses {\n\
+.ui-icon-glasses {\n\
   background-position: 0 -2400px;\n\
 }\n\
 \n\
-.ui-fa fa-globe-1 {\n\
+.ui-icon-globe-1 {\n\
   background-position: 0 -16px;\n\
 }\n\
 \n\
-.ui-fa fa-globe-2 {\n\
+.ui-icon-globe-2 {\n\
   background-position: 0 -32px;\n\
 }\n\
 \n\
-.ui-fa fa-google {\n\
+.ui-icon-google {\n\
   background-position: 0 -1056px;\n\
 }\n\
 \n\
-.ui-fa fa-grab-on {\n\
+.ui-icon-grab-on {\n\
   background-position: 0 -1456px;\n\
 }\n\
 \n\
-.ui-fa fa-grab {\n\
+.ui-icon-grab {\n\
   background-position: 0 -832px;\n\
 }\n\
 \n\
-.ui-fa fa-grid-large {\n\
+.ui-icon-grid-large {\n\
   background-position: 0 -3984px;\n\
 }\n\
 \n\
-.ui-fa fa-grid-small-2 {\n\
+.ui-icon-grid-small-2 {\n\
   background-position: 0 -4624px;\n\
 }\n\
 \n\
-.ui-fa fa-grid-small {\n\
+.ui-icon-grid-small {\n\
   background-position: 0 -4816px;\n\
 }\n\
 \n\
-.ui-fa fa-grip-diagonal-se {\n\
+.ui-icon-grip-diagonal-se {\n\
   background-position: 0 -800px;\n\
 }\n\
 \n\
-.ui-fa fa-grip-dotted-horizontal {\n\
+.ui-icon-grip-dotted-horizontal {\n\
   background-position: 0 -4016px;\n\
 }\n\
 \n\
-.ui-fa fa-grip-dotted-vertical {\n\
+.ui-icon-grip-dotted-vertical {\n\
   background-position: 0 -4080px;\n\
 }\n\
 \n\
-.ui-fa fa-grip-solid-horizontal {\n\
+.ui-icon-grip-solid-horizontal {\n\
   background-position: 0 -4032px;\n\
 }\n\
 \n\
-.ui-fa fa-grip-solid-vertical {\n\
+.ui-icon-grip-solid-vertical {\n\
   background-position: 0 -4096px;\n\
 }\n\
 \n\
-.ui-fa fa-gripsmall-diagonal-se {\n\
+.ui-icon-gripsmall-diagonal-se {\n\
   background-position: 0 -816px;\n\
 }\n\
 \n\
-.ui-fa fa-hand-point {\n\
+.ui-icon-hand-point {\n\
   background-position: 0 -3056px;\n\
 }\n\
 \n\
-.ui-fa fa-hand {\n\
+.ui-icon-hand {\n\
   background-position: 0 -2928px;\n\
 }\n\
 \n\
-.ui-fa fa-hanger {\n\
+.ui-icon-hanger {\n\
   background-position: 0 -2560px;\n\
 }\n\
 \n\
-.ui-fa fa-headphones {\n\
+.ui-icon-headphones {\n\
   background-position: 0 -1920px;\n\
 }\n\
 \n\
-.ui-fa fa-heart-empty {\n\
+.ui-icon-heart-empty {\n\
   background-position: 0 -208px;\n\
 }\n\
 \n\
-.ui-fa fa-heart {\n\
+.ui-icon-heart {\n\
   background-position: 0 -2576px;\n\
 }\n\
 \n\
-.ui-fa fa-help {\n\
+.ui-icon-help {\n\
   background-position: 0 -2880px;\n\
 }\n\
 \n\
-.ui-fa fa-home {\n\
+.ui-icon-home {\n\
   background-position: 0 -4512px;\n\
 }\n\
 \n\
-.ui-fa fa-hourglass {\n\
+.ui-icon-hourglass {\n\
   background-position: 0 -1712px;\n\
 }\n\
 \n\
-.ui-fa fa-hr {\n\
+.ui-icon-hr {\n\
   background-position: 0 -5520px;\n\
 }\n\
 \n\
-.ui-fa fa-image {\n\
+.ui-icon-image {\n\
   background-position: 0 -2944px;\n\
 }\n\
 \n\
-.ui-fa fa-indent-decrease {\n\
+.ui-icon-indent-decrease {\n\
   background-position: 0 -4448px;\n\
 }\n\
 \n\
-.ui-fa fa-indent-increase {\n\
+.ui-icon-indent-increase {\n\
   background-position: 0 -4352px;\n\
 }\n\
 \n\
-.ui-fa fa-info {\n\
+.ui-icon-info {\n\
   background-position: 0 -2624px;\n\
 }\n\
 \n\
-.ui-fa fa-information {\n\
+.ui-icon-information {\n\
   background-position: 0 -2640px;\n\
 }\n\
 \n\
-.ui-fa fa-iphone {\n\
+.ui-icon-iphone {\n\
   background-position: 0 -5456px;\n\
 }\n\
 \n\
-.ui-fa fa-italic {\n\
+.ui-icon-italic {\n\
   background-position: 0 -4320px;\n\
 }\n\
 \n\
-.ui-fa fa-key {\n\
+.ui-icon-key {\n\
   background-position: 0 -1424px;\n\
 }\n\
 \n\
-.ui-fa fa-layers {\n\
+.ui-icon-layers {\n\
   background-position: 0 -992px;\n\
 }\n\
 \n\
-.ui-fa fa-lightbulb {\n\
+.ui-icon-lightbulb {\n\
   background-position: 0 -480px;\n\
 }\n\
 \n\
-.ui-fa fa-lightning {\n\
+.ui-icon-lightning {\n\
   background-position: 0 -2752px;\n\
 }\n\
 \n\
-.ui-fa fa-like {\n\
+.ui-icon-like {\n\
   background-position: 0 -3536px;\n\
 }\n\
 \n\
-.ui-fa fa-link-broken {\n\
+.ui-icon-link-broken {\n\
   background-position: 0 -1072px;\n\
 }\n\
 \n\
-.ui-fa fa-link {\n\
+.ui-icon-link {\n\
   background-position: 0 -304px;\n\
 }\n\
 \n\
-.ui-fa fa-list-ordered {\n\
+.ui-icon-list-ordered {\n\
   background-position: 0 -3776px;\n\
 }\n\
 \n\
-.ui-fa fa-list-unordered {\n\
+.ui-icon-list-unordered {\n\
   background-position: 0 -4992px;\n\
 }\n\
 \n\
-.ui-fa fa-locked {\n\
+.ui-icon-locked {\n\
   background-position: 0 -3088px;\n\
 }\n\
 \n\
-.ui-fa fa-login {\n\
+.ui-icon-login {\n\
   background-position: 0 -3104px;\n\
 }\n\
 \n\
-.ui-fa fa-magic-wand-2 {\n\
+.ui-icon-magic-wand-2 {\n\
   background-position: 0 -1888px;\n\
 }\n\
 \n\
-.ui-fa fa-magic-wand {\n\
+.ui-icon-magic-wand {\n\
   background-position: 0 -256px;\n\
 }\n\
 \n\
-.ui-fa fa-mail-closed {\n\
+.ui-icon-mail-closed {\n\
   background-position: 0 -2224px;\n\
 }\n\
 \n\
-.ui-fa fa-mail-open {\n\
+.ui-icon-mail-open {\n\
   background-position: 0 -3264px;\n\
 }\n\
 \n\
-.ui-fa fa-map-marker {\n\
+.ui-icon-map-marker {\n\
   background-position: 0 -1568px;\n\
 }\n\
 \n\
-.ui-fa fa-math {\n\
+.ui-icon-math {\n\
   background-position: 0 -4112px;\n\
 }\n\
 \n\
-.ui-fa fa-mic {\n\
+.ui-icon-mic {\n\
   background-position: 0 -2448px;\n\
 }\n\
 \n\
-.ui-fa fa-microphone {\n\
+.ui-icon-microphone {\n\
   background-position: 0 -2592px;\n\
 }\n\
 \n\
-.ui-fa fa-minus {\n\
+.ui-icon-minus {\n\
   background-position: 0 -5680px;\n\
 }\n\
 \n\
-.ui-fa fa-minusthick {\n\
+.ui-icon-minusthick {\n\
   background-position: 0 -5648px;\n\
 }\n\
 \n\
-.ui-fa fa-money {\n\
+.ui-icon-money {\n\
   background-position: 0 -544px;\n\
 }\n\
 \n\
-.ui-fa fa-music {\n\
+.ui-icon-music {\n\
   background-position: 0 -2544px;\n\
 }\n\
 \n\
-.ui-fa fa-new {\n\
+.ui-icon-new {\n\
   background-position: 0 -2912px;\n\
 }\n\
 \n\
-.ui-fa fa-newspaper-double {\n\
+.ui-icon-newspaper-double {\n\
   background-position: 0 -4000px;\n\
 }\n\
 \n\
-.ui-fa fa-newwin {\n\
+.ui-icon-newwin {\n\
   background-position: 0 -3888px;\n\
 }\n\
 \n\
-.ui-fa fa-note {\n\
+.ui-icon-note {\n\
   background-position: 0 -4304px;\n\
 }\n\
 \n\
-.ui-fa fa-notice {\n\
+.ui-icon-notice {\n\
   background-position: 0 -4832px;\n\
 }\n\
 \n\
-.ui-fa fa-ordered-list {\n\
+.ui-icon-ordered-list {\n\
   background-position: 0 -3792px;\n\
 }\n\
 \n\
-.ui-fa fa-paintbrush {\n\
+.ui-icon-paintbrush {\n\
   background-position: 0 -592px;\n\
 }\n\
 \n\
-.ui-fa fa-paper-plane {\n\
+.ui-icon-paper-plane {\n\
   background-position: 0 -1744px;\n\
 }\n\
 \n\
-.ui-fa fa-pause {\n\
+.ui-icon-pause {\n\
   background-position: 0 -5600px;\n\
 }\n\
 \n\
-.ui-fa fa-pdf {\n\
+.ui-icon-pdf {\n\
   background-position: 0 -2688px;\n\
 }\n\
 \n\
-.ui-fa fa-pencil {\n\
+.ui-icon-pencil {\n\
   background-position: 0 -1328px;\n\
 }\n\
 \n\
-.ui-fa fa-person {\n\
+.ui-icon-person {\n\
   background-position: 0 -2096px;\n\
 }\n\
 \n\
-.ui-fa fa-phone-e {\n\
+.ui-icon-phone-e {\n\
   background-position: 0 -2496px;\n\
 }\n\
 \n\
-.ui-fa fa-phone-keypad {\n\
+.ui-icon-phone-keypad {\n\
   background-position: 0 -4240px;\n\
 }\n\
 \n\
-.ui-fa fa-phone-n {\n\
+.ui-icon-phone-n {\n\
   background-position: 0 -2464px;\n\
 }\n\
 \n\
-.ui-fa fa-phone-touch {\n\
+.ui-icon-phone-touch {\n\
   background-position: 0 -3296px;\n\
 }\n\
 \n\
-.ui-fa fa-pie-chart {\n\
+.ui-icon-pie-chart {\n\
   background-position: 0 0;\n\
 }\n\
 \n\
-.ui-fa fa-pin-s {\n\
+.ui-icon-pin-s {\n\
   background-position: 0 -1520px;\n\
 }\n\
 \n\
-.ui-fa fa-pin-w {\n\
+.ui-icon-pin-w {\n\
   background-position: 0 -1392px;\n\
 }\n\
 \n\
-.ui-fa fa-play {\n\
+.ui-icon-play {\n\
   background-position: 0 -4192px;\n\
 }\n\
 \n\
-.ui-fa fa-plus {\n\
+.ui-icon-plus {\n\
   background-position: 0 -5392px;\n\
 }\n\
 \n\
-.ui-fa fa-plusthick {\n\
+.ui-icon-plusthick {\n\
   background-position: 0 -4256px;\n\
 }\n\
 \n\
-.ui-fa fa-power {\n\
+.ui-icon-power {\n\
   background-position: 0 -624px;\n\
 }\n\
 \n\
-.ui-fa fa-presentation {\n\
+.ui-icon-presentation {\n\
   background-position: 0 -4576px;\n\
 }\n\
 \n\
-.ui-fa fa-print {\n\
+.ui-icon-print {\n\
   background-position: 0 -4368px;\n\
 }\n\
 \n\
-.ui-fa fa-quote-block {\n\
+.ui-icon-quote-block {\n\
   background-position: 0 -4640px;\n\
 }\n\
 \n\
-.ui-fa fa-radio-off {\n\
+.ui-icon-radio-off {\n\
   background-position: 0 -3120px;\n\
 }\n\
 \n\
-.ui-fa fa-radio-on {\n\
+.ui-icon-radio-on {\n\
   background-position: 0 -1856px;\n\
 }\n\
 \n\
-.ui-fa fa-raptor {\n\
+.ui-icon-raptor {\n\
   background-position: 0 -320px;\n\
 }\n\
 \n\
-.ui-fa fa-raptorize {\n\
+.ui-icon-raptorize {\n\
   background-position: 0 -336px;\n\
 }\n\
 \n\
-.ui-fa fa-redo {\n\
+.ui-icon-redo {\n\
   background-position: 0 -2416px;\n\
 }\n\
 \n\
-.ui-fa fa-refresh {\n\
+.ui-icon-refresh {\n\
   background-position: 0 -784px;\n\
 }\n\
 \n\
-.ui-fa fa-relationship {\n\
+.ui-icon-relationship {\n\
   background-position: 0 -1312px;\n\
 }\n\
 \n\
-.ui-fa fa-rss-folder {\n\
+.ui-icon-rss-folder {\n\
   background-position: 0 -2112px;\n\
 }\n\
 \n\
-.ui-fa fa-rss {\n\
+.ui-icon-rss {\n\
   background-position: 0 -224px;\n\
 }\n\
 \n\
-.ui-fa fa-save {\n\
+.ui-icon-save {\n\
   background-position: 0 -4480px;\n\
 }\n\
 \n\
-.ui-fa fa-scales {\n\
+.ui-icon-scales {\n\
   background-position: 0 -1232px;\n\
 }\n\
 \n\
-.ui-fa fa-scissors {\n\
+.ui-icon-scissors {\n\
   background-position: 0 -144px;\n\
 }\n\
 \n\
-.ui-fa fa-screen {\n\
+.ui-icon-screen {\n\
   background-position: 0 -5200px;\n\
 }\n\
 \n\
-.ui-fa fa-script {\n\
+.ui-icon-script {\n\
   background-position: 0 -2800px;\n\
 }\n\
 \n\
-.ui-fa fa-search {\n\
+.ui-icon-search {\n\
   background-position: 0 -848px;\n\
 }\n\
 \n\
-.ui-fa fa-seek-end {\n\
+.ui-icon-seek-end {\n\
   background-position: 0 -2720px;\n\
 }\n\
 \n\
-.ui-fa fa-seek-first {\n\
+.ui-icon-seek-first {\n\
   background-position: 0 -2816px;\n\
 }\n\
 \n\
-.ui-fa fa-seek-next {\n\
+.ui-icon-seek-next {\n\
   background-position: 0 -4128px;\n\
 }\n\
 \n\
-.ui-fa fa-seek-prev {\n\
+.ui-icon-seek-prev {\n\
   background-position: 0 -4144px;\n\
 }\n\
 \n\
-.ui-fa fa-seek-start {\n\
+.ui-icon-seek-start {\n\
   background-position: 0 -2832px;\n\
 }\n\
 \n\
-.ui-fa fa-server-error {\n\
+.ui-icon-server-error {\n\
   background-position: 0 -1728px;\n\
 }\n\
 \n\
-.ui-fa fa-server {\n\
+.ui-icon-server {\n\
   background-position: 0 -5136px;\n\
 }\n\
 \n\
-.ui-fa fa-share {\n\
+.ui-icon-share {\n\
   background-position: 0 -2176px;\n\
 }\n\
 \n\
-.ui-fa fa-shield-2 {\n\
+.ui-icon-shield-2 {\n\
   background-position: 0 -1360px;\n\
 }\n\
 \n\
-.ui-fa fa-shield {\n\
+.ui-icon-shield {\n\
   background-position: 0 -176px;\n\
 }\n\
 \n\
-.ui-fa fa-shopping-bag-dollar {\n\
+.ui-icon-shopping-bag-dollar {\n\
   background-position: 0 -608px;\n\
 }\n\
 \n\
-.ui-fa fa-shopping-bag {\n\
+.ui-icon-shopping-bag {\n\
   background-position: 0 -3040px;\n\
 }\n\
 \n\
-.ui-fa fa-signal-diag {\n\
+.ui-icon-signal-diag {\n\
   background-position: 0 -4048px;\n\
 }\n\
 \n\
-.ui-fa fa-signal {\n\
+.ui-icon-signal {\n\
   background-position: 0 -1600px;\n\
 }\n\
 \n\
-.ui-fa fa-speechbubble-2 {\n\
+.ui-icon-speechbubble-2 {\n\
   background-position: 0 -1344px;\n\
 }\n\
 \n\
-.ui-fa fa-speechbubble {\n\
+.ui-icon-speechbubble {\n\
   background-position: 0 -3072px;\n\
 }\n\
 \n\
-.ui-fa fa-squaresmall-close {\n\
+.ui-icon-squaresmall-close {\n\
   background-position: 0 -3440px;\n\
 }\n\
 \n\
-.ui-fa fa-squaresmall-minus {\n\
+.ui-icon-squaresmall-minus {\n\
   background-position: 0 -5408px;\n\
 }\n\
 \n\
-.ui-fa fa-squaresmall-plus {\n\
+.ui-icon-squaresmall-plus {\n\
   background-position: 0 -4928px;\n\
 }\n\
 \n\
-.ui-fa fa-star-empty {\n\
+.ui-icon-star-empty {\n\
   background-position: 0 -352px;\n\
 }\n\
 \n\
-.ui-fa fa-star {\n\
+.ui-icon-star {\n\
   background-position: 0 -1776px;\n\
 }\n\
 \n\
-.ui-fa fa-stop {\n\
+.ui-icon-stop {\n\
   background-position: 0 -5632px;\n\
 }\n\
 \n\
-.ui-fa fa-stopwatch {\n\
+.ui-icon-stopwatch {\n\
   background-position: 0 -496px;\n\
 }\n\
 \n\
-.ui-fa fa-suitcase {\n\
+.ui-icon-suitcase {\n\
   background-position: 0 -3904px;\n\
 }\n\
 \n\
-.ui-fa fa-sun {\n\
+.ui-icon-sun {\n\
   background-position: 0 -1120px;\n\
 }\n\
 \n\
-.ui-fa fa-swap {\n\
+.ui-icon-swap {\n\
   background-position: 0 -2304px;\n\
 }\n\
 \n\
-.ui-fa fa-tag {\n\
+.ui-icon-tag {\n\
   background-position: 0 -2848px;\n\
 }\n\
 \n\
-.ui-fa fa-target {\n\
+.ui-icon-target {\n\
   background-position: 0 -1408px;\n\
 }\n\
 \n\
-.ui-fa fa-text-bold {\n\
+.ui-icon-text-bold {\n\
   background-position: 0 -2672px;\n\
 }\n\
 \n\
-.ui-fa fa-text-cursor {\n\
+.ui-icon-text-cursor {\n\
   background-position: 0 -5024px;\n\
 }\n\
 \n\
-.ui-fa fa-text-italic {\n\
+.ui-icon-text-italic {\n\
   background-position: 0 -4336px;\n\
 }\n\
 \n\
-.ui-fa fa-text-size {\n\
+.ui-icon-text-size {\n\
   background-position: 0 -432px;\n\
 }\n\
 \n\
-.ui-fa fa-text-strike {\n\
+.ui-icon-text-strike {\n\
   background-position: 0 -1984px;\n\
 }\n\
 \n\
-.ui-fa fa-text-strikethrough {\n\
+.ui-icon-text-strikethrough {\n\
   background-position: 0 -2000px;\n\
 }\n\
 \n\
-.ui-fa fa-text-sub {\n\
+.ui-icon-text-sub {\n\
   background-position: 0 -864px;\n\
 }\n\
 \n\
-.ui-fa fa-text-super {\n\
+.ui-icon-text-super {\n\
   background-position: 0 -688px;\n\
 }\n\
 \n\
-.ui-fa fa-text-underline {\n\
+.ui-icon-text-underline {\n\
   background-position: 0 -3344px;\n\
 }\n\
 \n\
-.ui-fa fa-tools-crossed {\n\
+.ui-icon-tools-crossed {\n\
   background-position: 0 -384px;\n\
 }\n\
 \n\
-.ui-fa fa-tools {\n\
+.ui-icon-tools {\n\
   background-position: 0 -2992px;\n\
 }\n\
 \n\
-.ui-fa fa-trash {\n\
+.ui-icon-trash {\n\
   background-position: 0 -4896px;\n\
 }\n\
 \n\
-.ui-fa fa-triangle-1-e {\n\
+.ui-icon-triangle-1-e {\n\
   background-position: 0 -5296px;\n\
 }\n\
 \n\
-.ui-fa fa-triangle-1-n {\n\
+.ui-icon-triangle-1-n {\n\
   background-position: 0 -5424px;\n\
 }\n\
 \n\
-.ui-fa fa-triangle-1-ne {\n\
+.ui-icon-triangle-1-ne {\n\
   background-position: 0 -5056px;\n\
 }\n\
 \n\
-.ui-fa fa-triangle-1-nw {\n\
+.ui-icon-triangle-1-nw {\n\
   background-position: 0 -5248px;\n\
 }\n\
 \n\
-.ui-fa fa-triangle-1-s {\n\
+.ui-icon-triangle-1-s {\n\
   background-position: 0 -5184px;\n\
 }\n\
 \n\
-.ui-fa fa-triangle-1-se {\n\
+.ui-icon-triangle-1-se {\n\
   background-position: 0 -5440px;\n\
 }\n\
 \n\
-.ui-fa fa-triangle-1-sw {\n\
+.ui-icon-triangle-1-sw {\n\
   background-position: 0 -5232px;\n\
 }\n\
 \n\
-.ui-fa fa-triangle-1-w {\n\
+.ui-icon-triangle-1-w {\n\
   background-position: 0 -5312px;\n\
 }\n\
 \n\
-.ui-fa fa-triangle-2-e-w {\n\
+.ui-icon-triangle-2-e-w {\n\
   background-position: 0 -4528px;\n\
 }\n\
 \n\
-.ui-fa fa-triangle-2-n-s {\n\
+.ui-icon-triangle-2-n-s {\n\
   background-position: 0 -4496px;\n\
 }\n\
 \n\
-.ui-fa fa-twitter-2 {\n\
+.ui-icon-twitter-2 {\n\
   background-position: 0 -2272px;\n\
 }\n\
 \n\
-.ui-fa fa-twitter {\n\
+.ui-icon-twitter {\n\
   background-position: 0 -4288px;\n\
 }\n\
 \n\
-.ui-fa fa-undo {\n\
+.ui-icon-undo {\n\
   background-position: 0 -2288px;\n\
 }\n\
 \n\
-.ui-fa fa-unlink {\n\
+.ui-icon-unlink {\n\
   background-position: 0 -1088px;\n\
 }\n\
 \n\
-.ui-fa fa-unlocked {\n\
+.ui-icon-unlocked {\n\
   background-position: 0 -2480px;\n\
 }\n\
 \n\
-.ui-fa fa-unordered-list {\n\
+.ui-icon-unordered-list {\n\
   background-position: 0 -5008px;\n\
 }\n\
 \n\
-.ui-fa fa-update {\n\
+.ui-icon-update {\n\
   background-position: 0 -400px;\n\
 }\n\
 \n\
-.ui-fa fa-user-suit {\n\
+.ui-icon-user-suit {\n\
   background-position: 0 -640px;\n\
 }\n\
 \n\
-.ui-fa fa-user-unknown {\n\
+.ui-icon-user-unknown {\n\
   background-position: 0 -1376px;\n\
 }\n\
 \n\
-.ui-fa fa-user-woman {\n\
+.ui-icon-user-woman {\n\
   background-position: 0 -656px;\n\
 }\n\
 \n\
-.ui-fa fa-user {\n\
+.ui-icon-user {\n\
   background-position: 0 -2784px;\n\
 }\n\
 \n\
-.ui-fa fa-video {\n\
+.ui-icon-video {\n\
   background-position: 0 -80px;\n\
 }\n\
 \n\
-.ui-fa fa-view-source {\n\
+.ui-icon-view-source {\n\
   background-position: 0 -928px;\n\
 }\n\
 \n\
-.ui-fa fa-view {\n\
+.ui-icon-view {\n\
   background-position: 0 -880px;\n\
 }\n\
 \n\
-.ui-fa fa-volume-off {\n\
+.ui-icon-volume-off {\n\
   background-position: 0 -1664px;\n\
 }\n\
 \n\
-.ui-fa fa-volume-on {\n\
+.ui-icon-volume-on {\n\
   background-position: 0 -1040px;\n\
 }\n\
 \n\
-.ui-fa fa-wallet {\n\
+.ui-icon-wallet {\n\
   background-position: 0 -1840px;\n\
 }\n\
 \n\
-.ui-fa fa-warning {\n\
+.ui-icon-warning {\n\
   background-position: 0 -2352px;\n\
 }\n\
 \n\
-.ui-fa fa-wifi-router {\n\
+.ui-icon-wifi-router {\n\
   background-position: 0 -3392px;\n\
 }\n\
 \n\
-.ui-fa fa-world-web {\n\
+.ui-icon-world-web {\n\
   background-position: 0 -64px;\n\
 }\n\
 \n\
-.ui-fa fa-wrench {\n\
+.ui-icon-wrench {\n\
   background-position: 0 -1632px;\n\
 }\n\
 \n\
-.ui-fa fa-xls {\n\
+.ui-icon-xls {\n\
   background-position: 0 -2128px;\n\
 }\n\
 \n\
-.ui-fa fa-youtube {\n\
+.ui-icon-youtube {\n\
   background-position: 0 -1280px;\n\
 }\n\
 \n\
-.ui-fa fa-zoomin {\n\
+.ui-icon-zoomin {\n\
   background-position: 0 -560px;\n\
 }\n\
 \n\
-.ui-fa fa-zoomout {\n\
+.ui-icon-zoomout {\n\
   background-position: 0 -448px;\n\
 }\n\
 \n\
@@ -23558,7 +23558,7 @@ Form Style\n\
 }\n\
 \n\
 /* line 55, ../components/layout/toolbar.scss */\n\
-.raptor-layout-toolbar-group .ui-button-fa fa-only {\n\
+.raptor-layout-toolbar-group .ui-button-icon-only {\n\
   width: 32px;\n\
 }\n\
 \n\
@@ -23568,7 +23568,7 @@ Form Style\n\
 }\n\
 \n\
 /* line 62, ../components/layout/toolbar.scss */\n\
-.raptor-layout-toolbar-group .ui-button-text-fa fa-primary .ui-button-text {\n\
+.raptor-layout-toolbar-group .ui-button-text-icon-primary .ui-button-text {\n\
   padding: 8px 16px 10px 32px;\n\
 }\n\
 \n\
@@ -23849,7 +23849,7 @@ Form Style\n\
 }\n\
 \n\
 /* line 22, ../plugins/color-menu-basic/color-menu-basic.scss */\n\
-.raptor-ui-color-menu-basic .ui-fa fa-swatch {\n\
+.raptor-ui-color-menu-basic .ui-icon-swatch {\n\
   background-image: none;\n\
   border: 1px solid rgba(0, 0, 0, 0.35);\n\
 }\n\

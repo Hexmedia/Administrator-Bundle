@@ -50,7 +50,7 @@ abstract class CrudController extends Controller implements ListControllerInterf
     /**
      * Lists all entities.
      *
-     * @Rest\View("HexmediaAdministratorBundle:Table:content.html.twig")
+     * @Rest\View("HexmediaAdministratorBundle:Crud:list.html.twig")
      */
     public function listAction($page = 1)
     {
