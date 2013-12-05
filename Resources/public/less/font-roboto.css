@@ -1,7 +1,0 @@
-@font-face {
-  font-family: 'roboto';
-  src: url('@HexmediaAdministratorBundle/Resources/public/font/roboto/Roboto-Bold-webfont.eot');
-  src: url('@HexmediaAdministratorBundle/Resources/public/font/roboto/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'), url('@HexmediaAdministratorBundle/Resources/public/font/roboto/Roboto-Bold-webfont.woff') format('woff'), url('@HexmediaAdministratorBundle/Resources/public/font/roboto/Roboto-Bold-webfont.ttf') format('truetype'), url('@HexmediaAdministratorBundle/Resources/public/font/roboto/Roboto-Bold-webfont.svg#robotobold') format('svg');
-  font-weight: bold;
-  font-style: normal;
-}

@@ -920,25 +920,25 @@
 
 /* line 43, ../plugins/language-menu/language-menu.scss */
 .ui-icon-flag-nl,
-.ui-state-hover .ui-icon-flag-nl {
+.ui-state-hover .ui-fa fa-flag-nl {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAIAAAD5gJpuAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFXSURBVHjaYvzPgAD/UNlYEUAAkuTgCAAIBgJggq5VoAs1qM0vdzmMz362vezjokxPGimkEQ5WoAQEKuK71zwCCKyB4c//J8+BShn+/vv/+w/D399AEox+//8FJH/9/wUU+cUoKw20ASCAWBhEDf/LyDOw84BU//kDtgGI/oARmAHRDJQSFwVqAAggxo8fP/Ly8oKc9P8/AxjiAoyMjA8ePAAIIJZ///5BVIM0MOBWDpRlZPzz5w9AALH8gyvCbz7QBrCJAAHEyKDYX15r/+j1199//v35++/Xn7+///77DST/wMl/f4Dk378K4jx7O2cABBALw7NP77/+ev3xB0gOpOHfr99AdX9/gTVASKCGP//+8XCyMjC8AwggFoZfIHWSwpwQk4CW/AYjsKlA8u+ff////v33998/YPgBnQQQQIzAaGNg+AVGf5AYf5BE/oCjGEIyAQQYAGvKZ4C6+xXRAAAAAElFTkSuQmCC');
 }
 
 /* line 48, ../plugins/language-menu/language-menu.scss */
-.ui-icon-flag-ru,
-.ui-state-hover .ui-icon-flag-ru {
+.ui-fa fa-flag-ru,
+.ui-state-hover .ui-fa fa-flag-ru {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAIAAAD5gJpuAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAE2SURBVHjaYvz69T8DAvz79w9CQVj/0MCffwwAAcQClObiAin6/x+okxHMgPCAbOb//5n+I4EXL74ABBALxGSwagTjPzbAyMgItAQggBg9Pf9nZPx//x7kjL9////9C2QAyf9//qCQQCQkxFhY+BEggFi2b/+nq8v46BEDSPQ3w+8//3//BqFfv9BJeXmQEwACCOSkP38YgHy4Bog0RN0vIOMXVOTPH6Cv/gEEEEgDxFKgHEgDXCmGDUAE1AAQQCybGZg1f/d8//XsH0jTn3+///z79RtE/v4NZfz68xfI/vOX+4/0ZoZFAAHE4gYMvD+3/v2+h91wCANo9Z+/jH9VxBkYAAKIBRg9TL//MEhKAuWAogxgZzGC2CCfgUggAoYdGAEVAwQQ41egu5AQAyoXTQoIAAIMAD+JZR7YOGEWAAAAAElFTkSuQmCC');
 }
 
 /* line 53, ../plugins/language-menu/language-menu.scss */
-.ui-icon-flag-sv,
-.ui-state-hover .ui-icon-flag-sv {
+.ui-fa fa-flag-sv,
+.ui-state-hover .ui-fa fa-flag-sv {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAIAAAD5gJpuAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGwSURBVHjaYmRwbmSAgb919Qz/GICIuayU4dc/hl+/GH79YfjxC8H4/QsggFiA6qpzPYHkv3//GZW/Mfz7+5/hb26J35+////8/QdEv//+BZH/QIxNuZMBAogFbPT/J++//f33n+Hno///fzP8/3v/9effQEV//gIV/frz9xeQ/fuvrDA3A8MvgABiAZr87x8DUPWfn6wQ1f///WJh/PHtD9MvsJ5fYPT7H1Az0Lm/AAKI8e9BBkalMoZfQLP/MPz/8//fbxD6Dyb//QIjMOP/b0Z2+U97DwIEEAvDHwaQqSAVMA3/f0G1IVSDGAz//gCVAAQQ0EkM/0Hq/gBFgUJIGpBIsAgj0Od/GAACiJFBvzirLOD+m4/AoNjq3gu26pf52pLff/6A/PCD6dcfYPj8+/Pnr7IY39nWSQABxMLw488fkIf+/v7zD2bYr19A1aAg+gcM/98Mf/8w/vvDBETsDAxPAAKIBRgpQKWS/NzAAGFgk2YABtS/37JCPKCwB7r531+gOX///gOhf6BIBQggRgbJZHhEvp2zFhgGQIeKptsygELjFwz9A3OBJANAgAEA3Ll5iCfmAhAAAAAASUVORK5CYII=');
 }
 
 /* line 58, ../plugins/language-menu/language-menu.scss */
-.ui-icon-flag-zh-cn,
-.ui-state-hover .ui-icon-flag-zh-cn {
+.ui-fa fa-flag-zh-cn,
+.ui-state-hover .ui-fa fa-flag-zh-cn {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAIAAAD5gJpuAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFqSURBVHjaYrzOwPAPjJgYQEDAleHVbhADIvgHLPgHiQ0QQCxAlkR9NW8sw+cV/1gV/7Gb/hV4+vfzhj8Mv/78//Pn/+/f/8AkhH1t0yaAAAJp4I37zyz2lDfu79uqv/++/WYz+cuq/vvLxt8gdb+A5K9/v34B2SyyskBLAAII5JAva/7/+/z367a/f3/8ZuT9+//Pr78vQUrB6n4CSSj6/RuoASCAWEDO/fD3ddEfhv9/OE3/sKj8/n7k9/fDQNUIs/+DVf8HawAIIJCT/v38C3Hr95N/GDh/f94AVvT7N8RUBpjxQAVADQABBNLw/y/Ifwy/f/399ufTOpDBEPf8g5sN0QBEDAwAAQTWABEChgOSA9BVA00E2wAQQCANQBbEif/AzoCqgLkbbBYwWP/+//sXqBYggFhAkfL7D7OkJFCOCSj65zfUeFjwg8z++/ffX5AGoGKAAGI8jhSRyIw/SJH9D4aAYQoQYAA6rnMw1jU2vQAAAABJRU5ErkJggg==');
 }
 

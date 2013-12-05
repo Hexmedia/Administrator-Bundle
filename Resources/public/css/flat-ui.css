@@ -1088,7 +1088,7 @@ fieldset[disabled] .btn-link:focus {
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
 }
-.navbar .btn-navbar .icon-bar {
+.navbar .btn-navbar .fa fa-bar {
   display: none;
 }
 .navbar-default {

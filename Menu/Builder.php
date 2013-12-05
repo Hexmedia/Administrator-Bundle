@@ -60,12 +60,12 @@ class Builder {
 	}
 
 	private function addDashboard() {
-		$this->menu->addChild($this->translator->trans('Dashboard'), array('route' => 'HexMediaDashboard'))->setAttribute('icon', 'icon-desktop');
+		$this->menu->addChild($this->translator->trans('Dashboard'), array('route' => 'HexMediaDashboard'))->setAttribute('icon', 'fa fa-desktop');
 	}
 
 	private function addConfiguration() {
 		if ($this->securityContext->isGranted("ROLE_SUPER_ADMIN")) {
-			$configuration = $this->menu->addChild($this->translator->trans('Configuration'), array('route' => 'HexMediaConfigurationDisplay'))->setAttribute('icon', 'icon-cogs');
+			$configuration = $this->menu->addChild($this->translator->trans('Configuration'), array('route' => 'HexMediaConfigurationDisplay'))->setAttribute('icon', 'fa fa-cogs');
 //			$configuration->addChild($this->translator->trans("List"), array('route' => 'HexMediaConfigurationDisplay'));
 			$configuration->addChild($this->translator->trans("Add"), array('route' => 'HexMediaConfigurationAdd'));
 		}

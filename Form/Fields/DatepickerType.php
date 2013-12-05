@@ -19,7 +19,7 @@ class DatepickerType extends AbstractType
                 'widget' => 'single_text',
                 'widget_addon' => [
                     'type' => 'prepend',
-                    'text' => '<span class="icon-calendar"></span>'
+                    'text' => '<span class="fa fa-calendar"></span>'
                 ],
                 'format' => 'dd/MM/yyyy'
             ]

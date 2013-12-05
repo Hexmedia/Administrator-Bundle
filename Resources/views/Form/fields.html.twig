@@ -1,7 +1,7 @@
 {% block date_widget %}
     {% spaceless %}
         {% if widget_addon_prepend is null or widget_addon_prepend is not defined %}
-            {% set widget_addon_prepend = { 'text': '<i class="icon-calendar"></i>' } %}
+            {% set widget_addon_prepend = { 'text': '<i class="fa fa-calendar"></i>' } %}
         {% endif %}
         {{ block('form_widget_simple') }}
         <script type="text/javascript">

@@ -2345,7 +2345,7 @@
 
 					//TODO : What's going on here?
 					if ("se" === handle) {
-						axis.addClass("ui-icon ui-icon-gripsmall-diagonal-se");
+						axis.addClass("ui-icon ui-fa fa-gripsmall-diagonal-se");
 					}
 
 					//Insert into internal handles object and append to element
@@ -5939,8 +5939,8 @@
 			header: "> li > :first-child,> :not(li):even",
 			heightStyle: "auto",
 			icons: {
-				activeHeader: "ui-icon-triangle-1-s",
-				header: "ui-icon-triangle-1-e"
+				activeHeader: "ui-fa fa-triangle-1-s",
+				header: "ui-fa fa-triangle-1-e"
 			},
 			// callbacks
 			activate: null,
@@ -7035,7 +7035,7 @@
 	var lastActive, startXPos, startYPos, clickDragged,
 			baseClasses = "ui-button ui-widget ui-state-default ui-corner-all",
 			stateClasses = "ui-state-hover ui-state-active ",
-			typeClasses = "ui-button-icons-only ui-button-icon-only ui-button-text-icons ui-button-text-icon-primary ui-button-text-icon-secondary ui-button-text-only",
+			typeClasses = "ui-button-icons-only ui-button-fa fa-only ui-button-text-icons ui-button-text-fa fa-primary ui-button-text-fa fa-secondary ui-button-text-only",
 			formResetHandler = function() {
 				var buttons = $(this).find(":ui-button");
 				setTimeout(function() {
@@ -7350,15 +7350,15 @@
 				}
 
 				if (icons.primary) {
-					buttonElement.prepend("<span class='ui-button-icon-primary ui-icon " + icons.primary + "'></span>");
+					buttonElement.prepend("<span class='ui-button-fa fa-primary ui-icon " + icons.primary + "'></span>");
 				}
 
 				if (icons.secondary) {
-					buttonElement.append("<span class='ui-button-icon-secondary ui-icon " + icons.secondary + "'></span>");
+					buttonElement.append("<span class='ui-button-fa fa-secondary ui-icon " + icons.secondary + "'></span>");
 				}
 
 				if (!this.options.text) {
-					buttonClasses.push(multipleIcons ? "ui-button-icons-only" : "ui-button-icon-only");
+					buttonClasses.push(multipleIcons ? "ui-button-icons-only" : "ui-button-fa fa-only");
 
 					if (!this.hasTitle) {
 						buttonElement.attr("title", $.trim(buttonText));
@@ -9052,8 +9052,8 @@
 //
 //		prev = (this._canAdjustMonth(inst, -1, drawYear, drawMonth) ?
 //			"<a class='ui-datepicker-prev ui-corner-all' data-handler='prev' data-event='click'" +
-//			" title='" + prevText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "e" : "w") + "'>" + prevText + "</span></a>" :
-//			(hideIfNoPrevNext ? "" : "<a class='ui-datepicker-prev ui-corner-all ui-state-disabled' title='"+ prevText +"'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "e" : "w") + "'>" + prevText + "</span></a>"));
+//			" title='" + prevText + "'><span class='ui-icon ui-fa fa-circle-triangle-" + ( isRTL ? "e" : "w") + "'>" + prevText + "</span></a>" :
+//			(hideIfNoPrevNext ? "" : "<a class='ui-datepicker-prev ui-corner-all ui-state-disabled' title='"+ prevText +"'><span class='ui-icon ui-fa fa-circle-triangle-" + ( isRTL ? "e" : "w") + "'>" + prevText + "</span></a>"));
 //
 //		nextText = this._get(inst, "nextText");
 //		nextText = (!navigationAsDateFormat ? nextText : this.formatDate(nextText,
@@ -9062,8 +9062,8 @@
 //
 //		next = (this._canAdjustMonth(inst, +1, drawYear, drawMonth) ?
 //			"<a class='ui-datepicker-next ui-corner-all' data-handler='next' data-event='click'" +
-//			" title='" + nextText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "w" : "e") + "'>" + nextText + "</span></a>" :
-//			(hideIfNoPrevNext ? "" : "<a class='ui-datepicker-next ui-corner-all ui-state-disabled' title='"+ nextText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "w" : "e") + "'>" + nextText + "</span></a>"));
+//			" title='" + nextText + "'><span class='ui-icon ui-fa fa-circle-triangle-" + ( isRTL ? "w" : "e") + "'>" + nextText + "</span></a>" :
+//			(hideIfNoPrevNext ? "" : "<a class='ui-datepicker-next ui-corner-all ui-state-disabled' title='"+ nextText + "'><span class='ui-icon ui-fa fa-circle-triangle-" + ( isRTL ? "w" : "e") + "'>" + nextText + "</span></a>"));
 //
 //		currentText = this._get(inst, "currentText");
 //		gotoDate = (this._get(inst, "gotoCurrent") && inst.currentDay ? currentDate : today);
@@ -9769,7 +9769,7 @@
 					.button({
 						label: this.options.closeText,
 						icons: {
-							primary: "ui-icon-closethick"
+							primary: "ui-fa fa-closethick"
 						},
 						text: false
 					})
@@ -11164,7 +11164,7 @@
 		delay: 300,
 		options: {
 			icons: {
-				submenu: "ui-icon-carat-1-e"
+				submenu: "ui-fa fa-carat-1-e"
 			},
 			menus: "ul",
 			position: {
@@ -12978,8 +12978,8 @@
 		options: {
 			culture: null,
 			icons: {
-				down: "ui-icon-triangle-1-s",
-				up: "ui-icon-triangle-1-n"
+				down: "ui-fa fa-triangle-1-s",
+				up: "ui-fa fa-triangle-1-n"
 			},
 			incremental: true,
 			max: null,
