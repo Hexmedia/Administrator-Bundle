@@ -4,20 +4,13 @@ namespace Hexmedia\AdministratorBundle\Repository\Doctrine;
 
 use Doctrine\DBAL\Query\QueryBuilder;
 
-trait ListTrait {
+trait ListTrait
+{
     /**
      * {@inheritdoc}
      * @return \Doctrine\ORM\QueryBuilder
      */
     public abstract function createQueryBuilder($alias);
-
-    /**
-     * @param string $alias
-     * @return \Doctrine\ORM\QueryBuilder
-     */
-    public function createListQueryBuilder($alias) {
-        return $this->createQueryBuilder($alias);
-    }
 
     /**
      * @param int $page
@@ -29,7 +22,7 @@ trait ListTrait {
      */
     public function getPage($page = 1, $sort = 'id', $pageSize = 10, $sortDirection = 'ASC', $fields = array())
     {
-        $queryBuilder = $this->createListQueryBuilder('tab')
+        $queryBuilder = $this->_createListQueryBuilder('tab')
             ->setMaxResults($pageSize)
             ->setFirstResult(max(0, $page - 1) * $pageSize)
             ->orderBy('tab.' . $sort, $sortDirection == 'ASC' ? 'ASC' : 'DESC');
@@ -42,15 +35,27 @@ trait ListTrait {
      */
     public function getCount()
     {
-        $queryBuilder = $this->createListQueryBuilder("tab")
+        $queryBuilder = $this->_createListQueryBuilder("tab")
             ->select("count(tab.id)");
 
         return $queryBuilder->getQuery()->getSingleScalarResult();
 
     }
 
-    public function getToPaginator() {
-        $queryBuildier = $this->createListQueryBuilder('obj');
+    private function _createListQueryBuilder($alias)
+    {
+        try {
+            $queryBuildier = $this->createListQueryBuilder($alias);
+        } catch (Exception $e) {
+            $queryBuildier = $this->createQueryBuilder($alias);
+        }
+
+        return $queryBuildier;
+    }
+
+    public function getToPaginator()
+    {
+        $queryBuildier = $this->_createListQueryBuilder('obj');
 
         return $queryBuildier;
     }
