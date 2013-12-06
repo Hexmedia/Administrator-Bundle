@@ -17,23 +17,22 @@ var Modal;
             if (this.title) {
                 modalHeader = $('<div />').addClass('modal-header');
                 modalContent.append(modalHeader);
+                modalHeader.html(this.title);
             }
 
             modalBody = $('<div />').addClass('modal-body');
             modalContent.append(modalBody);
+            modalBody.html(this.content);
 
             if (this.footer) {
                 modalFooter = $('<div />').addClass('modal-footer');
                 modalContent.append(modalFooter);
+                modalFooter.html(this.footer);
             }
 
             modalDialog.append(modalContent);
 
             this.modal.append(modalDialog);
-
-            modalBody.html(this.content);
-            modalFooter.html(this.footer);
-            modalHeader.html(this.title);
 
             this.modal.modal("show");
 

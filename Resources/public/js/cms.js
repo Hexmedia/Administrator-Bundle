@@ -78,7 +78,7 @@
             buttonOk.click(function () {
                 $.ajax($(self).attr('href'), {
                     type: "DELETE",
-                    dataType: "jsonp",
+                    dataType: "json",
                     success: function () {
                         window.location.reload();
                     },

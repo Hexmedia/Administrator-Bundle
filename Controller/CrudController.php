@@ -274,11 +274,13 @@ abstract class CrudController extends Controller implements ListControllerInterf
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find ' . $this->getEntityName() . '.');
         }
+
         $em = $this->getDoctrine()->getManager();
 
-//        $em->remove($entity);
+        $this->get('session')->getFlashBag()->add('success', ucfirst($this->getEntityName()) . ' has been deleted!');
 
-//        $em->flush();
+        $em->remove($entity);
+        $em->flush();
 
         return ['success' => true];
     }
