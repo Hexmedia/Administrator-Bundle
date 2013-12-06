@@ -21,7 +21,7 @@ trait SoftDeleteTrait
     {
         $queryBuilder = $this->createQueryBuilder($alias);
 
-        $this->addNotDeletedFilter($queryBuilder, $alias);
+        $queryBuilder->where($this->addNotDeletedFilter($queryBuilder, $alias));
 
         return $queryBuilder;
     }
