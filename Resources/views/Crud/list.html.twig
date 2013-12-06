@@ -15,7 +15,7 @@
         {% include template ~ ":list-content.html.twig" with { entity: entity, route: route, routeParams: routeParams } only %}
         <td>
             <a href="{{ path(route ~ "Edit", routeParams|merge({'id': entity.id}) ) }}" class="fa fa-edit"></a>
-            <a href="{{ path(route ~ "Delete", routeParams|merge({'id': entity.id}) ) }}" class="fa fa-trash-o remove" data-confirm="{{ 'Do you really want to delete this element?'|trans }}"></a>
+            <a href="{{ path(route ~ "Delete", routeParams|merge({'id': entity.id}) ) }}" class="fa fa-trash-o remove" onclick="return false;" data-delete="{{ 'Do you really want to delete this element?'|trans }}"></a>
         </td>
     </tr>
     {% endfor %}

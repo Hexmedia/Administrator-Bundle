@@ -276,9 +276,9 @@ abstract class CrudController extends Controller implements ListControllerInterf
         }
         $em = $this->getDoctrine()->getManager();
 
-        $em->remove($entity);
+//        $em->remove($entity);
 
-        $em->flush();
+//        $em->flush();
 
         return ['success' => true];
     }

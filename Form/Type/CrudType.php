@@ -126,7 +126,8 @@ abstract class CrudType extends AbstractType
                 [
                     'label' => 'Delete',
                     'attr' => [
-                        'class' => "btn-danger"
+                        'class' => "btn-danger",
+                        'data-delete' => "Do you really want to delete this element?"
                     ]
                 ]
             );
