@@ -46,7 +46,7 @@ trait ListTrait
     {
         try {
             $queryBuildier = $this->createListQueryBuilder($alias);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $queryBuildier = $this->createQueryBuilder($alias);
         }
 

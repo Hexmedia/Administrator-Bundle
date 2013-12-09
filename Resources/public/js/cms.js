@@ -11,8 +11,8 @@
             $('.container>.content').each(function () {
                 var toSet = height - 3 - $(".container>.header").height();
 
-                $(this).find('.menu').height(toSet);
-                $(this).find('.main-content').height(toSet);
+                $($(this).find('.menu').get(0)).height(toSet);
+                $($(this).find('.main-content').get(0)).height(toSet);
             });
         }
 
