@@ -78,6 +78,14 @@ trait SoftDeleteTrait
         }
     }
 
+    public function get($id) {
+        $entity = $this->find($id);
+
+        if (!$entity || !$entity->isDeleted()) {
+            return $entity;
+        }
+    }
+
     public function addNotDeletedFilter($queryBuilder, $alias)
     {
         $queryBuilder->setParameter(":when", new \DateTime());

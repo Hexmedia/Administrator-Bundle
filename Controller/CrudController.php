@@ -1,13 +1,5 @@
 <?php
 
-/**
- * Created by JetBrains PhpStorm.
- * User: krun
- * Date: 17.09.13
- * Time: 15:35
- * To change this template use File | Settings | File Templates.
- */
-
 namespace Hexmedia\AdministratorBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
@@ -32,9 +24,10 @@ abstract class CrudController extends Controller implements ListControllerInterf
      * Index
      *
      * @param int $page
-     * @param int $pageSize
      * @param string $sort
-     * @param string $sortDirection
+     * @param string $direction
+     *
+     * @return array
      *
      * @Rest\View
      */
@@ -105,6 +98,13 @@ abstract class CrudController extends Controller implements ListControllerInterf
             }
 
             $em->persist($entity);
+
+            try {
+                $em->mergeNewTranslations();
+            } catch (\Exception $e) {
+                var_dump($e);
+            }
+
             $em->flush();
 
             $this->get('session')->getFlashBag()->add('notice', $this->getEntityName() . ' has been created!');
@@ -246,6 +246,12 @@ abstract class CrudController extends Controller implements ListControllerInterf
             }
 
             $em->persist($entity);
+
+            try {
+                $entity->mergeNewTranslations();
+            } catch (\Exception $e) {
+                var_dump($e);
+            }
 
             $em->flush();
 

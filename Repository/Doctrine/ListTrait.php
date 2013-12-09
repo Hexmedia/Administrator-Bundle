@@ -39,7 +39,6 @@ trait ListTrait
             ->select("count(tab.id)");
 
         return $queryBuilder->getQuery()->getSingleScalarResult();
-
     }
 
     private function _createListQueryBuilder($alias)
