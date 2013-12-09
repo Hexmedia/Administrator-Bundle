@@ -100,7 +100,7 @@ abstract class CrudController extends Controller implements ListControllerInterf
             $em->persist($entity);
 
             try {
-                $em->mergeNewTranslations();
+                $entity->mergeNewTranslations();
             } catch (\Exception $e) {
                 var_dump($e);
             }
