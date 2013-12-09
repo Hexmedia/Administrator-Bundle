@@ -99,10 +99,8 @@ abstract class CrudController extends Controller implements ListControllerInterf
 
             $em->persist($entity);
 
-            try {
+            if (method_exists($entity, 'mergeNewTranslations')) {
                 $entity->mergeNewTranslations();
-            } catch (\Exception $e) {
-                var_dump($e);
             }
 
             $em->flush();
@@ -123,10 +121,10 @@ abstract class CrudController extends Controller implements ListControllerInterf
             }
         }
 
-        return [
-            'entity' => $entity,
-            'form' => $form->createView(),
-        ];
+        return $this->render($this->getListTemplate() . ":edit.html.twig", [
+                'entity' => $entity,
+                'form' => $form->createView()
+            ]);
     }
 
     /**
@@ -212,7 +210,7 @@ abstract class CrudController extends Controller implements ListControllerInterf
     /**
      * {@inheritdoc}
      *
-     * @Rest\View(template="HexmediaCatalogBundle:AdminProduct:edit.html.twig")
+     * @Template
      */
     public function updateAction(Request $request, $id)
     {
@@ -247,10 +245,8 @@ abstract class CrudController extends Controller implements ListControllerInterf
 
             $em->persist($entity);
 
-            try {
+            if (method_exists($entity, 'mergeNewTranslations')) {
                 $entity->mergeNewTranslations();
-            } catch (\Exception $e) {
-                var_dump($e);
             }
 
             $em->flush();
@@ -262,10 +258,10 @@ abstract class CrudController extends Controller implements ListControllerInterf
             }
         }
 
-        return [
-            'entity' => $entity,
-            'form' => $form->createView(),
-        ];
+        return $this->render($this->getListTemplate() . ":edit.html.twig", [
+                'entity' => $entity,
+                'form' => $form->createView()
+            ]);
     }
 
     /**
