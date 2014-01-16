@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: krun
- * Date: 04.12.13
- * Time: 16:36
- */
 
 namespace Hexmedia\AdministratorBundle\Repository\Doctrine;
 

@@ -13,7 +13,7 @@ abstract class CrudRepository extends EntityRepository implements CrudRepository
         return $this->findAll();
     }
 
-    public function getBy($where = [], $order = null, $limit = null, $offset = 0)
+    public function getBy($where = [], $order = null, $limit = null, $offset = null)
     {
         return $this->findBy($where, $order, $limit, $offset);
     }

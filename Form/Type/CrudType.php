@@ -92,7 +92,8 @@ abstract class CrudType extends AbstractType
                 null,
                 [
                     'label' => 'Title',
-                    'render_optional_text' => false
+                    'render_optional_text' => false,
+                    'required' => false
                 ]
             )
             ->add(
@@ -100,7 +101,8 @@ abstract class CrudType extends AbstractType
                 null,
                 [
                     'label' => 'Keywords',
-                    'render_optional_text' => false
+                    'render_optional_text' => false,
+                    'required' => false
                 ]
             )
             ->add(
