@@ -20,7 +20,8 @@
 		"knplabs/knp-menu-bundle": "dev-master",
 		"liip/imagine-bundle": "dev-master",
 		"friendsofsymfony/rest-bundle": "dev-master",
-		"knplabs/doctrine-behaviors": "1.0.*@dev"
+		"knplabs/doctrine-behaviors": "1.0.*@dev",
+        "willdurand/js-translation-bundle": ">=2.0.*@dev"
 	},
 	"required-dev": {
 		"twig/twig": "@stable"
