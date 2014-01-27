@@ -70,8 +70,21 @@ services:
         tags:
             - { name: twig.extension }
 
+    hexmedia.seo:
+        class: Hexmedia\AdministratorBundle\Model\Seo
+
+    hexmedia.seo.helper:
+        class: Hexmedia\AdministratorBundle\Templating\Helper\SeoHelper
+        arguments: [ "@templating", "@hexmedia.seo", "%hexmedia.seo.options%" ]
+
+    hexmedia.admin.twig.seo:
+        class: Hexmedia\AdministratorBundle\Twig\Extension\SeoExtension
+        arguments: [ "@service_container" ]
+        tags:
+            - { name: twig.extension }
+
     hexmedia.admin.language.kernel_request_listener:
         class: Hexmedia\AdministratorBundle\EventListener\LanguageListener
-        arguments: [ "@session" ]
+        arguments: [ "@session", "@service_container" ]
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: setLocale }

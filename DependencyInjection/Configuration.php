@@ -10,17 +10,29 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html#cookbook-bundles-extension-config-class}
  */
-class Configuration implements ConfigurationInterface {
+class Configuration implements ConfigurationInterface
+{
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public function getConfigTreeBuilder() {
-		$treeBuilder = new TreeBuilder();
-		$rootNode = $treeBuilder->root('hexmedia_administrator');
+    /**
+     * {@inheritDoc}
+     */
+    public function getConfigTreeBuilder()
+    {
+        $treeBuilder = new TreeBuilder();
+        $rootNode = $treeBuilder->root('hexmedia_administrator');
+
+        $rootNode->
+            children()->
+                arrayNode("seo")->
+                    isRequired()->
+                    children()->
+                        scalarNode("viewTemplate")->defaultValue("HexmediaAdministratorBundle:Seo:seo.html.twig")->end()->
+                        scalarNode("defaultTitle")->defaultValue("Hexmedia CMS")->end()->
+                end()->
+            end();
 
 
-		return $treeBuilder;
-	}
+        return $treeBuilder;
+    }
 
 }

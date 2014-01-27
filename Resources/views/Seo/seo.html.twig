@@ -1,0 +1,9 @@
+<title>{{ seo.title }}</title>
+
+{% if seo.description %}
+<meta name="description" value="{{ seo.description }}" />
+{% endif %}
+
+{% if seo.keywords %}
+<meta name="keywords" value="{{ seo.keywords }}" />
+{% endif %}

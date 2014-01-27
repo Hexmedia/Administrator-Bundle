@@ -15,10 +15,12 @@ class LocaleController extends Controller
     {
         $session = $this->get('session');
 
-        //FIXME: Need to check if locale is allowed.
-        $session->set('locale', $loc);
+        if (in_array($loc, $this->container->getParameter("locales"))) {
+            $session->set('locale', $loc);
+        }
 
-        return $this->redirect(/*$this->getRefererUrl() ? $this->getRefererUrl() :*/ $this->get('router')->generate("homepage"));
+        return $this->redirect( /*$this->getRefererUrl() ? $this->getRefererUrl() :*/
+            $this->get('router')->generate("homepage"));
     }
 
     public function getRefererUrl()
@@ -26,6 +28,8 @@ class LocaleController extends Controller
         $request = $this->getRequest();
 
         //look for the referer route
+
+        //FIXME: Get current route, parse it and if it's *.$locale translate it to current language.
         $referer = $request->headers->get('referer');
         $lastPath = substr($referer, strpos($referer, $request->getBaseUrl()));
 

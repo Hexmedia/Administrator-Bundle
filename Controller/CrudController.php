@@ -362,9 +362,7 @@ abstract class CrudController extends Controller implements ListControllerInterf
 
     protected function getLocales()
     {
-        //FIXME: This method should return languages based on config.
-
-        return ['pl', 'en'];
+        return $this->container->get("locales");
     }
 
     protected function addLocales($form, $entity)
