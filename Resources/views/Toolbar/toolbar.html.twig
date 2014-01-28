@@ -2,11 +2,17 @@
     {{ include('HexmediaAdministratorBundle:Toolbar:toolbar.css.twig') }}
 </style>
 
+{% stylesheets filter='' output='css/cms.css'
+'@HexmediaAdministratorBundle/Resources/public/lib/jquery-ui/css/jquery-ui.css'
+'@HexmediaAdministratorBundle/Resources/public/css/raptor.css' %}
+<link rel="stylesheet" type="text/css" href="{{ asset_url }}"/>
+{% endstylesheets %}
+
 {#{{ render(controller("HexmediaAdministratorBundle:EditMode:script")) }}#}
 
 {% javascripts output='js/admin-toolbar.js'
 '@HexmediaAdministratorBundle/Resources/public/js/lib/resizetable.js'
-'@HexmediaAdministratorBundle/Resources/public/js/lib/jquery-ui.js'
+'@HexmediaAdministratorBundle/Resources/public/lib/jquery-ui/js/jquery-ui.js'
 '@HexmediaAdministratorBundle/Resources/public/js/lib/jquery.raptorize.js'
 '@HexmediaAdministratorBundle/Resources/public/js/lib/jquery-hotkeys.js'
 '@HexmediaAdministratorBundle/Resources/public/js/lib/diff.js'
@@ -15,6 +21,8 @@
 '@HexmediaAdministratorBundle/Resources/public/js/raptor-toolbar.js' %}
 <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
+
+
 
 <div class="hx-adm-panel-user-toolbar hx-adm-panel-{{ edit_mode_class }}">
 	<div class="hx-adm-panel-user-toolbar-content">

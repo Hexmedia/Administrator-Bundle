@@ -4,7 +4,7 @@
     {% javascripts
     '@HexmediaAdministratorBundle/Resources/public/js/lib/bootstrap-datepicker.js'
     '@HexmediaAdministratorBundle/Resources/public/js/lib/resizetable.js'
-    '@HexmediaAdministratorBundle/Resources/public/js/lib/jquery-ui.js'
+    '@HexmediaAdministratorBundle/Resources/public/lib/jquery-ui/js/jquery-ui.js'
     '@HexmediaAdministratorBundle/Resources/public/js/lib/jquery.raptorize.js'
     '@HexmediaAdministratorBundle/Resources/public/js/lib/jquery-hotkeys.js'
     '@HexmediaAdministratorBundle/Resources/public/js/lib/diff.js'
@@ -19,7 +19,8 @@
 
 {% block super_head_style %}
     {% stylesheets
-    '@HexmediaAdministratorBundle/Resources/public/css/raptor.css' %}
+    '@HexmediaAdministratorBundle/Resources/public/css/raptor.css'
+    '@HexmediaAdministratorBundle/Resources/public/lib/jquery-ui/css/jquery-ui.css' %}
 <link rel="stylesheet" type="text/css" href="{{ asset_url }}"/>
     {% endstylesheets %}
 
