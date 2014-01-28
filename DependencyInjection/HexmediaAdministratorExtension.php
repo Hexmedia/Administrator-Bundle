@@ -41,5 +41,11 @@ class HexmediaAdministratorExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter("hexmedia.seo.options", $config['seo']);
+
+        if (!isset($config['ga']['domain'])) {
+            $config['ga']['domain'] = $container->getParameter("domain");
+        }
+
+        $container->setParameter("hexmedia.ga.options", $config['ga']);
     }
 }

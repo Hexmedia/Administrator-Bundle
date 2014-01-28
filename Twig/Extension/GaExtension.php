@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Provides an extension for Twig to output breadcrumbs
  */
-class SeoExtension extends \Twig_Extension
+class GaExtension extends \Twig_Extension
 {
     private $container;
 
@@ -26,12 +26,12 @@ class SeoExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            "hex_seo"  => new \Twig_Function_Method($this, "showHeader", array("is_safe" => array("html"))),
+            "hex_ga"  => new \Twig_Function_Method($this, "showHeader", array("is_safe" => array("html"))),
         );
     }
 
     public function showHeader(array $options = []) {
-        return $this->container->get("hexmedia.seo.helper")->render($options);
+        return $this->container->get("hexmedia.ga.helper")->render($options);
     }
 
 
@@ -42,6 +42,6 @@ class SeoExtension extends \Twig_Extension
      */
     public function getName()
     {
-        return "hex_seo";
+        return "hex_ga";
     }
 }

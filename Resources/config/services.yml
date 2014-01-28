@@ -71,7 +71,7 @@ services:
             - { name: twig.extension }
 
     hexmedia.seo:
-        class: Hexmedia\AdministratorBundle\Model\Seo
+        class: Hexmedia\AdministratorBundle\ViewModel\Seo
 
     hexmedia.seo.helper:
         class: Hexmedia\AdministratorBundle\Templating\Helper\SeoHelper
@@ -79,6 +79,19 @@ services:
 
     hexmedia.admin.twig.seo:
         class: Hexmedia\AdministratorBundle\Twig\Extension\SeoExtension
+        arguments: [ "@service_container" ]
+        tags:
+            - { name: twig.extension }
+
+    hexmedia.ga:
+        class: Hexmedia\AdministratorBundle\ViewModel\Ga
+
+    hexmedia.ga.helper:
+        class: Hexmedia\AdministratorBundle\Templating\Helper\GaHelper
+        arguments: [ "@templating", "@hexmedia.ga", "%hexmedia.ga.options%" ]
+
+    hexmedia.admin.twig.ga:
+        class: Hexmedia\AdministratorBundle\Twig\Extension\GaExtension
         arguments: [ "@service_container" ]
         tags:
             - { name: twig.extension }

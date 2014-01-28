@@ -2,11 +2,11 @@
 
 namespace Hexmedia\AdministratorBundle\Templating\Helper;
 
-use Hexmedia\AdministratorBundle\ViewModel\Seo;
+use Hexmedia\AdministratorBundle\ViewModel\Ga;
 use Symfony\Component\Templating\EngineInterface;
 use Symfony\Component\Templating\Helper\Helper;
 
-class SeoHelper extends Helper
+class GaHelper extends Helper
 {
 
     /**
@@ -14,9 +14,9 @@ class SeoHelper extends Helper
      */
     private $templating;
     /**
-     * @var \Hexmedia\AdministratorBundle\ViewModel\Seo
+     * @var \Hexmedia\AdministratorBundle\ViewModel\Ga
      */
-    private $seo;
+    private $ga;
     /**
      * @var array
      */
@@ -31,13 +31,13 @@ class SeoHelper extends Helper
      */
     public function getName()
     {
-        return "hexmedia.seo.helper";
+        return "hexmedia.ga.helper";
     }
 
-    public function __construct(EngineInterface $templating, Seo $seo, array $options)
+    public function __construct(EngineInterface $templating, Ga $ga, array $options)
     {
         $this->templating = $templating;
-        $this->seo = $seo;
+        $this->ga = $ga;
         $this->options = $options;
 
     }
@@ -61,18 +61,12 @@ class SeoHelper extends Helper
      */
     private function resolveOptions(array $options = array())
     {
-        $this->options["seo"] = $this->seo;
+        $this->options["ga"] = $this->ga;
 
-        if (!$this->seo->getTitle() && $options['defaultTitle']) {
-            $this->seo->setTitle($options['defaultTitle']);
-        }
-
-        if (!$this->seo->getTitle() && $options['defaultKeywords']) {
-            $this->seo->setTitle($options['defaultKeywords']);
-        }
-
-        if (!$this->seo->getTitle() && $options['defaultDescription']) {
-            $this->seo->setTitle($options['defaultDescription']);
+        if (!$this->ga->getCode() && isset($options['code'])) {
+            $this->ga->setCode($options['code']);
+        } else if (!$this->ga->getDomain() && isset($options['domain'])) {
+            $this->ga->setDomain($options['domain']);
         }
 
         return array_merge($this->options, $options);

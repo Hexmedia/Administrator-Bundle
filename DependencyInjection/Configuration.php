@@ -26,8 +26,19 @@ class Configuration implements ConfigurationInterface
                 arrayNode("seo")->
                     isRequired()->
                     children()->
-                        scalarNode("viewTemplate")->defaultValue("HexmediaAdministratorBundle:Seo:seo.html.twig")->end()->
+                        scalarNode("viewTemplate")->defaultValue("HexmediaAdministratorBundle:Head:seo.html.twig")->end()->
                         scalarNode("defaultTitle")->defaultValue("Hexmedia CMS")->end()->
+                        scalarNode("defaultDescription")->end()->
+                        scalarNode("defaultKeywords")->end()->
+                    end()->
+                end()->
+                arrayNode("ga")->
+                    isRequired()->
+                    children()->
+                        scalarNode("viewTemplate")->defaultValue("HexmediaAdministratorBundle:Head:ga.html.twig")->end()->
+                        scalarNode("code")->isRequired()->end()->
+                        scalarNode("domain")->end()->
+                    end()->
                 end()->
             end();
 

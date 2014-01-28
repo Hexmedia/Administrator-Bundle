@@ -1,6 +1,6 @@
 <?php
 
-namespace Hexmedia\AdministratorBundle\Model;
+namespace Hexmedia\AdministratorBundle\ViewModel;
 
 use Hexmedia\AdministratorBundle\Entity\SeoInterface;
 
