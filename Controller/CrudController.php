@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController as Controller;
 use Hexmedia\AdministratorBundle\ControllerInterface\ListController as ListControllerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 abstract class CrudController extends Controller implements ListControllerInterface
 {
@@ -90,8 +91,6 @@ abstract class CrudController extends Controller implements ListControllerInterf
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $this->mapLanguages($entity, $form);
-
             try {
                 if ($form->get("saveAndPublish")->isClicked()) {
                     $entity->setPublished(1);
@@ -145,8 +144,6 @@ abstract class CrudController extends Controller implements ListControllerInterf
                 'method' => 'POST',
             ]
         );
-
-        $this->addLocales($form, $entity);
 
         return $form;
     }
@@ -209,8 +206,6 @@ abstract class CrudController extends Controller implements ListControllerInterf
             ]
         );
 
-        $this->addLocales($form, $entity);
-
         return $form;
     }
 
@@ -237,8 +232,6 @@ abstract class CrudController extends Controller implements ListControllerInterf
              * @var $em \Doctrine\ORM\EntityManager
              */
             $em = $this->getDoctrine()->getManager();
-
-            $this->mapLanguages($entity, $form);
 
             try {
                 if ($form->get("saveAndPublish")->isClicked()) {
@@ -348,50 +341,4 @@ abstract class CrudController extends Controller implements ListControllerInterf
     protected abstract function getRepository();
 
     protected abstract function getEditFormType();
-
-    /**
-     * @return null
-     *
-     * @FIXME: This method should be abstract, but currently can't be as of dependencies.
-     *
-     */
-    protected function getTranslationType()
-    {
-        return null;
-    }
-
-    protected function getLocales()
-    {
-        return $this->container->get("locales");
-    }
-
-    protected function addLocales($form, $entity)
-    {
-        if ($this->getTranslationType() !== null) {
-            foreach ($this->getLocales() as $locale) {
-                $type = $this->getTranslationType();
-                $type->setLocale($locale);
-                $form->add($locale, $type, ['mapped' => false]);
-
-                $trans = $this->getTranslationType();
-                foreach ($trans->getFields() as $field) {
-                    $fun = 'get' . ucfirst($field);
-                    $form->get($locale)->get($field)->setData($entity->translate($locale)->$fun());
-                }
-            }
-        }
-    }
-
-    protected function mapLanguages($entity, $form)
-    {
-        foreach ($this->getLocales() as $locale) {
-            $data = $form->get($locale)->getData();
-
-            foreach ($data as $key => $value) {
-                $fun = 'set' . ucfirst($key);
-
-                $entity->translate($locale)->$fun($value);
-            }
-        }
-    }
 }
