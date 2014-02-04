@@ -112,9 +112,6 @@ abstract class CrudType extends AbstractType
                     'required' => false,
                     'label' => 'Description',
                     'render_optional_text' => false,
-                    'attr' => [
-                        'class' => 'no-raptor'
-                    ]
                 ]
             );
     }
