@@ -202,7 +202,7 @@ abstract class CrudController extends Controller implements ListControllerInterf
         $form = $this->createForm(
             $this->getEditFormType(), $entity, [
                 'action' => $this->generateUrl($this->getRouteName() . "Edit", $this->getRouteParams(['id' => $entity->getId()])),
-                'method' => 'PUT',
+                'method' => 'POST',
             ]
         );
 
@@ -225,6 +225,7 @@ abstract class CrudController extends Controller implements ListControllerInterf
         }
 
         $form = $this->createEditForm($entity);
+
         $form->handleRequest($request);
 
         if ($form->isValid()) {
