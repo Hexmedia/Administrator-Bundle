@@ -46,7 +46,7 @@ class ContentExtension extends \Twig_Extension
      * @param string $field
      * @param null $tag
      * @param string $class
-     * @param string  $language
+     * @param string $language
      * @throws Exception
      * @return string
      */
@@ -69,11 +69,13 @@ class ContentExtension extends \Twig_Extension
 
         $twig = $this->service->get("twig");
 
+        $content = preg_replace('/(\<(\/)?' . $tag . '[^\/>]*\>)/', "", $entity->$getter());
+
         if ($this->service->get('session')->get('hexmedia_content_edit_mode')) {
             $content = $twig->render(
                 "HexmediaContentBundle:Content:content-editable.html.twig",
                 [
-                    'content' =>  $entity->$getter(),
+                    'content' => $content,
                     'tag' => $tag,
                     'id' => $entity->getId(),
                     'field' => $field,
@@ -85,7 +87,7 @@ class ContentExtension extends \Twig_Extension
             $content = $twig->render(
                 "HexmediaContentBundle:Content:content.html.twig",
                 [
-                    'content' =>  $entity->$getter(),
+                    'content' => $content,
                     'id' => $entity->getId(),
                     'field' => $field,
                     'tag' => $tag,
