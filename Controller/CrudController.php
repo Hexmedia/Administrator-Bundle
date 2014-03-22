@@ -5,6 +5,7 @@ namespace Hexmedia\AdministratorBundle\Controller;
 use Doctrine\ORM\EntityManager;
 use Hexmedia\AdministratorBundle\Controller\ListTrait;
 use Symfony\Component\Form\Exception\OutOfBoundsException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController as Controller;
@@ -15,6 +16,19 @@ abstract class CrudController extends Controller implements ListControllerInterf
 {
 
     use ListTrait;
+
+    public function getRefererUrl()
+    {
+        $request = $this->getRequest();
+
+        //look for the referer route
+
+        //FIXME: Get current route, parse it and if it's *.$locale translate it to current language.
+        $referer = $request->headers->get('referer');
+        $lastPath = substr($referer, strpos($referer, $request->getBaseUrl()));
+
+        return $lastPath;
+    }
 
     /**
      * @var \WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs
@@ -124,9 +138,9 @@ abstract class CrudController extends Controller implements ListControllerInterf
         }
 
         return $this->render($this->getListTemplate() . ":edit.html.twig", [
-                'entity' => $entity,
-                'form' => $form->createView()
-            ]);
+            'entity' => $entity,
+            'form' => $form->createView()
+        ]);
     }
 
     /**
@@ -262,9 +276,9 @@ abstract class CrudController extends Controller implements ListControllerInterf
         }
 
         return $this->render($this->getListTemplate() . ":edit.html.twig", [
-                'entity' => $entity,
-                'form' => $form->createView()
-            ]);
+            'entity' => $entity,
+            'form' => $form->createView()
+        ]);
     }
 
     /**
@@ -287,7 +301,13 @@ abstract class CrudController extends Controller implements ListControllerInterf
         $em->remove($entity);
         $em->flush();
 
-        return ['success' => true];
+        if ($request->getMethod() == "DELETE") {
+            return new JsonResponse([
+                'success' => true
+            ]);
+        } else {
+            return $this->redirect($this->getRefererUrl());
+        }
     }
 
     /**

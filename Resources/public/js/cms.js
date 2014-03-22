@@ -61,8 +61,8 @@
 
             self = this;
 
-            buttonOk = $("<button />").addClass("btn").addClass("btn-primary").text(Translator.get("Confirm"));
-            buttonCancel = $("<button />").addClass("btn").text(Translator.get("Cancel"));
+            buttonOk = $("<button />").addClass("btn").addClass("btn-primary").text(Translator.trans("Confirm"));
+            buttonCancel = $("<button />").addClass("btn").text(Translator.trans("Cancel"));
 
             footer = $('<p />');
 
@@ -83,7 +83,7 @@
                         window.location.reload();
                     },
                     error: function () {
-                        Translator.get("An error has occured!");
+                        Translator.trans("An error has occured!");
                     }
                 });
             });
@@ -113,8 +113,8 @@
         modalHeader.text($(this).data("confirm-title"));
         modalBody.html("<p>" + $(this).data("confirm-body") + "</p>");
 
-        buttonOk = $("<button />").addClass("btn").addClass("btn-primary").text(Translator.get("Confirm"));
-        buttonCancel = $("<button />").addClass("btn").text(Translator.get("Cancel"));
+        buttonOk = $("<button />").addClass("btn").addClass("btn-primary").text(Translator.trans("Confirm"));
+        buttonCancel = $("<button />").addClass("btn").text(Translator.trans("Cancel"));
 
         modalFooter.append(buttonOk);
         modalFooter.append(buttonCancel);
