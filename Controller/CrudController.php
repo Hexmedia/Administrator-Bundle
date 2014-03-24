@@ -115,10 +115,6 @@ abstract class CrudController extends Controller implements ListControllerInterf
 
             $em->persist($entity);
 
-            if (method_exists($entity, 'mergeNewTranslations')) {
-                $entity->mergeNewTranslations();
-            }
-
             $em->flush();
 
             $this->get('session')->getFlashBag()->add('notice', $this->getEntityName() . ' has been created!');
