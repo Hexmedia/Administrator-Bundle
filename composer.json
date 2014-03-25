@@ -17,12 +17,6 @@
 		"php": ">=5.3.2",
 		"symfony/framework-bundle": ">=2.3",
 		"twig/twig": ">=1.13",
-		"knplabs/knp-menu-bundle": "2.0.*@dev",
-		"liip/imagine-bundle": "v0.21.*",
-		"friendsofsymfony/rest-bundle": "1.4.*@dev",
-		"knplabs/doctrine-behaviors": "1.0.*@dev",
-    	"willdurand/js-translation-bundle": "2.0.*@dev",
-        "a2lix/translation-form-bundle": "2.*@dev"
 	},
 	"required-dev": {
 		"twig/twig": "@stable"
